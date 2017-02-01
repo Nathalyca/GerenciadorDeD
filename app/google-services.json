@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "981765293503",
+    "firebase_url": "https://gerenciadordd.firebaseio.com",
+    "project_id": "gerenciadordd",
+    "storage_bucket": "gerenciadordd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981765293503:android:5fde72d927a2e0df",
+        "android_client_info": {
+          "package_name": "com.tcc.natha.gerenciadordd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981765293503-r0ls1s85799deslt547u6kjjcunfpe5t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChIQocNxdhadxV2HeJD1faTGvnwe_gbpA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981765293503-r0ls1s85799deslt547u6kjjcunfpe5t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

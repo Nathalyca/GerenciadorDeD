@@ -1,14 +1,45 @@
 <resources>
-    <string name="app_name">POCNathy</string>
+    <string name="app_name">Gerenciador de D&#38;D</string>
+    <string name="vazio">  </string>
     <string name="auth_failed">Falha na Autenticação</string>
     <string name="hint_email">Insira seu email</string>
     <string name="hint_password">Insira sua senha</string>
-    <string name="sign_in">Sign In</string>
+    <string name="sign_in">Entrar</string>
     <string name="sign_out">Sign Out</string>
     <string name="create_account">Crie sua conta</string>
     <string name="title_activity_segunda">SegundaActivity</string>
     <string name="desconect">Desconectado</string>
+    <string name="nomepers">Nome: </string>
+    <string name="personagem">Personagem </string>
+    <string name="classe">Classe: </string>
+    <string name="raca">Raça: </string>
+    <string name="subraca">Sub-raça: </string>
+    <string name="antecedente">Antecedente: </string>
+    <string name="tendencia">Tendência: </string>
+    <string name="nivel">Nível: </string>
+    <string name="pv">PV: </string>
+    <string name="iniciativa">Iniciativa: </string>
+    <string name="atributos">Atributos </string>
+    <string name="forca">Força: </string>
+    <string name="destreza">Destreza: </string>
+    <string name="constituicao">Constituição: </string>
+    <string name="inteligencia">Inteligência </string>
+    <string name="sabedoria">Sabedoria: </string>
+    <string name="carisma">Carisma: </string>
+    <string name="usuario">Informações do novo usuário </string>
+    <string name="nomeuser">Nome: </string>
+    <string name="emailuser">Email: </string>
+    <string name="senhauser">Senha: </string>
+    <string name="gravar">Gravar</string>
+    <string name="emailforgot">Esqueceu a sua senha?</string>
 
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_menu">MenuActivity</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment2">Hello blank fragment2</string>
 </resources>

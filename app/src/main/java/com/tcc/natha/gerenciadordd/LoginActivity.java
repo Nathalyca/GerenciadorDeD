@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity implements
         View.OnClickListener{
@@ -23,6 +25,7 @@ public class LoginActivity extends AppCompatActivity implements
     private static final String TAG = "LoginActivity";
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference mUsersReference;
 
     private EditText mEmailField;
     private EditText mPasswordField;
@@ -40,12 +43,18 @@ public class LoginActivity extends AppCompatActivity implements
 
             // Views
             mEmailField = (EditText) findViewById(R.id.field_email);
-
+            mEmailField.setText("nathalyca03@gmail.com");
             mPasswordField = (EditText) findViewById(R.id.field_password);
+            mPasswordField.setText("@abcd1234");
 
             // Buttons
             findViewById(R.id.email_sign_in_button).setOnClickListener(this);
             findViewById(R.id.email_create_account_button).setOnClickListener(this);
+            findViewById(R.id.email_forgot).setOnClickListener(this);
+
+            //BD
+            mUsersReference = FirebaseDatabase.getInstance().getReference()
+                    .child("users");
 
             mAuth = FirebaseAuth.getInstance();
             mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -114,6 +123,18 @@ public class LoginActivity extends AppCompatActivity implements
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
         } else if (i == R.id.email_sign_in_button) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+        } else if (i == R.id.email_forgot) {
+            mAuth.sendPasswordResetEmail(mEmailField.getText().toString())
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(LoginActivity.this, "Um email de verificação foi enviado para o seu email",
+                                        Toast.LENGTH_SHORT).show();
+                                Log.d(TAG, "Email enviado.");
+                            }
+                        }
+                    });
         }
     }
 
@@ -136,8 +157,10 @@ public class LoginActivity extends AppCompatActivity implements
                         }else{
                             Toast.makeText(LoginActivity.this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
 
-               //             Intent intent = new Intent(context, SegundaActivity.class);
-               //             startActivity(intent);
+                            Log.d(TAG, "chama GravaPersonagemActivity");
+
+                            Intent intent = new Intent(context, MenuActivity.class);
+                            startActivity(intent);
 
                         }
 
@@ -145,5 +168,7 @@ public class LoginActivity extends AppCompatActivity implements
                 });
         // [END sign_in_with_email]
     }
+
+
 
 }

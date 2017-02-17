@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,7 +45,8 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
 
 
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private static final String TAG = "GravaPersonagemActivity";
+    private static final String TAG = "GravaPersonagemFragment";
+    private Context context;
     private DatabaseReference mPersReference;
     private DatabaseReference mDatabase;
 
@@ -64,9 +66,11 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
     private EditText mSabedoriaField;
     private EditText mCarismaField;
 
-    private Button GravaButton;
+    private Button gravaButton;
 
     private Personagem pers;
+
+    private View view;
 
     private String uID;
     private String persID;
@@ -104,30 +108,40 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        //Log.d(TAG, "onCreate");
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        view = inflater.inflate(R.layout.fragment_grava_personagem, container, false);
+
+        Log.d(TAG, "onCreate");
+
+        context = getActivity().getApplicationContext();
 
         // Views
-        mNomepersField = (EditText) getView().findViewById(R.id.field_nomepers);
-        mRacaField = (EditText) getView().findViewById(R.id.field_raca);
-        mClasseField = (EditText) getView().findViewById(R.id.field_classe);
-        mSubRacaField = (EditText) getView().findViewById(R.id.field_subraca);
-        mAntecedenteField = (EditText) getView().findViewById(R.id.field_antecedente);
-        mTendenciaField = (EditText) getView().findViewById(R.id.field_tendencia);
-        mNivelField = (EditText) getView().findViewById(R.id.field_nivel);
-        mPvField = (EditText) getView().findViewById(R.id.field_pv);
-        mIniciativaField = (EditText) getView().findViewById(R.id.field_iniciativa);
+        mNomepersField = (EditText) view.findViewById(R.id.field_nomepers);
+        mRacaField = (EditText) view.findViewById(R.id.field_raca);
+        mClasseField = (EditText) view.findViewById(R.id.field_classe);
+        mSubRacaField = (EditText) view.findViewById(R.id.field_subraca);
+        mAntecedenteField = (EditText) view.findViewById(R.id.field_antecedente);
+        mTendenciaField = (EditText) view.findViewById(R.id.field_tendencia);
+        mNivelField = (EditText) view.findViewById(R.id.field_nivel);
+        mPvField = (EditText) view.findViewById(R.id.field_pv);
+        mIniciativaField = (EditText) view.findViewById(R.id.field_iniciativa);
         mForcaField = (EditText)
-                getView().findViewById(R.id.field_forca);
-        mDestrezaField = (EditText) getView().findViewById(R.id.field_destreza);
-        mConstituicaoField = (EditText) getView().findViewById(R.id.field_constituicao);
-        mInteligenciaField = (EditText) getView().findViewById(R.id.field_inteligencia);
-        mSabedoriaField = (EditText) getView().findViewById(R.id.field_sabedoria);
-        mCarismaField = (EditText) getView().findViewById(R.id.field_carisma);
+                view.findViewById(R.id.field_forca);
+        mDestrezaField = (EditText) view.findViewById(R.id.field_destreza);
+        mConstituicaoField = (EditText) view.findViewById(R.id.field_constituicao);
+        mInteligenciaField = (EditText) view.findViewById(R.id.field_inteligencia);
+        mSabedoriaField = (EditText) view.findViewById(R.id.field_sabedoria);
+        mCarismaField = (EditText) view.findViewById(R.id.field_carisma);
 
 
         // Buttons
-        GravaButton = (Button) getView().findViewById(R.id.gravar_button);
-
+        gravaButton = (Button) view.findViewById(R.id.gravar_button);
+        gravaButton.setOnClickListener(this);
         //BD
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mPersReference = FirebaseDatabase.getInstance().getReference()
@@ -154,14 +168,9 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
         };
 
         FirebaseAuth.getInstance().addAuthStateListener(mAuthListener);
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_grava_personagem, container, false);
 
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -249,13 +258,19 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
 
         });
 
+        Toast.makeText(context, R.string.gravadoSucesso , Toast.LENGTH_SHORT).show();
         Log.d(TAG, "gravado");
 
     }
 
     @Override
     public void onClick(View v) {
-
+        int i = v.getId();
+        Log.d(TAG, "onClick");
+        if (i == R.id.gravar_button) {
+            Log.d(TAG, "chama grava personagem");
+            gravaPersonagem();
+        }
     }
 
     /**

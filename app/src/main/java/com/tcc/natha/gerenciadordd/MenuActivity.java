@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
+        GravaPersonagemFragment.OnFragmentInteractionListener,
         BlankFragment.OnFragmentInteractionListener,
         BlankFragment2.OnFragmentInteractionListener {
 
@@ -103,14 +104,15 @@ public class MenuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        Fragment gravaPersonagemFragment = new GravaPersonagemFragment();
         Fragment blankFragment = new BlankFragment();
         Fragment blankFragment2 = new BlankFragment2();
         if (id == R.id.nav_camera) {
-            transaction.replace(R.id.headlines_fragment, blankFragment);
+            transaction.replace(R.id.headlines_fragment, gravaPersonagemFragment);
         } else if (id == R.id.nav_gallery) {
             transaction.replace(R.id.headlines_fragment, blankFragment2);
         } else if (id == R.id.nav_slideshow) {
-
+            transaction.replace(R.id.headlines_fragment, blankFragment);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

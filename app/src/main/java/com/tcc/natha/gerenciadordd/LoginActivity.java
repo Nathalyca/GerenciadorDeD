@@ -43,9 +43,9 @@ public class LoginActivity extends AppCompatActivity implements
 
             // Views
             mEmailField = (EditText) findViewById(R.id.field_email);
-            mEmailField.setText("nathalyca03@gmail.com");
+            //mEmailField.setText("nathalyca03@gmail.com");
             mPasswordField = (EditText) findViewById(R.id.field_password);
-            mPasswordField.setText("@abcd1234");
+            //mPasswordField.setText("@abcd1234");
 
             // Buttons
             findViewById(R.id.email_sign_in_button).setOnClickListener(this);
@@ -157,7 +157,7 @@ public class LoginActivity extends AppCompatActivity implements
                         }else{
                             Toast.makeText(LoginActivity.this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
 
-                            Log.d(TAG, "chama GravaPersonagemActivity");
+                            Log.d(TAG, "chama GravaPersonagemFragment");
 
                             Intent intent = new Intent(context, MenuActivity.class);
                             startActivity(intent);

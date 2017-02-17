@@ -11,7 +11,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.tcc.natha.gerenciadordd.MenuActivity"
-    tools:showIn="@layout/app_bar_menu">
+    tools:showIn="@layout/app_bar_menu"
+    android:background="@color/grey_100">
 
     <LinearLayout
         android:orientation="vertical"

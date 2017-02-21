@@ -22,12 +22,15 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.tcc.natha.gerenciadordd.dummy.DummyContent;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        GravaPersonagemFragment.OnFragmentInteractionListener,
+        PersonagemFragment.OnFragmentInteractionListener,
         BlankFragment.OnFragmentInteractionListener,
-        BlankFragment2.OnFragmentInteractionListener {
+        BlankFragment2.OnFragmentInteractionListener,
+        ItemFragment.OnListFragmentInteractionListener,
+        GravaPersonagemFragment.OnFragmentInteractionListener {
 
     private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String TAG = "MenuActivity";
@@ -104,11 +107,12 @@ public class MenuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        Fragment gravaPersonagemFragment = new GravaPersonagemFragment();
+        Fragment personagemFragment = new PersonagemFragment();
         Fragment blankFragment = new BlankFragment();
         Fragment blankFragment2 = new BlankFragment2();
+
         if (id == R.id.nav_camera) {
-            transaction.replace(R.id.headlines_fragment, gravaPersonagemFragment);
+            transaction.replace(R.id.headlines_fragment, personagemFragment);
         } else if (id == R.id.nav_gallery) {
             transaction.replace(R.id.headlines_fragment, blankFragment2);
         } else if (id == R.id.nav_slideshow) {
@@ -130,5 +134,11 @@ public class MenuActivity extends AppCompatActivity
     public void onFragmentInteraction(Uri uri){
         //you can leave it empty
     }
+
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+
+    }
+
 
 }

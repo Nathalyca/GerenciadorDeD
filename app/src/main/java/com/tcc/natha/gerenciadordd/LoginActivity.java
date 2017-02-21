@@ -43,9 +43,9 @@ public class LoginActivity extends AppCompatActivity implements
 
             // Views
             mEmailField = (EditText) findViewById(R.id.field_email);
-            //mEmailField.setText("nathalyca03@gmail.com");
+            mEmailField.setText("nathalyca03@gmail.com");
             mPasswordField = (EditText) findViewById(R.id.field_password);
-            //mPasswordField.setText("@abcd1234");
+            mPasswordField.setText("@abcd1234");
 
             // Buttons
             findViewById(R.id.email_sign_in_button).setOnClickListener(this);

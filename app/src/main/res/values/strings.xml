@@ -32,6 +32,7 @@
     <string name="senhauser">Senha: </string>
     <string name="gravar">Gravar</string>
     <string name="emailforgot">Esqueceu a sua senha?</string>
+    <string name="criarpers">Criar novo personagem</string>
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_menu">MenuActivity</string>

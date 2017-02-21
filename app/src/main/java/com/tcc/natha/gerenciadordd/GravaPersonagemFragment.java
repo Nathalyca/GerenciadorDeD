@@ -175,6 +175,7 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
+        Log.d(TAG, "onButtonPressed");
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
@@ -182,6 +183,7 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
 
     @Override
     public void onAttach(Context context) {
+        Log.d(TAG, "onAttach");
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
@@ -193,6 +195,7 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
 
     @Override
     public void onDetach() {
+        Log.d(TAG, "onDetach");
         super.onDetach();
         mListener = null;
     }
@@ -237,11 +240,11 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
         pers.setSabedoria (mSabedoriaField.getText().toString());
 
         pers.setCarisma (mCarismaField.getText().toString());
-        String key = mDatabase.child("personagens").push().getKey();
+        String key = mDatabase.child("Personagens").push().getKey();
         mDatabase.child("Personagens").child(key).setValue(pers);
-        mDatabase.child("Users").child(user.getUid()).child("personagens").child(key).setValue(true);
+        mDatabase.child("Users").child(user.getUid()).child("Personagens").child(key).setValue(true);
 
-        Log.d(TAG, "persid: "+ mDatabase.child("Users").child(user.getUid()).child("personagens").child(key).toString());
+        Log.d(TAG, "persid: "+ mDatabase.child("Users").child(user.getUid()).child("Personagens").child(key).toString());
         Log.d(TAG, "persid: "+ key);
 
         mDatabase.child("Personagens").child(key).addValueEventListener(new ValueEventListener() {

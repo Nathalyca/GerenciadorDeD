@@ -169,6 +169,4 @@ public class LoginActivity extends AppCompatActivity implements
         // [END sign_in_with_email]
     }
 
-
-
 }

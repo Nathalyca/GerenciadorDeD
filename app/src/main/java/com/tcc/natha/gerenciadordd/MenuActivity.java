@@ -2,6 +2,8 @@ package com.tcc.natha.gerenciadordd;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -33,9 +35,12 @@ public class MenuActivity extends AppCompatActivity
         GravaPersonagemFragment.OnFragmentInteractionListener {
 
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAuth mAuth;
     private static final String TAG = "MenuActivity";
 
     private FirebaseUser user;
+
+    private Context context;
 
     private TextView mEmailMenu;
 
@@ -122,7 +127,11 @@ public class MenuActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
-
+            context = this.getApplicationContext();
+            mAuth = FirebaseAuth.getInstance();
+            mAuth.signOut();
+            Intent intent = new Intent(context, LoginActivity.class);
+            startActivity(intent);
         }
         transaction.addToBackStack(null);
         transaction.commit();

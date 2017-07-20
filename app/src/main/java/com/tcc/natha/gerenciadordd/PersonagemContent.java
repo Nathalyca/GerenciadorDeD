@@ -1,9 +1,23 @@
 package com.tcc.natha.gerenciadordd;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+import com.tcc.natha.gerenciadordd.models.Personagem;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.tcc.natha.gerenciadordd.models.Personagem;
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -12,6 +26,12 @@ import java.util.Map;
  * TODO: Replace all uses of this class before publishing your app.
  */
 public class PersonagemContent {
+
+    private Personagem pers;
+
+    private FirebaseUser user;
+    private DatabaseReference mPersReference;
+    private DatabaseReference mDatabase;
 
     /**
      * Um array dos personagem para serem visualizados na lista.
@@ -24,6 +44,35 @@ public class PersonagemContent {
     public static final Map<String, PersonagemItem> ITEM_MAP = new HashMap<String, PersonagemItem>();
 
     private static final int COUNT = 25;
+/*
+    pers = new Personagem(user.getUid());
+
+
+    ValueEventListener postListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            System.out.println("user dataSnapshot.getKey: " + dataSnapshot.getKey());
+            ArrayList<String> personagemKeys = new ArrayList();
+            for (DataSnapshot child: dataSnapshot.getChildren()) {
+                personagemKeys.add(child.getKey());
+            }
+            for (String string: personagemKeys) {
+                System.out.println("personagemKeys: " +string);
+         //       pers.setCarisma(string);
+         //       mCarismaField.setText(pers.getCarisma());
+            }
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+            System.out.println("The read failed: " + databaseError.getCode());
+        }
+
+    };
+        mDatabase.child("Users").child(user.getUid()).child("personagens").addValueEventListener(postListener);
+
+   */
+//###################
 
     static {
         // Add some sample items.
@@ -36,6 +85,7 @@ public class PersonagemContent {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }
+//###################
 
     private static PersonagemItem createPersonagemItem(int position) {
         return new PersonagemItem(String.valueOf(position), "Item " + position, makeDetails(position));
@@ -69,4 +119,7 @@ public class PersonagemContent {
             return content;
         }
     }
-}
+
+};
+
+

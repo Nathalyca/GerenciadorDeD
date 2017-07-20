@@ -8,35 +8,35 @@ public class Personagem {
 
     private String uID;
 
-    private String personagem;
+    private String nomePerso;
 
     private String classe;
 
     private String raca;
 
-    private String SubRaca;
+    private String subRaca;
 
-    private String Antecedente;
+    private String antecedente;
 
-    private String Tendencia;
+    private String tendencia;
 
-    private String Nivel;
+    private String nivel;
 
-    private String Pv;
+    private String pv;
 
-    private String Iniciativa;
+    private String iniciativa;
 
-    private String Forca;
+    private String forca;
 
-    private String Destreza;
+    private String destreza;
 
-    private String Constituicao;
+    private String constituicao;
 
-    private String Inteligencia;
+    private String inteligencia;
 
-    private String Sabedoria;
+    private String sabedoria;
 
-    private String Carisma;
+    private String carisma;
 
     public Personagem(){
     }
@@ -54,12 +54,12 @@ public class Personagem {
         this.uID = uID;
     }
 
-    public String getPersonagem() {
-        return personagem;
+    public String getNomePerso() {
+        return nomePerso;
     }
 
-    public void setPersonagem(String personagem) {
-        this.personagem = personagem;
+    public void setNomePerso(String nomePerso) {
+        this.nomePerso = nomePerso;
     }
 
     public String getClasse() {
@@ -79,98 +79,98 @@ public class Personagem {
     }
 
     public String getSubRaca() {
-        return SubRaca;
+        return subRaca;
     }
 
     public void setSubRaca(String subRaca) {
-        SubRaca = subRaca;
+        subRaca = subRaca;
     }
 
     public String getAntecedente() {
-        return Antecedente;
+        return antecedente;
     }
 
     public void setAntecedente(String antecedente) {
-        Antecedente = antecedente;
+        antecedente = antecedente;
     }
 
     public String getTendencia() {
-        return Tendencia;
+        return tendencia;
     }
 
     public void setTendencia(String tendencia) {
-        Tendencia = tendencia;
+        tendencia = tendencia;
     }
 
     public String getNivel() {
-        return Nivel;
+        return nivel;
     }
 
     public void setNivel(String nivel) {
-        Nivel = nivel;
+        nivel = nivel;
     }
 
     public String getPv() {
-        return Pv;
+        return pv;
     }
 
     public void setPv(String pv) {
-        Pv = pv;
+        pv = pv;
     }
 
     public String getIniciativa() {
-        return Iniciativa;
+        return iniciativa;
     }
 
     public void setIniciativa(String iniciativa) {
-        Iniciativa = iniciativa;
+        iniciativa = iniciativa;
     }
 
     public String getForca() {
-        return Forca;
+        return forca;
     }
 
     public void setForca(String forca) {
-        Forca = forca;
+        forca = forca;
     }
 
     public String getDestreza() {
-        return Destreza;
+        return destreza;
     }
 
     public void setDestreza(String destreza) {
-        Destreza = destreza;
+        destreza = destreza;
     }
 
     public String getConstituicao() {
-        return Constituicao;
+        return constituicao;
     }
 
     public void setConstituicao(String constituicao) {
-        Constituicao = constituicao;
+        constituicao = constituicao;
     }
 
     public String getInteligencia() {
-        return Inteligencia;
+        return inteligencia;
     }
 
     public void setInteligencia(String inteligencia) {
-        Inteligencia = inteligencia;
+        inteligencia = inteligencia;
     }
 
     public String getSabedoria() {
-        return Sabedoria;
+        return sabedoria;
     }
 
     public void setSabedoria(String sabedoria) {
-        Sabedoria = sabedoria;
+        sabedoria = sabedoria;
     }
 
     public String getCarisma() {
-        return Carisma;
+        return carisma;
     }
 
     public void setCarisma(String carisma) {
-        Carisma = carisma;
+        carisma = carisma;
     }
 }

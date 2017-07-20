@@ -209,7 +209,7 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
 
         Log.d(TAG, "grava personagem");
 
-        pers.setPersonagem(mNomepersField.getText().toString());
+        pers.setNomePerso(mNomepersField.getText().toString());
 
         pers.setClasse(mClasseField.getText().toString());
 
@@ -251,7 +251,7 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Personagem pers1 = dataSnapshot.getValue(Personagem.class);
-                System.out.println(pers1.getPersonagem());
+                System.out.println(pers1.getNomePerso());
             }
 
             @Override

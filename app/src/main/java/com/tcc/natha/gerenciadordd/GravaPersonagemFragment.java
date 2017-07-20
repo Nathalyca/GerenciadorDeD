@@ -203,7 +203,7 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
 
     public void gravaPersonagem(){
 
-        Log.d(TAG, "user" + user);
+        Log.d(TAG, "User" + user);
 
         pers = new Personagem(user.getUid());
 

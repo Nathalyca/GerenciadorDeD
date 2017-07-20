@@ -11,10 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tcc.natha.gerenciadordd.dummy.DummyContent;
-import com.tcc.natha.gerenciadordd.dummy.DummyContent.DummyItem;
-
-import java.util.List;
+import com.tcc.natha.gerenciadordd.PersonagemContent;
+import com.tcc.natha.gerenciadordd.PersonagemContent.PersonagemItem;
 
 /**
  * A fragment representing a list of Items.
@@ -61,7 +59,7 @@ public class ItemFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_item_perso_list, container, false);
 
         Log.d(TAG, "onCreateView");
         // Set the adapter
@@ -73,7 +71,7 @@ public class ItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(PersonagemContent.ITEMS, mListener));
         }
         return view;
     }
@@ -108,6 +106,6 @@ public class ItemFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(PersonagemItem item);
     }
 }

@@ -24,7 +24,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.tcc.natha.gerenciadordd.dummy.DummyContent;
+import com.tcc.natha.gerenciadordd.PersonagemContent.PersonagemItem;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -145,7 +145,7 @@ public class MenuActivity extends AppCompatActivity
     }
 
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+    public void onListFragmentInteraction(PersonagemContent.PersonagemItem item) {
 
     }
 

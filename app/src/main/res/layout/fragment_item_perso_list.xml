@@ -8,4 +8,4 @@
     android:layout_height="match_parent"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.tcc.natha.gerenciadordd.ItemFragment"
-    tools:listitem="@layout/fragment_item" />
+    tools:listitem="@layout/fragment_item_perso" />

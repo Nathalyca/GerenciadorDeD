@@ -54,8 +54,9 @@ public class PersonagemContent {
 
         //BD
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        Log.d(TAG, "mDatabaseGetReferenceKey: "+mDatabase.getKey());
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+                mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
@@ -67,6 +68,34 @@ public class PersonagemContent {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     Log.d(TAG, "onAuthStateChanged:email:" + user.getEmail());
+                    ValueEventListener postListener = new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            System.out.println("user dataSnapshot.getKey: " + dataSnapshot.getKey());
+                            System.out.println("dataSnapshot.getRef().getParent().getKey: " + dataSnapshot.getRef().getParent().getKey());
+
+
+                            for (DataSnapshot child: dataSnapshot.getChildren()) {
+                                personagemKeys.add(child.getKey());
+                                System.out.println("child.getKey: " + child.getKey());
+                                addItem(createPersonagemItem(personagemKeys.size(), child.getKey()));
+                            }
+                            for (String string: personagemKeys) {
+                                System.out.println("personagemKeys: " +string);
+                                //       pers.setCarisma(string);
+                                //       mCarismaField.setText(pers.getCarisma());
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            System.out.println("The read failed: " + databaseError.getCode());
+                        }
+
+                    };
+
+                    mDatabase.child("Users").child(user.getUid()).child("Personagens").addValueEventListener(postListener);
                 } else {
 
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -75,37 +104,16 @@ public class PersonagemContent {
             }
         };
 
+        addItem(createPersonagemItem(1, "tt"));
+        addItem(createPersonagemItem(1, "tt"));
+
         FirebaseAuth.getInstance().addAuthStateListener(mAuthListener);
 
-        pers = new Personagem(user.getUid());
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
 
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("user dataSnapshot.getKey: " + dataSnapshot.getKey());
 
-                for (DataSnapshot child: dataSnapshot.getChildren()) {
-                    personagemKeys.add(child.getKey());
-                }
-                for (String string: personagemKeys) {
-                    System.out.println("personagemKeys: " +string);
-                    //       pers.setCarisma(string);
-                    //       mCarismaField.setText(pers.getCarisma());
-                }
-                for (int i = 1; i <= COUNT; i++) {
-                    addItem(createPersonagemItem(i));
-                }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
 
-        };
-        mDatabase.child("Users").child(user.getUid()).child("personagens").addValueEventListener(postListener);
 
 
     }
@@ -116,8 +124,8 @@ public class PersonagemContent {
     }
 
 
-    private static PersonagemItem createPersonagemItem(int position) {
-        return new PersonagemItem(String.valueOf(position), "Item " + position, makeDetails(position));
+    private static PersonagemItem createPersonagemItem(int position, String string) {
+        return new PersonagemItem(String.valueOf(position), string +"---" + position, makeDetails(position));
     }
 
     private static String makeDetails(int position) {

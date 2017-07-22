@@ -5,11 +5,26 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.tcc.natha.gerenciadordd.models.PersonagemItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PersonagemFragment extends Fragment implements View.OnClickListener,
@@ -23,8 +38,13 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
     private static final String TAG = "PersonagemFragment";
 
     private Button criaPersButton;
+    private ListView listaPerso;
 
     private View view;
+
+    private static FirebaseUser user;
+    private static FirebaseAuth.AuthStateListener mAuthListener;
+    private static DatabaseReference mDatabase;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -61,20 +81,75 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
         Log.d(TAG, "View: "+view);
 
         // Fragments
-        Fragment itemFragment = new ItemFragment();
+        //Fragment itemFragment = new ItemFragment();
 
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        //FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
         Log.d(TAG, "onCreateView:" + "transaction.replace(R.id.personagem_fragment, itemFragment);");
-        transaction.replace(R.id.personagem_fragment, itemFragment);
+        //transaction.replace(R.id.personagem_fragment, itemFragment);
 
-        transaction.addToBackStack(null);
-        transaction.commit();
+        //transaction.addToBackStack(null);
+        //transaction.commit();
 
         // Buttons
         criaPersButton = (Button) view.findViewById(R.id.cria_pers_button);
         criaPersButton.setOnClickListener(this);
 
+
+        // Lista
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        Log.d(TAG, "mDatabaseGetReferenceKey: "+mDatabase.getKey());
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                Log.d(TAG, "getCurrentUser");
+
+                user = FirebaseAuth.getInstance().getCurrentUser();
+
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Log.d(TAG, "onAuthStateChanged:email:" + user.getEmail());
+                    ValueEventListener postListener = new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            System.out.println("user dataSnapshot.getKey: " + dataSnapshot.getKey());
+                            System.out.println("dataSnapshot.getRef().getParent().getKey: " + dataSnapshot.getRef().getParent().getKey());
+                            List<PersonagemItem> persos = new ArrayList<>();
+
+
+                            for (DataSnapshot child: dataSnapshot.getChildren()) {
+                                persos.add(new PersonagemItem("1", child.getKey(), "testoso"));
+                                System.out.println("child.getKey: " + child.getKey());
+
+                            }
+
+                            listaPerso = (ListView) view.findViewById(R.id.listaPerso);
+                            ArrayAdapter<PersonagemItem> adapter = new ArrayAdapter<PersonagemItem>(getActivity().getApplicationContext(),
+                                    android.R.layout.simple_list_item_1, persos);
+
+                            listaPerso.setAdapter(adapter);
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            System.out.println("The read failed: " + databaseError.getCode());
+                        }
+
+                    };
+
+                    mDatabase.child("Users").child(user.getUid()).child("Personagens").addValueEventListener(postListener);
+                } else {
+
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+                // ...
+            }
+        };
+        FirebaseAuth.getInstance().addAuthStateListener(mAuthListener);
         return view;
     }
 

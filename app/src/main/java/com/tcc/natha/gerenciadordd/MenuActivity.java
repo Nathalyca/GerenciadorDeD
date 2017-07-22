@@ -24,14 +24,13 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.tcc.natha.gerenciadordd.PersonagemContent.PersonagemItem;
+import com.tcc.natha.gerenciadordd.models.PersonagemItem;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         PersonagemFragment.OnFragmentInteractionListener,
         BlankFragment.OnFragmentInteractionListener,
         BlankFragment2.OnFragmentInteractionListener,
-        ItemFragment.OnListFragmentInteractionListener,
         GravaPersonagemFragment.OnFragmentInteractionListener {
 
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -144,10 +143,6 @@ public class MenuActivity extends AppCompatActivity
         //you can leave it empty
     }
 
-    @Override
-    public void onListFragmentInteraction(PersonagemContent.PersonagemItem item) {
-
-    }
 
 
 }

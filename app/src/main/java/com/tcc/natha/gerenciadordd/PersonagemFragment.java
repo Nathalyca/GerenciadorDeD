@@ -28,7 +28,7 @@ import java.util.List;
 
 
 public class PersonagemFragment extends Fragment implements View.OnClickListener,
-        GravaPersonagemFragment.OnFragmentInteractionListener {
+        EditPersonagemFragment.OnFragmentInteractionListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,17 +77,6 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
         view = inflater.inflate(R.layout.fragment_personagem, container, false);
 
         Log.d(TAG, "onCreateView");
-
-        Log.d(TAG, "View: "+view);
-
-        // Fragments
-        //Fragment itemFragment = new ItemFragment();
-
-        //FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-        Log.d(TAG, "onCreateView:" + "transaction.replace(R.id.personagem_fragment, itemFragment);");
-        //transaction.replace(R.id.personagem_fragment, itemFragment);
-
         //transaction.addToBackStack(null);
         //transaction.commit();
 
@@ -98,13 +87,9 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
 
         // Lista
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        Log.d(TAG, "mDatabaseGetReferenceKey: "+mDatabase.getKey());
-
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
-                Log.d(TAG, "getCurrentUser");
 
                 user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -115,15 +100,11 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
                     ValueEventListener postListener = new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            System.out.println("user dataSnapshot.getKey: " + dataSnapshot.getKey());
-                            System.out.println("dataSnapshot.getRef().getParent().getKey: " + dataSnapshot.getRef().getParent().getKey());
                             List<PersonagemItem> persos = new ArrayList<>();
-
-
                             for (DataSnapshot child: dataSnapshot.getChildren()) {
-                                persos.add(new PersonagemItem("1", child.getKey(), "testoso"));
+                                PersonagemItem personagemItem = child.getValue(PersonagemItem.class);
+                                persos.add(personagemItem);
                                 System.out.println("child.getKey: " + child.getKey());
-
                             }
 
                             listaPerso = (ListView) view.findViewById(R.id.listaPerso);
@@ -189,7 +170,7 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
 
             // Fragments
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            Fragment gravaPersonagemFragment = new GravaPersonagemFragment();
+            Fragment gravaPersonagemFragment = new EditPersonagemFragment();
 
             transaction.replace(R.id.headlines_fragment, gravaPersonagemFragment);
 

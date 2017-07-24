@@ -140,7 +140,7 @@ public class LoginActivity extends AppCompatActivity implements
 
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
-
+        Log.d(TAG, "signIn:" + email);
         // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -157,7 +157,7 @@ public class LoginActivity extends AppCompatActivity implements
                         }else{
                             Toast.makeText(LoginActivity.this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
 
-                            Log.d(TAG, "chama GravaPersonagemFragment");
+                            Log.d(TAG, "chama EditPersonagemFragment");
 
                             Intent intent = new Intent(context, MenuActivity.class);
                             startActivity(intent);

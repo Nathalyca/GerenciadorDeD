@@ -6,7 +6,7 @@ package com.tcc.natha.gerenciadordd.models;
 
 public class Personagem {
 
-    private String uID;
+    private String userID;
 
     private String nomePerso;
 
@@ -41,17 +41,17 @@ public class Personagem {
     public Personagem(){
     }
 
-    public Personagem(String uID){
-        this.uID = uID;
+    public Personagem(String userID){
+        this.userID = userID;
 
     }
 
-    public String getuID() {
-        return uID;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setuID(String uID) {
-        this.uID = uID;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getNomePerso() {
@@ -83,7 +83,7 @@ public class Personagem {
     }
 
     public void setSubRaca(String subRaca) {
-        subRaca = subRaca;
+        this.subRaca = subRaca;
     }
 
     public String getAntecedente() {
@@ -91,7 +91,7 @@ public class Personagem {
     }
 
     public void setAntecedente(String antecedente) {
-        antecedente = antecedente;
+        this.antecedente = antecedente;
     }
 
     public String getTendencia() {
@@ -99,7 +99,7 @@ public class Personagem {
     }
 
     public void setTendencia(String tendencia) {
-        tendencia = tendencia;
+        this.tendencia = tendencia;
     }
 
     public String getNivel() {
@@ -107,7 +107,7 @@ public class Personagem {
     }
 
     public void setNivel(String nivel) {
-        nivel = nivel;
+        this.nivel = nivel;
     }
 
     public String getPv() {
@@ -115,7 +115,7 @@ public class Personagem {
     }
 
     public void setPv(String pv) {
-        pv = pv;
+        this.pv = pv;
     }
 
     public String getIniciativa() {
@@ -123,7 +123,7 @@ public class Personagem {
     }
 
     public void setIniciativa(String iniciativa) {
-        iniciativa = iniciativa;
+        this.iniciativa = iniciativa;
     }
 
     public String getForca() {
@@ -131,7 +131,7 @@ public class Personagem {
     }
 
     public void setForca(String forca) {
-        forca = forca;
+        this.forca = forca;
     }
 
     public String getDestreza() {
@@ -139,7 +139,7 @@ public class Personagem {
     }
 
     public void setDestreza(String destreza) {
-        destreza = destreza;
+        this.destreza = destreza;
     }
 
     public String getConstituicao() {
@@ -147,7 +147,7 @@ public class Personagem {
     }
 
     public void setConstituicao(String constituicao) {
-        constituicao = constituicao;
+        this.constituicao = constituicao;
     }
 
     public String getInteligencia() {
@@ -155,7 +155,7 @@ public class Personagem {
     }
 
     public void setInteligencia(String inteligencia) {
-        inteligencia = inteligencia;
+        this.inteligencia = inteligencia;
     }
 
     public String getSabedoria() {
@@ -163,7 +163,7 @@ public class Personagem {
     }
 
     public void setSabedoria(String sabedoria) {
-        sabedoria = sabedoria;
+        this.sabedoria = sabedoria;
     }
 
     public String getCarisma() {
@@ -171,6 +171,6 @@ public class Personagem {
     }
 
     public void setCarisma(String carisma) {
-        carisma = carisma;
+        this.carisma = carisma;
     }
 }

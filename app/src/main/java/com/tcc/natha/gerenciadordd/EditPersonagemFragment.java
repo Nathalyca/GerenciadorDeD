@@ -21,17 +21,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.natha.gerenciadordd.models.Personagem;
+import com.tcc.natha.gerenciadordd.models.PersonagemItem;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link GravaPersonagemFragment.OnFragmentInteractionListener} interface
+ * {@link EditPersonagemFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link GravaPersonagemFragment#newInstance} factory method to
+ * Use the {@link EditPersonagemFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GravaPersonagemFragment extends Fragment implements View.OnClickListener {
+public class EditPersonagemFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -45,7 +46,7 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
 
 
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private static final String TAG = "GravaPersonagemFragment";
+    private static final String TAG = "EditPersonagemFragment";
     private Context context;
     private DatabaseReference mPersReference;
     private DatabaseReference mDatabase;
@@ -78,7 +79,7 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
     private FirebaseUser user;
 
 
-    public GravaPersonagemFragment() {
+    public EditPersonagemFragment() {
         // Required empty public constructor
     }
 
@@ -88,11 +89,11 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment GravaPersonagemFragment.
+     * @return A new instance of fragment EditPersonagemFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static GravaPersonagemFragment newInstance(String param1, String param2) {
-        GravaPersonagemFragment fragment = new GravaPersonagemFragment();
+    public static EditPersonagemFragment newInstance(String param1, String param2) {
+        EditPersonagemFragment fragment = new EditPersonagemFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -240,9 +241,11 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
         pers.setSabedoria (mSabedoriaField.getText().toString());
 
         pers.setCarisma (mCarismaField.getText().toString());
+
         String key = mDatabase.child("Personagens").push().getKey();
         mDatabase.child("Personagens").child(key).setValue(pers);
-        mDatabase.child("Users").child(user.getUid()).child("Personagens").child(key).setValue(true);
+        PersonagemItem personagemItem = new PersonagemItem(key,pers.getNomePerso(), pers.getClasse(), pers.getNivel());
+        mDatabase.child("Users").child(user.getUid()).child("Personagens").child(key).setValue(personagemItem);
 
         Log.d(TAG, "persid: "+ mDatabase.child("Users").child(user.getUid()).child("Personagens").child(key).toString());
         Log.d(TAG, "persid: "+ key);
@@ -251,7 +254,8 @@ public class GravaPersonagemFragment extends Fragment implements View.OnClickLis
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Personagem pers1 = dataSnapshot.getValue(Personagem.class);
-                System.out.println(pers1.getNomePerso());
+                // TODO: fazer os set
+                mNomepersField.setText(pers1.getNomePerso());
             }
 
             @Override

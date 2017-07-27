@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,12 +25,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.natha.gerenciadordd.models.PersonagemItem;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.id.list;
 
-public class PersonagemFragment extends Fragment implements View.OnClickListener,
-        EditPersonagemFragment.OnFragmentInteractionListener {
+
+public class PersonagemFragment extends Fragment implements View.OnClickListener,  EditPersonagemFragment.OnFragmentInteractionListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +40,8 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
     private static final String ARG_PARAM2 = "param2";
 
     private static final String TAG = "PersonagemFragment";
+
+    private List<PersonagemItem> perso = new ArrayList<>();
 
     private Button criaPersButton;
     private ListView listaPerso;
@@ -86,6 +92,7 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
 
 
         // Lista
+        listaPerso = (ListView) view.findViewById(R.id.listaPerso);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -100,16 +107,16 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
                     ValueEventListener postListener = new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            List<PersonagemItem> persos = new ArrayList<>();
+                            perso = new ArrayList<>();
                             for (DataSnapshot child: dataSnapshot.getChildren()) {
                                 PersonagemItem personagemItem = child.getValue(PersonagemItem.class);
-                                persos.add(personagemItem);
+                                perso.add(personagemItem);
                                 System.out.println("child.getKey: " + child.getKey());
                             }
 
-                            listaPerso = (ListView) view.findViewById(R.id.listaPerso);
+
                             ArrayAdapter<PersonagemItem> adapter = new ArrayAdapter<PersonagemItem>(getActivity().getApplicationContext(),
-                                    android.R.layout.simple_list_item_1, persos);
+                                    android.R.layout.simple_list_item_1, perso);
 
                             listaPerso.setAdapter(adapter);
 
@@ -119,7 +126,6 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
                         public void onCancelled(DatabaseError databaseError) {
                             System.out.println("The read failed: " + databaseError.getCode());
                         }
-
                     };
 
                     mDatabase.child("Users").child(user.getUid()).child("Personagens").addValueEventListener(postListener);
@@ -131,6 +137,24 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
             }
         };
         FirebaseAuth.getInstance().addAuthStateListener(mAuthListener);
+        listaPerso.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(TAG, "onItemClick");
+                Toast.makeText(getActivity().getApplicationContext(), perso.get(position).getNomePerso(), Toast.LENGTH_SHORT ).show();
+                Log.d(TAG, perso.get(position).getNomePerso());
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Fragment editPersonagemFragment = new EditPersonagemFragment();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("persoID", perso.get(position).getPersoID());
+                editPersonagemFragment.setArguments(bundle);
+                transaction.replace(R.id.headlines_fragment, editPersonagemFragment);
+
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
         return view;
     }
 
@@ -160,6 +184,7 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
         mListener = null;
     }
 
+
     @Override
     public void onClick(View v) {
         int i = v.getId();
@@ -176,7 +201,15 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
 
             transaction.addToBackStack(null);
             transaction.commit();
+
+            /*
+            Fragment fragment = new Fragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt(key, value);
+            fragment.setArguments(bundle);
+             */
         }
+
     }
 
     @Override

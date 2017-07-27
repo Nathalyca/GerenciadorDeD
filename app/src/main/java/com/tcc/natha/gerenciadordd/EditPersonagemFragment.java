@@ -74,9 +74,10 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
     private View view;
 
     private String uID;
-    private String persID;
+
 
     private FirebaseUser user;
+    private String persoID;
 
 
     public EditPersonagemFragment() {
@@ -109,6 +110,13 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            persoID = bundle.getString("persoID", null);
+        }
+        Log.d(TAG, "persoID:" + persoID);
+        pers = new Personagem();
+
     }
 
     @Override
@@ -139,10 +147,10 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
         mSabedoriaField = (EditText) view.findViewById(R.id.field_sabedoria);
         mCarismaField = (EditText) view.findViewById(R.id.field_carisma);
 
-
         // Buttons
         gravaButton = (Button) view.findViewById(R.id.gravar_button);
         gravaButton.setOnClickListener(this);
+
         //BD
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mPersReference = FirebaseDatabase.getInstance().getReference()
@@ -160,6 +168,40 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     Log.d(TAG, "onAuthStateChanged:email:" + user.getEmail());
+                    if(persoID == null){
+                        persoID  = mDatabase.child("Personagens").push().getKey();
+                        mDatabase.child("Personagens").child(persoID).setValue(pers);
+                        Log.d(TAG, "persoID:" + persoID);
+                    }
+
+                    mDatabase.child("Personagens").child(persoID).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            pers = dataSnapshot.getValue(Personagem.class);
+                            if(pers != null){
+                                mNomepersField.setText(pers.getNomePerso());
+                                mRacaField.setText(pers.getRaca());
+                                mClasseField.setText(pers.getClasse());
+                                mSubRacaField.setText(pers.getSubRaca());
+                                mAntecedenteField.setText(pers.getAntecedente());
+                                mTendenciaField.setText(pers.getTendencia());
+                                mNivelField.setText(pers.getNivel());
+                                mPvField.setText(pers.getPv());
+                                mIniciativaField.setText(pers.getIniciativa());
+                                mForcaField.setText(pers.getForca());
+                                mDestrezaField.setText(pers.getDestreza());
+                                mConstituicaoField.setText(pers.getConstituicao());
+                                mInteligenciaField.setText(pers.getInteligencia());
+                                mSabedoriaField.setText(pers.getSabedoria());
+                                mCarismaField.setText(pers.getCarisma());
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            System.out.println("The read failed: " + databaseError.getCode());
+                        }
+                    });
                 } else {
 
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -242,20 +284,33 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
 
         pers.setCarisma (mCarismaField.getText().toString());
 
-        String key = mDatabase.child("Personagens").push().getKey();
-        mDatabase.child("Personagens").child(key).setValue(pers);
-        PersonagemItem personagemItem = new PersonagemItem(key,pers.getNomePerso(), pers.getClasse(), pers.getNivel());
-        mDatabase.child("Users").child(user.getUid()).child("Personagens").child(key).setValue(personagemItem);
+        //String key = mDatabase.child("Personagens").push().getKey();
+        mDatabase.child("Personagens").child(persoID).setValue(pers);
+        PersonagemItem personagemItem = new PersonagemItem(persoID,pers.getNomePerso(), pers.getClasse(), pers.getNivel());
+       mDatabase.child("Users").child(user.getUid()).child("Personagens").child(persoID).setValue(personagemItem);
 
-        Log.d(TAG, "persid: "+ mDatabase.child("Users").child(user.getUid()).child("Personagens").child(key).toString());
-        Log.d(TAG, "persid: "+ key);
-
+       // Log.d(TAG, "persid: "+ mDatabase.child("Users").child(user.getUid()).child("Personagens").child(key).toString());
+        //Log.d(TAG, "persid: "+ key);
+/*
         mDatabase.child("Personagens").child(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Personagem pers1 = dataSnapshot.getValue(Personagem.class);
-                // TODO: fazer os set
                 mNomepersField.setText(pers1.getNomePerso());
+                mRacaField.setText(pers1.getRaca());
+                mClasseField.setText(pers1.getClasse());
+                mSubRacaField.setText(pers1.getSubRaca());
+                mAntecedenteField.setText(pers1.getAntecedente());
+                mTendenciaField.setText(pers1.getTendencia());
+                mNivelField.setText(pers1.getNivel());
+                mPvField.setText(pers1.getPv());
+                mIniciativaField.setText(pers1.getIniciativa());
+                mForcaField.setText(pers1.getForca());
+                mDestrezaField.setText(pers1.getDestreza());
+                mConstituicaoField.setText(pers1.getConstituicao());
+                mInteligenciaField.setText(pers1.getInteligencia());
+                mSabedoriaField.setText(pers1.getSabedoria());
+                mCarismaField.setText(pers1.getCarisma());
             }
 
             @Override
@@ -263,7 +318,7 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
                 System.out.println("The read failed: " + databaseError.getCode());
             }
 
-        });
+        }); */
 
         Toast.makeText(context, R.string.gravadoSucesso , Toast.LENGTH_SHORT).show();
         Log.d(TAG, "gravado");

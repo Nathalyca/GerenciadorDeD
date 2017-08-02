@@ -144,12 +144,12 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
                 Toast.makeText(getActivity().getApplicationContext(), perso.get(position).getNomePerso(), Toast.LENGTH_SHORT ).show();
                 Log.d(TAG, perso.get(position).getNomePerso());
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                Fragment editPersonagemFragment = new EditPersonagemFragment();
+                Fragment viewPagePersonagem = new ViewPagePersonagem();
 
                 Bundle bundle = new Bundle();
                 bundle.putString("persoID", perso.get(position).getPersoID());
-                editPersonagemFragment.setArguments(bundle);
-                transaction.replace(R.id.headlines_fragment, editPersonagemFragment);
+                viewPagePersonagem.setArguments(bundle);
+                transaction.replace(R.id.headlines_fragment, viewPagePersonagem);
 
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -195,11 +195,11 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
 
             // Fragments
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            Fragment editPersonagemFragment = new ViewPagePersonagem();
+            Fragment viewPagePersonagem = new ViewPagePersonagem();
 
 
 
-            transaction.replace(R.id.headlines_fragment, editPersonagemFragment);
+            transaction.replace(R.id.headlines_fragment, viewPagePersonagem);
 
             transaction.addToBackStack(null);
             transaction.commit();

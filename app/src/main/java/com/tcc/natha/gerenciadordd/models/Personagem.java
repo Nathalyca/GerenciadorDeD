@@ -22,7 +22,7 @@ public class Personagem {
 
     private String nivel;
 
-    private String pv;
+    private String pvTotal;
 
     private String iniciativa;
 
@@ -110,12 +110,12 @@ public class Personagem {
         this.nivel = nivel;
     }
 
-    public String getPv() {
-        return pv;
+    public String getPvTotal() {
+        return pvTotal;
     }
 
-    public void setPv(String pv) {
-        this.pv = pv;
+    public void setPvTotal(String pvTotal) {
+        this.pvTotal = pvTotal;
     }
 
     public String getIniciativa() {

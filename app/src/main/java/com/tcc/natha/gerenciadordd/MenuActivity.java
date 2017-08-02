@@ -27,7 +27,8 @@ public class MenuActivity extends AppCompatActivity
         BlankFragment.OnFragmentInteractionListener,
         BlankFragment2.OnFragmentInteractionListener,
         EditPersonagemFragment.OnFragmentInteractionListener,
-        ViewPagePersonagem.OnFragmentInteractionListener
+        ViewPagePersonagem.OnFragmentInteractionListener,
+        ResistenciaPericiaFragment.OnFragmentInteractionListener
 {
 
     private FirebaseAuth.AuthStateListener mAuthListener;

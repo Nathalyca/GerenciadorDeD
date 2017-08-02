@@ -24,7 +24,7 @@
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ViewPagePersonagem"></activity>
+        <activity android:name=".ResistenciaPericiaFragment"></activity>
     </application>
 
 </manifest>

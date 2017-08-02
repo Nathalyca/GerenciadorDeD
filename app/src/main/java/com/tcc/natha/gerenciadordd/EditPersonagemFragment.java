@@ -58,7 +58,7 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
     private EditText mAntecedenteField;
     private EditText mTendenciaField;
     private EditText mNivelField;
-    private EditText mPvField;
+    private EditText mPvTotalField;
     private EditText mIniciativaField;
     private EditText mForcaField;
     private EditText mDestrezaField;
@@ -83,6 +83,7 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
     public EditPersonagemFragment() {
         // Required empty public constructor
     }
+
 
     /**
      * Use this factory method to create a new instance of
@@ -123,7 +124,7 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_grava_personagem, container, false);
+        view = inflater.inflate(R.layout.fragment_edit_personagem, container, false);
 
         Log.d(TAG, "onCreate");
 
@@ -137,7 +138,7 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
         mAntecedenteField = (EditText) view.findViewById(R.id.field_antecedente);
         mTendenciaField = (EditText) view.findViewById(R.id.field_tendencia);
         mNivelField = (EditText) view.findViewById(R.id.field_nivel);
-        mPvField = (EditText) view.findViewById(R.id.field_pv);
+        mPvTotalField = (EditText) view.findViewById(R.id.field_pv_total);
         mIniciativaField = (EditText) view.findViewById(R.id.field_iniciativa);
         mForcaField = (EditText)
                 view.findViewById(R.id.field_forca);
@@ -186,7 +187,7 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
                                 mAntecedenteField.setText(pers.getAntecedente());
                                 mTendenciaField.setText(pers.getTendencia());
                                 mNivelField.setText(pers.getNivel());
-                                mPvField.setText(pers.getPv());
+                                mPvTotalField.setText(pers.getPvTotal());
                                 mIniciativaField.setText(pers.getIniciativa());
                                 mForcaField.setText(pers.getForca());
                                 mDestrezaField.setText(pers.getDestreza());
@@ -268,7 +269,7 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
 
         pers.setNivel (mNivelField.getText().toString());
 
-        pers.setPv (mPvField.getText().toString());
+        pers.setPvTotal (mPvTotalField.getText().toString());
 
         pers.setIniciativa (mIniciativaField.getText().toString());
 
@@ -303,7 +304,7 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
                 mAntecedenteField.setText(pers1.getAntecedente());
                 mTendenciaField.setText(pers1.getTendencia());
                 mNivelField.setText(pers1.getNivel());
-                mPvField.setText(pers1.getPv());
+                mPvTotalField.setText(pers1.getPvTotal());
                 mIniciativaField.setText(pers1.getIniciativa());
                 mForcaField.setText(pers1.getForca());
                 mDestrezaField.setText(pers1.getDestreza());

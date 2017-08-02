@@ -1,6 +1,7 @@
 package com.tcc.natha.gerenciadordd;
 
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -25,12 +26,13 @@ public class PersonagemPagerAdapter extends FragmentPagerAdapter {
 
         switch (position){
             case 0:
-                return new BlankFragment2();
-            case 1:
-                return new BlankFragment();
-            case 2:
                 return new EditPersonagemFragment();
-
+            case 1:
+                return new ResistenciaPericiaFragment();
+            case 2:
+                return new BlankFragment();
+            case 3:
+                return new BlankFragment2();
             default:
                 return null;
         }
@@ -40,7 +42,7 @@ public class PersonagemPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 3 total pages.
-        return 3;
+        return 4;
     }
 
     @Override

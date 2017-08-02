@@ -33,7 +33,6 @@
 
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -47,11 +46,11 @@
                     android:id="@+id/text_nomepers" />
 
                 <EditText
-                    android:layout_weight="1"
+                    android:id="@+id/field_nomepers"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:id="@+id/field_nomepers" />
+                    android:layout_weight="1"
+                    android:inputType="textPersonName" />
 
             </LinearLayout>
 
@@ -108,6 +107,19 @@
                     android:inputType="textPersonName"
                     android:id="@+id/field_classe" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nivel"
+                    android:id="@+id/text_nivel" />
+
+                <EditText
+                    android:layout_weight="0.38"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:id="@+id/field_nivel" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -153,29 +165,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/nivel"
-                    android:id="@+id/text_nivel" />
+                    android:text="@string/ClasseArmad"
+                    android:id="@+id/text_ClasseArmad" />
 
                 <EditText
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:id="@+id/field_nivel" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pv"
-                    android:id="@+id/text_pv" />
-
-                <EditText
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/field_pv"
+                    android:id="@+id/field_ClasseArmad"
                     android:inputType="number" />
-
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -190,8 +188,101 @@
                     android:id="@+id/field_iniciativa"
                     android:inputType="number" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/desloc"
+                    android:id="@+id/text_desloc" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/field_desloc"
+                    android:inputType="number" />
+
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jogador"
+                    android:id="@+id/text_jogador" />
+
+                <EditText
+                    android:layout_weight="1.41"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:id="@+id/field_jogador" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/xp"
+                    android:id="@+id/text_xp" />
+
+                <EditText
+                    android:layout_weight="0.57"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:id="@+id/field_xp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pv_total"
+                    android:id="@+id/text_pv_total" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/field_pv_total"
+                    android:inputType="number" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pv_atual"
+                    android:id="@+id/text_pv_atual" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/field_pv_atual"
+                    android:inputType="number" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pv_temp"
+                    android:id="@+id/text_pv_temp" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/field_pv_temp"
+                    android:inputType="number" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -207,7 +298,6 @@
                     android:textSize="10sp" />
 
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -248,6 +338,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/barra"
+                    android:id="@+id/text_barra1" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:id="@+id/field_forca2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/destreza"
                     android:id="@+id/text_destreza" />
 
@@ -258,8 +361,20 @@
                     android:id="@+id/field_destreza"
                     android:inputType="number" />
 
-            </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/barra"
+                    android:id="@+id/text_barra2" />
 
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:id="@+id/field_destreza2" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -283,6 +398,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/barra"
+                    android:id="@+id/text_barra3" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:id="@+id/field_constituicao2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/inteligencia"
                     android:id="@+id/text_inteligencia" />
 
@@ -292,6 +420,19 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/field_inteligencia"
                     android:inputType="number" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/barra"
+                    android:id="@+id/text_barra4" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:id="@+id/field_inteligencia2" />
 
             </LinearLayout>
 
@@ -317,6 +458,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/barra"
+                    android:id="@+id/text_barra5" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:id="@+id/field_sabedoria2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/carisma"
                     android:id="@+id/text_carisma" />
 
@@ -326,6 +480,19 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/field_carisma"
                     android:inputType="number" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/barra"
+                    android:id="@+id/text_barra6" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:id="@+id/field_carisma2" />
 
             </LinearLayout>
 
@@ -360,10 +527,6 @@
                     android:theme="@style/ThemeOverlay.MyDarkButton" />
 
             </LinearLayout>
-
-
         </LinearLayout>
-
     </ScrollView>
-
 </FrameLayout>

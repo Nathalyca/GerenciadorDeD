@@ -1,10 +1,10 @@
 package com.tcc.natha.gerenciadordd;
 
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -195,9 +195,11 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
 
             // Fragments
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            Fragment gravaPersonagemFragment = new EditPersonagemFragment();
+            Fragment editPersonagemFragment = new ViewPagePersonagem();
 
-            transaction.replace(R.id.headlines_fragment, gravaPersonagemFragment);
+
+
+            transaction.replace(R.id.headlines_fragment, editPersonagemFragment);
 
             transaction.addToBackStack(null);
             transaction.commit();

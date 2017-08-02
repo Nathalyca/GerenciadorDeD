@@ -1,7 +1,7 @@
 package com.tcc.natha.gerenciadordd;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -26,7 +26,9 @@ public class MenuActivity extends AppCompatActivity
         PersonagemFragment.OnFragmentInteractionListener,
         BlankFragment.OnFragmentInteractionListener,
         BlankFragment2.OnFragmentInteractionListener,
-        EditPersonagemFragment.OnFragmentInteractionListener {
+        EditPersonagemFragment.OnFragmentInteractionListener,
+        ViewPagePersonagem.OnFragmentInteractionListener
+{
 
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
@@ -105,7 +107,10 @@ public class MenuActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         Fragment personagemFragment = new PersonagemFragment();
         Fragment blankFragment = new BlankFragment();
         Fragment blankFragment2 = new BlankFragment2();

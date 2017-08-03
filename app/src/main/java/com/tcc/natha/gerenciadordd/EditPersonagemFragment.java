@@ -110,10 +110,9 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            persoID = bundle.getString("persoID", null);
+        Bundle b = getActivity().getIntent().getExtras();
+        if(b!= null){
+            persoID = b.getString("persoID", null);
         }
         Log.d(TAG, "persoID:" + persoID);
         pers = new Personagem();

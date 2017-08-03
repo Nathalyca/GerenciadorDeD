@@ -145,12 +145,11 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
                 Log.d(TAG, perso.get(position).getNomePerso());
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 Fragment viewPagePersonagem = new ViewPagePersonagem();
-
                 Bundle bundle = new Bundle();
                 bundle.putString("persoID", perso.get(position).getPersoID());
-                viewPagePersonagem.setArguments(bundle);
+                getActivity().getIntent().removeExtra("persoID");
+                getActivity().getIntent().putExtras(bundle);
                 transaction.replace(R.id.headlines_fragment, viewPagePersonagem);
-
                 transaction.addToBackStack(null);
                 transaction.commit();
             }

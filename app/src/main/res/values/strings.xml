@@ -51,7 +51,7 @@
     <string name="pv_total">P.V. Total:</string>
     <string name="pv_atual">P.V. Atual:</string>
     <string name="pv_temp">P.V. Temp.:</string>
-    <string name="barra">/</string>
+    <string name="barra">|</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
@@ -134,22 +134,22 @@
     <string name="ressabedoria">Sabedoria</string>
     <string name="rescarisma">Carisma</string>
     <string name="pericia">Perícias</string>
-    <string name="acrobacia">Acrobacia (Des)</string>
-    <string name="arcanismo">Arcanismo (Int)</string>
-    <string name="atletismo">Atletismo (For)</string>
-    <string name="atuacao">Atuação (Car)</string>
-    <string name="blefar">Blefar (Car)</string>
-    <string name="furtividade">Furtividade (Des)</string>
-    <string name="historia">História (Int)</string>
+    <string name="acrobacia">Acrobacia(Des)</string>
+    <string name="arcanismo">Arcanismo(Int)</string>
+    <string name="atletismo">Atletismo(For)</string>
+    <string name="atuacao">Atuação(Car)</string>
+    <string name="blefar">Blefar(Car)</string>
+    <string name="furtividade">Furtividade(Des)</string>
+    <string name="historia">História(Int)</string>
     <string name="intimidacao">Intimidação (Car)</string>
-    <string name="intuicao">Intuição (Sab)</string>
-    <string name="investigacao">Investigação (Int)</string>
+    <string name="intuicao">Intuição(Sab)</string>
+    <string name="investigacao">Investigação(Int)</string>
     <string name="LidarAnimais">Lidar Animais(Sab)</string>
-    <string name="medicina">Medicina (Sab)</string>
-    <string name="natureza">Natureza (Int)</string>
-    <string name="percepcao">Percepção (Sab)</string>
-    <string name="predestinacao">Predestinação (Des)</string>
-    <string name="religiao">Religião (Int)</string>
-    <string name="sobrevivencia">Sobrevivência (Sab)</string>
-    <string name="persuasao">Persuasão (Car)</string>
+    <string name="medicina">Medicina(Sab)</string>
+    <string name="natureza">Natureza(Int)</string>
+    <string name="percepcao">Percepção(Sab)</string>
+    <string name="predestinacao">Predestinação(Des)</string>
+    <string name="religiao">Religião(Int)</string>
+    <string name="sobrevivencia">Sobrevivência(Sab)</string>
+    <string name="persuasao">Persuasão(Car)</string>
 </resources>

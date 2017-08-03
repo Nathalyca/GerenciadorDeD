@@ -34,21 +34,22 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <GridLayout
-                    android:layout_width="118dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.7">
 
                     <CheckBox
                         android:id="@+id/checkBox_resforca"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:duplicateParentState="false" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_resforca"
@@ -58,45 +59,51 @@
 
                     <TextView
                         android:id="@+id/text_resforca"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/resforca" />
 
 
-                </GridLayout>
-
-                <GridLayout
-                    android:layout_width="126dp"
-                    android:layout_height="wrap_content">
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.9">
 
                     <CheckBox
-                        android:id="@+id/checkBox_resdestreza"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:id="@+id/checkBox_ressabedoria"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
-                        android:id="@+id/field_resdestreza"
+                        android:id="@+id/field_ressabedoria"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName" />
 
                     <TextView
-                        android:id="@+id/text_resdestreza"
+                        android:id="@+id/text_ressabedoria"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/resdestreza" />
+                        android:text="@string/ressabedoria" />
 
-                </GridLayout>
+                </LinearLayout>
 
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
 
                     <CheckBox
                         android:id="@+id/checkBox_resconstituicao"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_resconstituicao"
@@ -108,10 +115,9 @@
                         android:id="@+id/text_resconstituicao"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="@string/resconstituicao" />
 
-                </GridLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -121,14 +127,17 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <GridLayout
-                    android:layout_width="118dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.85">
 
                     <CheckBox
                         android:id="@+id/checkBox_rescarisma"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_rescarisma"
@@ -142,40 +151,45 @@
                         android:layout_height="wrap_content"
                         android:text="@string/rescarisma" />
 
-                </GridLayout>
+                </LinearLayout>
 
-                <GridLayout
-                    android:layout_width="126dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.9">
 
                     <CheckBox
-                        android:id="@+id/checkBox_ressabedoria"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:id="@+id/checkBox_resdestreza"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
-                        android:id="@+id/field_ressabedoria"
+                        android:id="@+id/field_resdestreza"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName" />
 
                     <TextView
-                        android:id="@+id/text_ressabedoria"
+                        android:id="@+id/text_resdestreza"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/ressabedoria" />
+                        android:text="@string/resdestreza" />
 
-                </GridLayout>
+                </LinearLayout>
 
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
 
                     <CheckBox
                         android:id="@+id/checkBox_resinteligencia"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_resinteligencia"
@@ -189,8 +203,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/resinteligencia" />
 
-                </GridLayout>
-
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -215,14 +228,17 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:orientation="horizontal">
 
                     <CheckBox
                         android:id="@+id/checkBox_acrobacia"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_acrobacia"
@@ -234,19 +250,21 @@
                         android:id="@+id/text_acrobacia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="@string/acrobacia" />
 
-                </GridLayout>
+                </LinearLayout>
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.95">
 
                     <CheckBox
                         android:id="@+id/checkBox_arcanismo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_arcanismo"
@@ -260,7 +278,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/arcanismo" />
 
-                </GridLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -270,14 +288,17 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
 
                     <CheckBox
                         android:id="@+id/checkBox_atletismo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_atletismo"
@@ -289,19 +310,21 @@
                         android:id="@+id/text_atletismo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="@string/atletismo" />
 
-                </GridLayout>
+                </LinearLayout>
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.95">
 
                     <CheckBox
                         android:id="@+id/checkBox_atuacao"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_atuacao"
@@ -315,7 +338,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/atuacao" />
 
-                </GridLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -325,14 +348,17 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
 
                     <CheckBox
                         android:id="@+id/checkBox_blefar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_blefar"
@@ -344,19 +370,21 @@
                         android:id="@+id/text_blefar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="@string/blefar" />
 
-                </GridLayout>
+                </LinearLayout>
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.95">
 
                     <CheckBox
                         android:id="@+id/checkBox_furtividade"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_furtividade"
@@ -370,7 +398,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/furtividade" />
 
-                </GridLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -380,14 +408,17 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
 
                     <CheckBox
                         android:id="@+id/checkBox_historia"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_historia"
@@ -399,19 +430,21 @@
                         android:id="@+id/text_historia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="@string/historia" />
 
-                </GridLayout>
+                </LinearLayout>
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.95">
 
                     <CheckBox
                         android:id="@+id/checkBox_intimidacao"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_intimidacao"
@@ -425,7 +458,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/intimidacao" />
 
-                </GridLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -435,14 +468,17 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
 
                     <CheckBox
                         android:id="@+id/checkBox_intuicao"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_intuicao"
@@ -454,19 +490,21 @@
                         android:id="@+id/text_intuicao"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="@string/intuicao" />
 
-                </GridLayout>
+                </LinearLayout>
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.95">
 
                     <CheckBox
                         android:id="@+id/checkBox_investigacao"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_investigacao"
@@ -480,7 +518,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/investigacao" />
 
-                </GridLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -491,14 +529,17 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
 
                     <CheckBox
                         android:id="@+id/checkBox_LidarAnimais"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_LidarAnimais"
@@ -510,19 +551,21 @@
                         android:id="@+id/text_LidarAnimais"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="@string/LidarAnimais" />
 
-                </GridLayout>
+                </LinearLayout>
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.95">
 
                     <CheckBox
                         android:id="@+id/checkBox_medicina"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_medicina"
@@ -536,7 +579,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/medicina" />
 
-                </GridLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -547,14 +590,17 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
 
                     <CheckBox
                         android:id="@+id/checkBox_natureza"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_natureza"
@@ -566,19 +612,21 @@
                         android:id="@+id/text_natureza"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="@string/natureza" />
 
-                </GridLayout>
+                </LinearLayout>
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.95">
 
                     <CheckBox
                         android:id="@+id/checkBox_percepcao"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_percepcao"
@@ -592,7 +640,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/percepcao" />
 
-                </GridLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -603,38 +651,17 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
-
-                    <CheckBox
-                        android:id="@+id/checkBox_persuasao"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <EditText
-                        android:id="@+id/field_persuasao"
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
-
-                    <TextView
-                        android:id="@+id/text_persuasao"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/persuasao" />
-
-                </GridLayout>
-
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
 
                     <CheckBox
                         android:id="@+id/checkBox_predestinacao"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_predestinacao"
@@ -646,10 +673,35 @@
                         android:id="@+id/text_predestinacao"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="@string/predestinacao" />
 
-                </GridLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.95">
+
+                    <CheckBox
+                        android:id="@+id/checkBox_persuasao"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
+
+                    <EditText
+                        android:id="@+id/field_persuasao"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" />
+
+                    <TextView
+                        android:id="@+id/text_persuasao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/persuasao" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -660,14 +712,17 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
 
                     <CheckBox
                         android:id="@+id/checkBox_religiao"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_religiao"
@@ -681,16 +736,19 @@
                         android:layout_height="wrap_content"
                         android:text="@string/religiao" />
 
-                </GridLayout>
+                </LinearLayout>
 
-                <GridLayout
-                    android:layout_width="189dp"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.95">
 
                     <CheckBox
                         android:id="@+id/checkBox_sobrevivencia"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
 
                     <EditText
                         android:id="@+id/field_sobrevivencia"
@@ -702,10 +760,9 @@
                         android:id="@+id/text_sobrevivencia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="@string/sobrevivencia" />
 
-                </GridLayout>
+                </LinearLayout>>
 
             </LinearLayout>
 

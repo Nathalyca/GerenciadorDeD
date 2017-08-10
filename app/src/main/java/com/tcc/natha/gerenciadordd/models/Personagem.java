@@ -10,33 +10,57 @@ public class Personagem {
 
     private String nomePerso;
 
-    private String classe;
-
     private String raca;
 
     private String subRaca;
+
+    private String classe;
+
+    private String nivel;
 
     private String antecedente;
 
     private String tendencia;
 
-    private String nivel;
-
-    private String pvTotal;
+    private String classeArmad;
 
     private String iniciativa;
 
+    private String desloc;
+
+    private String jogador;
+
+    private String xp;
+
+    private String pvTotal;
+
+    private String pvAtual;
+
+    private String pvTemp;
+
     private String forca;
+
+    private String forca2;
 
     private String destreza;
 
+    private String destreza2;
+
     private String constituicao;
+
+    private String constituicao2;
 
     private String inteligencia;
 
+    private String inteligencia2;
+
     private String sabedoria;
 
+    private String sabedoria2;
+
     private String carisma;
+
+    private String carisma2;
 
     public Personagem(){
     }
@@ -126,6 +150,54 @@ public class Personagem {
         this.iniciativa = iniciativa;
     }
 
+    public String getClasseArmad() {
+        return classeArmad;
+    }
+
+    public void setClasseArmad(String classeArmad) {
+        this.classeArmad = classeArmad;
+    }
+
+    public String getDesloc() {
+        return desloc;
+    }
+
+    public void setDesloc(String desloc) {
+        this.desloc = desloc;
+    }
+
+    public String getJogador() {
+        return jogador;
+    }
+
+    public void setJogador(String jogador) {
+        this.jogador = jogador;
+    }
+
+    public String getXp() {
+        return xp;
+    }
+
+    public void setXp(String xp) {
+        this.xp = xp;
+    }
+
+    public String getPvAtual() {
+        return pvAtual;
+    }
+
+    public void setPvAtual(String pvAtual) {
+        this.pvAtual = pvAtual;
+    }
+
+    public String getPvTemp() {
+        return pvTemp;
+    }
+
+    public void setPvTemp(String pvTemp) {
+        this.pvTemp = pvTemp;
+    }
+
     public String getForca() {
         return forca;
     }
@@ -173,4 +245,53 @@ public class Personagem {
     public void setCarisma(String carisma) {
         this.carisma = carisma;
     }
+
+    public String getForca2() {
+        return forca2;
+    }
+
+    public void setForca2(String forca2) {
+        this.forca2 = forca2;
+    }
+
+    public String getDestreza2() {
+        return destreza2;
+    }
+
+    public void setDestreza2(String destreza2) {
+        this.destreza2 = destreza2;
+    }
+
+    public String getConstituicao2() {
+        return constituicao2;
+    }
+
+    public void setConstituicao2(String constituicao2) {
+        this.constituicao2 = constituicao2;
+    }
+
+    public String getInteligencia2() {
+        return inteligencia2;
+    }
+
+    public void setInteligencia2(String inteligencia2) {
+        this.inteligencia2 = inteligencia2;
+    }
+
+    public String getSabedoria2() {
+        return sabedoria2;
+    }
+
+    public void setSabedoria2(String sabedoria2) {
+        this.sabedoria2 = sabedoria2;
+    }
+
+    public String getCarisma2() {
+        return carisma2;
+    }
+
+    public void setCarisma2(String carisma2) {
+        this.carisma2 = carisma2;
+    }
 }
+

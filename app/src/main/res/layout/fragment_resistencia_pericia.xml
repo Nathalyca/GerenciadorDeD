@@ -47,22 +47,22 @@
                     android:layout_weight="0.7">
 
                     <CheckBox
-                        android:id="@+id/checkBox_resforca"
+                        android:id="@+id/checkBox_resForca"
                         android:layout_width="25dp"
                         android:layout_height="25dp" />
 
                     <EditText
-                        android:id="@+id/field_resforca"
+                        android:id="@+id/field_resForca"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName" />
 
                     <TextView
-                        android:id="@+id/text_resforca"
+                        android:id="@+id/text_resForca"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/resforca" />
+                        android:text="@string/resForca" />
 
 
                 </LinearLayout>
@@ -74,21 +74,21 @@
                     android:layout_weight="0.9">
 
                     <CheckBox
-                        android:id="@+id/checkBox_ressabedoria"
+                        android:id="@+id/checkBox_resSabedoria"
                         android:layout_width="25dp"
                         android:layout_height="25dp" />
 
                     <EditText
-                        android:id="@+id/field_ressabedoria"
+                        android:id="@+id/field_resSabedoria"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName" />
 
                     <TextView
-                        android:id="@+id/text_ressabedoria"
+                        android:id="@+id/text_resSabedoria"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ressabedoria" />
+                        android:text="@string/resSabedoria" />
 
                 </LinearLayout>
 
@@ -101,21 +101,21 @@
                     android:layout_weight="1">
 
                     <CheckBox
-                        android:id="@+id/checkBox_resconstituicao"
+                        android:id="@+id/checkBox_resConstituicao"
                         android:layout_width="25dp"
                         android:layout_height="25dp" />
 
                     <EditText
-                        android:id="@+id/field_resconstituicao"
+                        android:id="@+id/field_resConstituicao"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName" />
 
                     <TextView
-                        android:id="@+id/text_resconstituicao"
+                        android:id="@+id/text_resConstituicao"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/resconstituicao" />
+                        android:text="@string/resConstituicao" />
 
                 </LinearLayout>
 
@@ -135,21 +135,21 @@
                     android:layout_weight="0.85">
 
                     <CheckBox
-                        android:id="@+id/checkBox_rescarisma"
+                        android:id="@+id/checkBox_resCarisma"
                         android:layout_width="25dp"
                         android:layout_height="25dp" />
 
                     <EditText
-                        android:id="@+id/field_rescarisma"
+                        android:id="@+id/field_resCarisma"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName" />
 
                     <TextView
-                        android:id="@+id/text_rescarisma"
+                        android:id="@+id/text_resCarisma"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/rescarisma" />
+                        android:text="@string/resCarisma" />
 
                 </LinearLayout>
 
@@ -161,21 +161,21 @@
                     android:layout_weight="0.9">
 
                     <CheckBox
-                        android:id="@+id/checkBox_resdestreza"
+                        android:id="@+id/checkBox_resDestreza"
                         android:layout_width="25dp"
                         android:layout_height="25dp" />
 
                     <EditText
-                        android:id="@+id/field_resdestreza"
+                        android:id="@+id/field_resDestreza"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName" />
 
                     <TextView
-                        android:id="@+id/text_resdestreza"
+                        android:id="@+id/text_resDestreza"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/resdestreza" />
+                        android:text="@string/resDestreza" />
 
                 </LinearLayout>
 
@@ -187,21 +187,21 @@
                     android:layout_weight="1">
 
                     <CheckBox
-                        android:id="@+id/checkBox_resinteligencia"
+                        android:id="@+id/checkBox_resInteligencia"
                         android:layout_width="25dp"
                         android:layout_height="25dp" />
 
                     <EditText
-                        android:id="@+id/field_resinteligencia"
+                        android:id="@+id/field_resInteligencia"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName" />
 
                     <TextView
-                        android:id="@+id/text_resinteligencia"
+                        android:id="@+id/text_resInteligencia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/resinteligencia" />
+                        android:text="@string/resInteligencia" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -537,21 +537,21 @@
                     android:layout_weight="1">
 
                     <CheckBox
-                        android:id="@+id/checkBox_LidarAnimais"
+                        android:id="@+id/checkBox_lidarAnimais"
                         android:layout_width="25dp"
                         android:layout_height="25dp" />
 
                     <EditText
-                        android:id="@+id/field_LidarAnimais"
+                        android:id="@+id/field_lidarAnimais"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName" />
 
                     <TextView
-                        android:id="@+id/text_LidarAnimais"
+                        android:id="@+id/text_lidarAnimais"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/LidarAnimais" />
+                        android:text="@string/lidarAnimais" />
 
                 </LinearLayout>
 

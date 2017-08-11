@@ -126,13 +126,13 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="teste_resistencia">Teste de Resistência</string>
-    <string name="resforca">Força</string>
+    <string name="resForca">Força</string>
     <string name="espaco" />
-    <string name="resdestreza">Destreza</string>
-    <string name="resconstituicao">Constituição</string>
-    <string name="resinteligencia">Inteligência</string>
-    <string name="ressabedoria">Sabedoria</string>
-    <string name="rescarisma">Carisma</string>
+    <string name="resDestreza">Destreza</string>
+    <string name="resConstituicao">Constituição</string>
+    <string name="resInteligencia">Inteligência</string>
+    <string name="resSabedoria">Sabedoria</string>
+    <string name="resCarisma">Carisma</string>
     <string name="pericia">Perícias</string>
     <string name="acrobacia">Acrobacia(Des)</string>
     <string name="arcanismo">Arcanismo(Int)</string>
@@ -144,7 +144,7 @@
     <string name="intimidacao">Intimidação (Car)</string>
     <string name="intuicao">Intuição(Sab)</string>
     <string name="investigacao">Investigação(Int)</string>
-    <string name="LidarAnimais">Lidar Animais(Sab)</string>
+    <string name="lidarAnimais">Lidar Animais(Sab)</string>
     <string name="medicina">Medicina(Sab)</string>
     <string name="natureza">Natureza(Int)</string>
     <string name="percepcao">Percepção(Sab)</string>

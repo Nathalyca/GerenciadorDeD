@@ -62,6 +62,19 @@ public class Personagem {
 
     private String carisma2;
 
+    private String resForca;
+
+    private String resSabedoria;
+
+    private String resConstituicao;
+
+    private String resCarisma;
+
+    private String resDestreza;
+
+    private String resInteligencia;
+
+
     public Personagem(){
     }
 
@@ -292,6 +305,198 @@ public class Personagem {
 
     public void setCarisma2(String carisma2) {
         this.carisma2 = carisma2;
+    }
+
+    public String getResForca() {
+        return resForca;
+    }
+
+    public void setResForca(String resForca) {
+        this.resForca = resForca;
+    }
+
+    public String getResSabedoria() {
+        return resSabedoria;
+    }
+
+    public void setResSabedoria(String resSabedoria) {
+        this.resSabedoria = resSabedoria;
+    }
+
+    public String getResConstituicao() {
+        return resConstituicao;
+    }
+
+    public void setResConstituicao(String resConstituicao) {
+        this.resConstituicao = resConstituicao;
+    }
+
+    public String getResCarisma() {
+        return resCarisma;
+    }
+
+    public void setResCarisma(String resCarisma) {
+        this.resCarisma = resCarisma;
+    }
+
+    public String getResDestreza() {
+        return resDestreza;
+    }
+
+    public void setResDestreza(String resDestreza) {
+        this.resDestreza = resDestreza;
+    }
+
+    public String getResInteligencia() {
+        return resInteligencia;
+    }
+
+    public void setResInteligencia(String resInteligencia) {
+        this.resInteligencia = resInteligencia;
+    }
+
+    public String getAcrobacia() {
+        return acrobacia;
+    }
+
+    public void setAcrobacia(String acrobacia) {
+        this.acrobacia = acrobacia;
+    }
+
+    public String getArcanismo() {
+        return arcanismo;
+    }
+
+    public void setArcanismo(String arcanismo) {
+        this.arcanismo = arcanismo;
+    }
+
+    public String getAtletismo() {
+        return atletismo;
+    }
+
+    public void setAtletismo(String atletismo) {
+        this.atletismo = atletismo;
+    }
+
+    public String getAtuacao() {
+        return atuacao;
+    }
+
+    public void setAtuacao(String atuacao) {
+        this.atuacao = atuacao;
+    }
+
+    public String getBlefar() {
+        return blefar;
+    }
+
+    public void setBlefar(String blefar) {
+        this.blefar = blefar;
+    }
+
+    public String getFurtividade() {
+        return furtividade;
+    }
+
+    public void setFurtividade(String furtividade) {
+        this.furtividade = furtividade;
+    }
+
+    public String getHistoria() {
+        return historia;
+    }
+
+    public void setHistoria(String historia) {
+        this.historia = historia;
+    }
+
+    public String getIntimidacao() {
+        return intimidacao;
+    }
+
+    public void setIntimidacao(String intimidacao) {
+        this.intimidacao = intimidacao;
+    }
+
+    public String getIntuicao() {
+        return intuicao;
+    }
+
+    public void setIntuicao(String intuicao) {
+        this.intuicao = intuicao;
+    }
+
+    public String getInvestigacao() {
+        return investigacao;
+    }
+
+    public void setInvestigacao(String investigacao) {
+        this.investigacao = investigacao;
+    }
+
+    public String getLidarAnimais() {
+        return lidarAnimais;
+    }
+
+    public void setLidarAnimais(String lidarAnimais) {
+        this.lidarAnimais = lidarAnimais;
+    }
+
+    public String getMedicina() {
+        return medicina;
+    }
+
+    public void setMedicina(String medicina) {
+        this.medicina = medicina;
+    }
+
+    public String getNatureza() {
+        return natureza;
+    }
+
+    public void setNatureza(String natureza) {
+        this.natureza = natureza;
+    }
+
+    public String getPercepcao() {
+        return percepcao;
+    }
+
+    public void setPercepcao(String percepcao) {
+        this.percepcao = percepcao;
+    }
+
+    public String getPredestinacao() {
+        return predestinacao;
+    }
+
+    public void setPredestinacao(String predestinacao) {
+        this.predestinacao = predestinacao;
+    }
+
+    public String getPersuasao() {
+        return persuasao;
+    }
+
+    public void setPersuasao(String persuasao) {
+        this.persuasao = persuasao;
+    }
+
+    public String getReligiao() {
+        return religiao;
+    }
+
+    public void setReligiao(String religiao) {
+        this.religiao = religiao;
+    }
+
+    public String getSobrevivencia() {
+        return sobrevivencia;
+    }
+
+    public void setSobrevivencia(String sobrevivencia) {
+        this.sobrevivencia = sobrevivencia;
     }
 }
 

@@ -74,6 +74,41 @@ public class Personagem {
 
     private String resInteligencia;
 
+    private String acrobacia;
+
+    private String arcanismo;
+
+    private String atletismo;
+
+    private String atuacao;
+
+    private String blefar;
+
+    private String furtividade;
+
+    private String historia;
+
+    private String intimidacao;
+
+    private String intuicao;
+
+    private String investigacao;
+
+    private String lidarAnimais;
+
+    private String medicina;
+
+    private String natureza;
+
+    private String percepcao;
+
+    private String predestinacao;
+
+    private String persuasao;
+
+    private String religiao;
+
+    private String sobrevivencia;
 
     public Personagem(){
     }
@@ -356,6 +391,7 @@ public class Personagem {
     }
 
     public String getAcrobacia() {
+
         return acrobacia;
     }
 

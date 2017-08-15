@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 import com.tcc.natha.gerenciadordd.BlankFragment;
 
@@ -17,14 +18,19 @@ import com.tcc.natha.gerenciadordd.BlankFragment2;
  */
 public class PersonagemPagerAdapter extends FragmentPagerAdapter {
 
+    private static final String TAG = "EditPersonagemFragment";
+
     public PersonagemPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
+
+
     @Override
     public Fragment getItem(int position) {
 
-        switch (position){
+        Log.d(TAG, "position:" + position);
+    switch (position){
             case 0:
                 return new EditPersonagemFragment();
             case 1:

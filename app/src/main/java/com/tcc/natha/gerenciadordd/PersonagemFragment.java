@@ -1,6 +1,7 @@
 package com.tcc.natha.gerenciadordd;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
@@ -143,7 +144,19 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
                 Log.d(TAG, "onItemClick");
                 Toast.makeText(getActivity().getApplicationContext(), perso.get(position).getNomePerso(), Toast.LENGTH_SHORT ).show();
                 Log.d(TAG, perso.get(position).getNomePerso());
+
+                //pega as fragment para remover
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                List<Fragment> fragmentList = fragmentManager.getFragments();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                for (Fragment fragment: fragmentList ) {
+                    if(fragment != null){
+                        transaction.remove(fragment);
+                    }
+                }
+                transaction.commit();
+
+                transaction = getFragmentManager().beginTransaction();
                 Fragment viewPagePersonagem = new ViewPagePersonagem();
                 Bundle bundle = new Bundle();
                 bundle.putString("persoID", perso.get(position).getPersoID());
@@ -152,6 +165,7 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
                 transaction.replace(R.id.headlines_fragment, viewPagePersonagem);
                 transaction.addToBackStack(null);
                 transaction.commit();
+
             }
         });
         return view;

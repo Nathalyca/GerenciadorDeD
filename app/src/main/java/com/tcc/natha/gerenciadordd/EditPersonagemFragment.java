@@ -232,6 +232,8 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
                                 mInteligencia2Field.setText(pers.getInteligencia2());
                                 mSabedoria2Field.setText(pers.getSabedoria2());
                                 mCarisma2Field.setText(pers.getCarisma2());
+                            }else{
+                                pers = new Personagem(user.getUid());
                             }
                         }
 
@@ -285,8 +287,6 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
     public void gravaPersonagem(){
 
         Log.d(TAG, "User" + user);
-
-        pers = new Personagem(user.getUid());
 
         Log.d(TAG, "grava personagem");
 
@@ -412,5 +412,14 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
         void onFragmentInteraction(Uri uri);
     }
 
-
+    @Override
+    public void onPause() {
+        Log.e("DEBUG", "OnPause of loginFragment");
+        gravaPersonagem();
+        Bundle bundle = new Bundle();
+        bundle.putString("persoID", persoID);
+        getActivity().getIntent().removeExtra("persoID");
+        getActivity().getIntent().putExtras(bundle);
+        super.onPause();
+    }
 }

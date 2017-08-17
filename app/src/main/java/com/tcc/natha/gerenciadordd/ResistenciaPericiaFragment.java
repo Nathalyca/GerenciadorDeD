@@ -229,6 +229,8 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
                                 mReligiaoField.setText(pers.getReligiao());
                                 mSobrevivenciaField.setText(pers.getSobrevivencia());
 
+                            }else{
+                                pers = new Personagem(user.getUid());
                             }
                         }
 
@@ -280,7 +282,7 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
 
         Log.d(TAG, "User" + user);
 
-        pers = new Personagem(user.getUid());
+
 
         Log.d(TAG, "grava personagem");
 
@@ -343,5 +345,16 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onPause() {
+        Log.e("DEBUG", "OnPause of loginFragment");
+        gravaPersonagem();
+        Bundle bundle = new Bundle();
+        bundle.putString("persoID", persoID);
+        getActivity().getIntent().removeExtra("persoID");
+        getActivity().getIntent().putExtras(bundle);
+        super.onPause();
     }
 }

@@ -76,39 +76,76 @@ public class Personagem {
 
     private String acrobacia;
 
+    private boolean acrobaciaBool;
+
     private String arcanismo;
+
+    private boolean arcanismoBool;
 
     private String atletismo;
 
+    private boolean atletismoBool;
+
     private String atuacao;
+
+    private boolean atuacaoBool;
 
     private String blefar;
 
+    private boolean blefarBool;
+
     private String furtividade;
+
+    private boolean furtividadeBool;
 
     private String historia;
 
+    private boolean historiaBool;
+
     private String intimidacao;
+
+    private boolean intimidacaoBool;
 
     private String intuicao;
 
+    private boolean intuicaoBool;
+
     private String investigacao;
+
+    private boolean investigacaoBool;
 
     private String lidarAnimais;
 
+    private boolean lidarAnimaisBool;
+
     private String medicina;
+
+    private boolean medicinaBool;
 
     private String natureza;
 
+    private boolean naturezaBool;
+
     private String percepcao;
+
+    private boolean percepcaoBool;
 
     private String predestinacao;
 
+    private boolean predestinacaoBool;
+
     private String persuasao;
+
+    private boolean persuasaoBool;
 
     private String religiao;
 
+    private boolean religiaoBool;
+
     private String sobrevivencia;
+
+    private boolean sobrevivenciaBool;
+
 
     public Personagem(){
     }
@@ -533,6 +570,150 @@ public class Personagem {
 
     public void setSobrevivencia(String sobrevivencia) {
         this.sobrevivencia = sobrevivencia;
+    }
+
+    public boolean isAcrobaciaBool() {
+        return acrobaciaBool;
+    }
+
+    public void setAcrobaciaBool(boolean acrobaciaBool) {
+        this.acrobaciaBool = acrobaciaBool;
+    }
+
+    public boolean isArcanismoBool() {
+        return arcanismoBool;
+    }
+
+    public void setArcanismoBool(boolean arcanismoBool) {
+        this.arcanismoBool = arcanismoBool;
+    }
+
+    public boolean isAtletismoBool() {
+        return atletismoBool;
+    }
+
+    public void setAtletismoBool(boolean atletismoBool) {
+        this.atletismoBool = atletismoBool;
+    }
+
+    public boolean isAtuacaoBool() {
+        return atuacaoBool;
+    }
+
+    public void setAtuacaoBool(boolean atuacaoBool) {
+        this.atuacaoBool = atuacaoBool;
+    }
+
+    public boolean isBlefarBool() {
+        return blefarBool;
+    }
+
+    public void setBlefarBool(boolean blefarBool) {
+        this.blefarBool = blefarBool;
+    }
+
+    public boolean isFurtividadeBool() {
+        return furtividadeBool;
+    }
+
+    public void setFurtividadeBool(boolean furtividadeBool) {
+        this.furtividadeBool = furtividadeBool;
+    }
+
+    public boolean isHistoriaBool() {
+        return historiaBool;
+    }
+
+    public void setHistoriaBool(boolean historiaBool) {
+        this.historiaBool = historiaBool;
+    }
+
+    public boolean isIntimidacaoBool() {
+        return intimidacaoBool;
+    }
+
+    public void setIntimidacaoBool(boolean intimidacaoBool) {
+        this.intimidacaoBool = intimidacaoBool;
+    }
+
+    public boolean isIntuicaoBool() {
+        return intuicaoBool;
+    }
+
+    public void setIntuicaoBool(boolean intuicaoBool) {
+        this.intuicaoBool = intuicaoBool;
+    }
+
+    public boolean isInvestigacaoBool() {
+        return investigacaoBool;
+    }
+
+    public void setInvestigacaoBool(boolean investigacaoBool) {
+        this.investigacaoBool = investigacaoBool;
+    }
+
+    public boolean isLidarAnimaisBool() {
+        return lidarAnimaisBool;
+    }
+
+    public void setLidarAnimaisBool(boolean lidarAnimaisBool) {
+        this.lidarAnimaisBool = lidarAnimaisBool;
+    }
+
+    public boolean isMedicinaBool() {
+        return medicinaBool;
+    }
+
+    public void setMedicinaBool(boolean medicinaBool) {
+        this.medicinaBool = medicinaBool;
+    }
+
+    public boolean isNaturezaBool() {
+        return naturezaBool;
+    }
+
+    public void setNaturezaBool(boolean naturezaBool) {
+        this.naturezaBool = naturezaBool;
+    }
+
+    public boolean isPercepcaoBool() {
+        return percepcaoBool;
+    }
+
+    public void setPercepcaoBool(boolean percepcaoBool) {
+        this.percepcaoBool = percepcaoBool;
+    }
+
+    public boolean isPredestinacaoBool() {
+        return predestinacaoBool;
+    }
+
+    public void setPredestinacaoBool(boolean predestinacaoBool) {
+        this.predestinacaoBool = predestinacaoBool;
+    }
+
+    public boolean isPersuasaoBool() {
+        return persuasaoBool;
+    }
+
+    public void setPersuasaoBool(boolean persuasaoBool) {
+        this.persuasaoBool = persuasaoBool;
+    }
+
+    public boolean isReligiaoBool() {
+        return religiaoBool;
+    }
+
+    public void setReligiaoBool(boolean religiaoBool) {
+        this.religiaoBool = religiaoBool;
+    }
+
+    public boolean isSobrevivenciaBool() {
+        return sobrevivenciaBool;
+    }
+
+    public void setSobrevivenciaBool(boolean sobrevivenciaBool) {
+        this.sobrevivenciaBool = sobrevivenciaBool;
     }
 }
 

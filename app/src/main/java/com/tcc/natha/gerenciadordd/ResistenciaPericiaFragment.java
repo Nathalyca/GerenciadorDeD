@@ -10,6 +10,7 @@ package com.tcc.natha.gerenciadordd;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.Button;
+        import android.widget.CheckBox;
         import android.widget.EditText;
         import android.widget.Toast;
 
@@ -56,39 +57,75 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
 
     private EditText mAcrobaciaField;
 
+    private CheckBox mAcrobaciaBoolField;
+
     private EditText mArcanismoField;
+
+    private CheckBox mArcanismoBoolField;
 
     private EditText mAtletismoField;
 
+    private CheckBox mAtletismoBoolField;
+
     private EditText mAtuacaoField;
+
+    private CheckBox mAtuacaoBoolField;
 
     private EditText mBlefarField;
 
+    private CheckBox mBlefarBoolField;
+
     private EditText mFurtividadeField;
+
+    private CheckBox mFurtividadeBoolField;
 
     private EditText mHistoriaField;
 
+    private CheckBox mHistoriaBoolField;
+
     private EditText mIntimidacaoField;
+
+    private CheckBox mIntimidacaoBoolField;
 
     private EditText mIntuicaoField;
 
+    private CheckBox mIntuicaoBoolField;
+
     private EditText mInvestigacaoField;
+
+    private CheckBox mInvestigacaoBoolField;
 
     private EditText mLidarAnimaisField;
 
+    private CheckBox mLidarAnimaisBoolField;
+
     private EditText mMedicinaField;
+
+    private CheckBox mMedicinaBoolField;
 
     private EditText mNaturezaField;
 
+    private CheckBox mNaturezaBoolField;
+
     private EditText mPercepcaoField;
+
+    private CheckBox mPercepcaoBoolField;
 
     private EditText mPredestinacaoField;
 
+    private CheckBox mPredestinacaoBoolField;
+
     private EditText mPersuasaoField;
+
+    private CheckBox mPersuasaoBoolField;
 
     private EditText mReligiaoField;
 
+    private CheckBox mReligiaoBoolField;
+
     private EditText mSobrevivenciaField;
+
+    private CheckBox mSobrevivenciaBoolField;
 
     private Button gravaButton;
 
@@ -155,23 +192,41 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
         mResDestrezaField  = (EditText) view.findViewById(R.id.field_resDestreza);
         mResInteligenciaField  = (EditText) view.findViewById(R.id.field_resInteligencia);
         mAcrobaciaField  = (EditText) view.findViewById(R.id.field_acrobacia);
+        mAcrobaciaBoolField  = (CheckBox) view.findViewById(R.id.checkBox_acrobacia);
         mArcanismoField = (EditText) view.findViewById(R.id.field_arcanismo);
+        mArcanismoBoolField = (CheckBox) view.findViewById(R.id.checkBox_arcanismo);
         mAtletismoField  = (EditText) view.findViewById(R.id.field_atletismo);
+        mAtletismoBoolField  = (CheckBox) view.findViewById(R.id.checkBox_atletismo);
         mAtuacaoField = (EditText) view.findViewById(R.id.field_atuacao);
+        mAtuacaoBoolField = (CheckBox) view.findViewById(R.id.checkBox_atuacao);
         mBlefarField = (EditText) view.findViewById(R.id.field_blefar);
+        mBlefarBoolField = (CheckBox) view.findViewById(R.id.checkBox_blefar);
         mFurtividadeField  = (EditText) view.findViewById(R.id.field_furtividade);
+        mFurtividadeBoolField  = (CheckBox) view.findViewById(R.id.checkBox_furtividade);
         mHistoriaField  = (EditText) view.findViewById(R.id.field_historia);
+        mHistoriaBoolField  = (CheckBox) view.findViewById(R.id.checkBox_historia);
         mIntimidacaoField  = (EditText) view.findViewById(R.id.field_intimidacao);
+        mIntimidacaoBoolField  = (CheckBox) view.findViewById(R.id.checkBox_intimidacao);
         mIntuicaoField  = (EditText) view.findViewById(R.id.field_intuicao);
+        mIntuicaoBoolField  = (CheckBox) view.findViewById(R.id.checkBox_intuicao);
         mInvestigacaoField  = (EditText) view.findViewById(R.id.field_investigacao);
+        mInvestigacaoBoolField  = (CheckBox) view.findViewById(R.id.checkBox_investigacao);
         mLidarAnimaisField  = (EditText) view.findViewById(R.id.field_lidarAnimais);
+        mLidarAnimaisBoolField  = (CheckBox) view.findViewById(R.id.checkBox_lidarAnimais);
         mMedicinaField  = (EditText) view.findViewById(R.id.field_medicina);
+        mMedicinaBoolField  = (CheckBox) view.findViewById(R.id.checkBox_medicina);
         mNaturezaField  = (EditText) view.findViewById(R.id.field_natureza);
+        mNaturezaBoolField  = (CheckBox) view.findViewById(R.id.checkBox_natureza);
         mPercepcaoField  = (EditText) view.findViewById(R.id.field_percepcao);
+        mPercepcaoBoolField  = (CheckBox) view.findViewById(R.id.checkBox_percepcao);
         mPredestinacaoField  = (EditText) view.findViewById(R.id.field_predestinacao);
+        mPredestinacaoBoolField  = (CheckBox) view.findViewById(R.id.checkBox_predestinacao);
         mPersuasaoField  = (EditText) view.findViewById(R.id.field_persuasao);
+        mPersuasaoBoolField  = (CheckBox) view.findViewById(R.id.checkBox_persuasao);
         mReligiaoField  = (EditText) view.findViewById(R.id.field_religiao);
+        mReligiaoBoolField  = (CheckBox) view.findViewById(R.id.checkBox_religiao);
         mSobrevivenciaField  = (EditText) view.findViewById(R.id.field_sobrevivencia);
+        mSobrevivenciaBoolField  = (CheckBox) view.findViewById(R.id.checkBox_sobrevivencia);
         // Buttons
         gravaButton = (Button) view.findViewById(R.id.gravar_button2);
         gravaButton.setOnClickListener(this);
@@ -193,11 +248,6 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     Log.d(TAG, "onAuthStateChanged:email:" + user.getEmail());
-                    if(persoID == null){
-                        persoID  = mDatabase.child("Personagens").push().getKey();
-                        mDatabase.child("Personagens").child(persoID).setValue(pers);
-                        Log.d(TAG, "persoID:" + persoID);
-                    }
 
                     mDatabase.child("Personagens").child(persoID).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -211,23 +261,41 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
                                 mResDestrezaField.setText(pers.getResDestreza());
                                 mResInteligenciaField.setText(pers.getResInteligencia());
                                 mAcrobaciaField.setText(pers.getAcrobacia());
+                                mAcrobaciaBoolField.setChecked(pers.isAcrobaciaBool());
                                 mArcanismoField.setText(pers.getArcanismo());
+                                mArcanismoBoolField.setChecked(pers.isArcanismoBool());
                                 mAtletismoField.setText(pers.getAtletismo());
+                                mAtletismoBoolField.setChecked(pers.isAtletismoBool());
                                 mAtuacaoField.setText(pers.getAtuacao());
+                                mAtuacaoBoolField.setChecked(pers.isAtuacaoBool());
                                 mBlefarField.setText(pers.getBlefar());
+                                mBlefarBoolField.setChecked(pers.isBlefarBool());
                                 mFurtividadeField.setText(pers.getFurtividade());
+                                mFurtividadeBoolField.setChecked(pers.isFurtividadeBool());
                                 mHistoriaField.setText(pers.getHistoria());
+                                mHistoriaBoolField.setChecked(pers.isHistoriaBool());
                                 mIntimidacaoField.setText(pers.getIntimidacao());
+                                mIntimidacaoBoolField.setChecked(pers.isIntimidacaoBool());
                                 mIntuicaoField.setText(pers.getIntuicao());
+                                mIntuicaoBoolField.setChecked(pers.isIntuicaoBool());
                                 mInvestigacaoField.setText(pers.getInvestigacao());
+                                mInvestigacaoBoolField.setChecked(pers.isInvestigacaoBool());
                                 mLidarAnimaisField.setText(pers.getLidarAnimais());
+                                mLidarAnimaisBoolField.setChecked(pers.isLidarAnimaisBool());
                                 mMedicinaField.setText(pers.getMedicina());
+                                mMedicinaBoolField.setChecked(pers.isMedicinaBool());
                                 mNaturezaField.setText(pers.getNatureza());
+                                mNaturezaBoolField.setChecked(pers.isNaturezaBool());
                                 mPercepcaoField.setText(pers.getPercepcao());
+                                mPercepcaoBoolField.setChecked(pers.isPercepcaoBool());
                                 mPredestinacaoField.setText(pers.getPredestinacao());
+                                mPredestinacaoBoolField.setChecked(pers.isPredestinacaoBool());
                                 mPersuasaoField.setText(pers.getPersuasao());
+                                mPersuasaoBoolField.setChecked(pers.isPersuasaoBool());
                                 mReligiaoField.setText(pers.getReligiao());
+                                mReligiaoBoolField.setChecked(pers.isReligiaoBool());
                                 mSobrevivenciaField.setText(pers.getSobrevivencia());
+                                mSobrevivenciaBoolField.setChecked(pers.isSobrevivenciaBool());
 
                             }else{
                                 pers = new Personagem(user.getUid());
@@ -293,23 +361,41 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
         pers.setResDestreza(mResDestrezaField.getText().toString());
         pers.setResInteligencia(mResInteligenciaField.getText().toString());
         pers.setAcrobacia(mAcrobaciaField.getText().toString());
+        pers.setAcrobaciaBool(mAcrobaciaBoolField.isChecked());
         pers.setArcanismo(mArcanismoField.getText().toString());
+        pers.setArcanismoBool(mArcanismoBoolField.isChecked());
         pers.setAtletismo(mAtletismoField.getText().toString());
+        pers.setAtletismoBool(mAtletismoBoolField.isChecked());
         pers.setAtuacao(mAtuacaoField.getText().toString());
+        pers.setAtuacaoBool(mAtuacaoBoolField.isChecked());
         pers.setBlefar(mBlefarField.getText().toString());
+        pers.setBlefarBool(mBlefarBoolField.isChecked());
         pers.setFurtividade(mFurtividadeField.getText().toString());
+        pers.setFurtividadeBool(mFurtividadeBoolField.isChecked());
         pers.setHistoria(mHistoriaField.getText().toString());
+        pers.setHistoriaBool(mHistoriaBoolField.isChecked());
         pers.setIntimidacao(mIntimidacaoField.getText().toString());
+        pers.setIntimidacaoBool(mIntimidacaoBoolField.isChecked());
         pers.setIntuicao(mIntuicaoField.getText().toString());
+        pers.setIntuicaoBool(mIntuicaoBoolField.isChecked());
         pers.setInvestigacao(mInvestigacaoField.getText().toString());
+        pers.setInvestigacaoBool(mInvestigacaoBoolField.isChecked());
         pers.setLidarAnimais(mLidarAnimaisField.getText().toString());
+        pers.setLidarAnimaisBool(mLidarAnimaisBoolField.isChecked());
         pers.setMedicina(mMedicinaField.getText().toString());
+        pers.setMedicinaBool(mMedicinaBoolField.isChecked());
         pers.setNatureza(mNaturezaField.getText().toString());
+        pers.setNaturezaBool(mNaturezaBoolField.isChecked());
         pers.setPercepcao(mPercepcaoField.getText().toString());
+        pers.setPercepcaoBool(mPercepcaoBoolField.isChecked());
         pers.setPredestinacao(mPredestinacaoField.getText().toString());
+        pers.setPredestinacaoBool(mPredestinacaoBoolField.isChecked());
         pers.setPersuasao(mPersuasaoField.getText().toString());
+        pers.setPersuasaoBool(mPersuasaoBoolField.isChecked());
         pers.setReligiao(mReligiaoField.getText().toString());
+        pers.setReligiaoBool(mReligiaoBoolField.isChecked());
         pers.setSobrevivencia(mSobrevivenciaField.getText().toString());
+        pers.setSobrevivenciaBool(mSobrevivenciaBoolField.isChecked());
 
         mDatabase.child("Personagens").child(persoID).setValue(pers);
         PersonagemItem personagemItem = new PersonagemItem(persoID,pers.getNomePerso(), pers.getClasse(), pers.getNivel());
@@ -351,10 +437,6 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
     public void onPause() {
         Log.e("DEBUG", "OnPause of loginFragment");
         gravaPersonagem();
-        Bundle bundle = new Bundle();
-        bundle.putString("persoID", persoID);
-        getActivity().getIntent().removeExtra("persoID");
-        getActivity().getIntent().putExtras(bundle);
         super.onPause();
     }
 }

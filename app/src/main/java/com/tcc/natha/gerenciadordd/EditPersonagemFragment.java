@@ -194,11 +194,6 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     Log.d(TAG, "onAuthStateChanged:email:" + user.getEmail());
-                    if(persoID == null){
-                        persoID  = mDatabase.child("Personagens").push().getKey();
-                        mDatabase.child("Personagens").child(persoID).setValue(pers);
-                        Log.d(TAG, "persoID:" + persoID);
-                    }
 
                     mDatabase.child("Personagens").child(persoID).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -416,10 +411,6 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
     public void onPause() {
         Log.e("DEBUG", "OnPause of loginFragment");
         gravaPersonagem();
-        Bundle bundle = new Bundle();
-        bundle.putString("persoID", persoID);
-        getActivity().getIntent().removeExtra("persoID");
-        getActivity().getIntent().putExtras(bundle);
         super.onPause();
     }
 }

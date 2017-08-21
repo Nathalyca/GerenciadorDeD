@@ -1,5 +1,8 @@
 package com.tcc.natha.gerenciadordd;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.location.Address;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -168,6 +171,43 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
 
             }
         });
+
+        listaPerso.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                Log.d(TAG, "OnItemLongClickListener");
+                Toast.makeText(getActivity().getApplicationContext(), perso.get(position).getNomePerso(), Toast.LENGTH_SHORT ).show();
+                Log.d(TAG, perso.get(position).getNomePerso());
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+                alert.setTitle("Deletar Personagem");
+                alert.setMessage("Você tem certeza que deseja deletar "+perso.get(position).getNomePerso()+" ?");
+                alert.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        mDatabase.child("Users").child(user.getUid()).child("Personagens").child(perso.get(position).getPersoID()).removeValue();
+                        mDatabase.child("Personagens").child(perso.get(position).getPersoID()).removeValue();
+
+                        dialog.dismiss();
+                    }
+                });
+
+                alert.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                alert.show();
+                // -------------------------------
+                return true;
+            }
+        });
         return view;
     }
 
@@ -206,11 +246,25 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
         if (i == R.id.cria_pers_button) {
             Log.d(TAG, "chama grava personagem");
 
-            // Fragments
+            //pega as fragment para remover
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            List<Fragment> fragmentList = fragmentManager.getFragments();
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            for (Fragment fragment: fragmentList ) {
+                if(fragment != null){
+                    transaction.remove(fragment);
+                }
+            }
+            transaction.commit();
+
+            Bundle bundle = new Bundle();
+            bundle.putString("persoID", mDatabase.child("Personagens").push().getKey());
+            getActivity().getIntent().removeExtra("persoID");
+            getActivity().getIntent().putExtras(bundle);
+
+            // Fragments
+            transaction = getFragmentManager().beginTransaction();
             Fragment viewPagePersonagem = new ViewPagePersonagem();
-
-
 
             transaction.replace(R.id.headlines_fragment, viewPagePersonagem);
 

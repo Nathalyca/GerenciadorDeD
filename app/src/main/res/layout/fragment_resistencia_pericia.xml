@@ -55,7 +55,7 @@
                         android:id="@+id/field_resForca"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_resForca"
@@ -82,7 +82,7 @@
                         android:id="@+id/field_resSabedoria"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_resSabedoria"
@@ -109,7 +109,7 @@
                         android:id="@+id/field_resConstituicao"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_resConstituicao"
@@ -143,7 +143,7 @@
                         android:id="@+id/field_resCarisma"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_resCarisma"
@@ -169,7 +169,7 @@
                         android:id="@+id/field_resDestreza"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_resDestreza"
@@ -195,7 +195,7 @@
                         android:id="@+id/field_resInteligencia"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_resInteligencia"
@@ -244,7 +244,7 @@
                         android:id="@+id/field_acrobacia"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_acrobacia"
@@ -270,7 +270,7 @@
                         android:id="@+id/field_arcanismo"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_arcanismo"
@@ -304,7 +304,7 @@
                         android:id="@+id/field_atletismo"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_atletismo"
@@ -330,7 +330,7 @@
                         android:id="@+id/field_atuacao"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_atuacao"
@@ -364,7 +364,7 @@
                         android:id="@+id/field_blefar"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_blefar"
@@ -390,7 +390,7 @@
                         android:id="@+id/field_furtividade"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_furtividade"
@@ -424,7 +424,7 @@
                         android:id="@+id/field_historia"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_historia"
@@ -450,7 +450,7 @@
                         android:id="@+id/field_intimidacao"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_intimidacao"
@@ -484,7 +484,7 @@
                         android:id="@+id/field_intuicao"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_intuicao"
@@ -510,7 +510,7 @@
                         android:id="@+id/field_investigacao"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_investigacao"
@@ -545,7 +545,7 @@
                         android:id="@+id/field_lidarAnimais"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_lidarAnimais"
@@ -571,7 +571,7 @@
                         android:id="@+id/field_medicina"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_medicina"
@@ -606,7 +606,7 @@
                         android:id="@+id/field_natureza"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_natureza"
@@ -632,7 +632,7 @@
                         android:id="@+id/field_percepcao"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_percepcao"
@@ -667,7 +667,7 @@
                         android:id="@+id/field_predestinacao"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_predestinacao"
@@ -693,7 +693,7 @@
                         android:id="@+id/field_persuasao"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_persuasao"
@@ -728,7 +728,7 @@
                         android:id="@+id/field_religiao"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_religiao"
@@ -754,7 +754,7 @@
                         android:id="@+id/field_sobrevivencia"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <TextView
                         android:id="@+id/text_sobrevivencia"

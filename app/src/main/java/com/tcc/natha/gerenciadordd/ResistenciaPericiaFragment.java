@@ -45,15 +45,27 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
 
     private EditText mResForcaField;
 
+    private CheckBox mResForcaBoolField;
+
     private EditText mResSabedoriaField;
+
+    private CheckBox mResSabedoriaBoolField;
 
     private EditText mResConstituicaoField;
 
+    private CheckBox mResConstituicaoBoolField;
+
     private EditText mResCarismaField;
+
+    private CheckBox mResCarismaBoolField;
 
     private EditText mResDestrezaField;
 
+    private CheckBox mResDestrezaBoolField;
+
     private EditText mResInteligenciaField;
+
+    private CheckBox mResInteligenciaBoolField;
 
     private EditText mAcrobaciaField;
 
@@ -186,11 +198,17 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
 
         // Views
         mResForcaField = (EditText) view.findViewById(R.id.field_resForca);
+        mResForcaBoolField = (CheckBox) view.findViewById(R.id.checkBox_resForca);
         mResSabedoriaField  = (EditText) view.findViewById(R.id.field_resSabedoria);
+        mResSabedoriaBoolField = (CheckBox) view.findViewById(R.id.checkBox_resSabedoria);
         mResConstituicaoField  = (EditText) view.findViewById(R.id.field_resConstituicao);
+        mResConstituicaoBoolField = (CheckBox) view.findViewById(R.id.checkBox_resConstituicao);
         mResCarismaField  = (EditText) view.findViewById(R.id.field_resCarisma);
+        mResCarismaBoolField = (CheckBox) view.findViewById(R.id.checkBox_resCarisma);
         mResDestrezaField  = (EditText) view.findViewById(R.id.field_resDestreza);
+        mResDestrezaBoolField = (CheckBox) view.findViewById(R.id.checkBox_resDestreza);
         mResInteligenciaField  = (EditText) view.findViewById(R.id.field_resInteligencia);
+        mResInteligenciaBoolField = (CheckBox) view.findViewById(R.id.checkBox_resInteligencia);
         mAcrobaciaField  = (EditText) view.findViewById(R.id.field_acrobacia);
         mAcrobaciaBoolField  = (CheckBox) view.findViewById(R.id.checkBox_acrobacia);
         mArcanismoField = (EditText) view.findViewById(R.id.field_arcanismo);
@@ -255,11 +273,17 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
                             pers = dataSnapshot.getValue(Personagem.class);
                             if(pers != null){
                                 mResForcaField.setText(pers.getResForca());
+                                mResForcaBoolField.setChecked(pers.isResForcaBool());
                                 mResSabedoriaField.setText(pers.getResSabedoria());
+                                mResSabedoriaBoolField.setChecked(pers.isResSabedoriaBool());
                                 mResConstituicaoField.setText(pers.getResConstituicao());
+                                mResConstituicaoBoolField.setChecked(pers.isResConstituicaoBool());
                                 mResCarismaField.setText(pers.getResCarisma());
+                                mResCarismaBoolField.setChecked(pers.isResCarismaBool());
                                 mResDestrezaField.setText(pers.getResDestreza());
+                                mResDestrezaBoolField.setChecked(pers.isResDestrezaBool());
                                 mResInteligenciaField.setText(pers.getResInteligencia());
+                                mResInteligenciaBoolField.setChecked(pers.isResInteligenciaBool());
                                 mAcrobaciaField.setText(pers.getAcrobacia());
                                 mAcrobaciaBoolField.setChecked(pers.isAcrobaciaBool());
                                 mArcanismoField.setText(pers.getArcanismo());
@@ -355,11 +379,17 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
         Log.d(TAG, "grava personagem");
 
         pers.setResForca(mResForcaField.getText().toString());
+        pers.setResForcaBool(mResForcaBoolField.isChecked());
         pers.setResSabedoria(mResSabedoriaField.getText().toString());
+        pers.setResSabedoriaBool(mResSabedoriaBoolField.isChecked());
         pers.setResConstituicao(mResConstituicaoField.getText().toString());
+        pers.setResConstituicaoBool(mResConstituicaoBoolField.isChecked());
         pers.setResCarisma(mResCarismaField.getText().toString());
+        pers.setResCarismaBool(mResCarismaBoolField.isChecked());
         pers.setResDestreza(mResDestrezaField.getText().toString());
+        pers.setResDestrezaBool(mResDestrezaBoolField.isChecked());
         pers.setResInteligencia(mResInteligenciaField.getText().toString());
+        pers.setResInteligenciaBool(mResInteligenciaBoolField.isChecked());
         pers.setAcrobacia(mAcrobaciaField.getText().toString());
         pers.setAcrobaciaBool(mAcrobaciaBoolField.isChecked());
         pers.setArcanismo(mArcanismoField.getText().toString());

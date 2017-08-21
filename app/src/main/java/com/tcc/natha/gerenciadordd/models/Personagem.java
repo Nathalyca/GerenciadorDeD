@@ -64,15 +64,27 @@ public class Personagem {
 
     private String resForca;
 
+    private Boolean resForcaBool;
+
     private String resSabedoria;
+
+    private Boolean resSabedoriaBool;
 
     private String resConstituicao;
 
+    private Boolean resConstituicaoBool;
+
     private String resCarisma;
+
+    private Boolean resCarismaBool;
 
     private String resDestreza;
 
+    private Boolean resDestrezaBool;
+
     private String resInteligencia;
+
+    private Boolean resInteligenciaBool;
 
     private String acrobacia;
 
@@ -570,6 +582,54 @@ public class Personagem {
 
     public void setSobrevivencia(String sobrevivencia) {
         this.sobrevivencia = sobrevivencia;
+    }
+
+    public Boolean isResForcaBool() {
+        return resForcaBool;
+    }
+
+    public void setResForcaBool(Boolean resForcaBool) {
+        this.resForcaBool = resForcaBool;
+    }
+
+    public Boolean isResCarismaBool() {
+        return resCarismaBool;
+    }
+
+    public void setResCarismaBool(Boolean resCarismaBool) {
+        this.resCarismaBool = resCarismaBool;
+    }
+
+    public Boolean isResConstituicaoBool() {
+        return resConstituicaoBool;
+    }
+
+    public void setResConstituicaoBool(Boolean resConstituicaoBool) {
+        this.resConstituicaoBool = resConstituicaoBool;
+    }
+
+    public Boolean isResDestrezaBool() {
+        return resDestrezaBool;
+    }
+
+    public void setResDestrezaBool(Boolean resDestrezaBool) {
+        this.resDestrezaBool = resDestrezaBool;
+    }
+
+    public Boolean isResInteligenciaBool() {
+        return resInteligenciaBool;
+    }
+
+    public void setResInteligenciaBool(Boolean resInteligenciaBool) {
+        this.resInteligenciaBool = resInteligenciaBool;
+    }
+
+    public Boolean isResSabedoriaBool() {
+        return resSabedoriaBool;
+    }
+
+    public void setResSabedoriaBool(Boolean resSabedoriaBool) {
+        this.resSabedoriaBool = resSabedoriaBool;
     }
 
     public boolean isAcrobaciaBool() {

@@ -1,0 +1,86 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PersonagemFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="top">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/cria_aven_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/criarAven"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+            <Button
+                android:id="@+id/proc_aven_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/procuraAven"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/text_listaAventuraMestre"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:text="@string/listaAventuraMestre"
+              android:textStyle="bold" />
+
+              <ListView
+                  android:id="@+id/listaAventuraMestre"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"></ListView>
+
+          </LinearLayout>
+
+          <LinearLayout
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:gravity="top"
+             android:orientation="vertical">
+
+             <TextView
+                 android:id="@+id/text_listaAventuraJogador"
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center_horizontal"
+                 android:text="@string/listaAventuraJogador"
+                 android:textStyle="bold" />
+
+             <ListView
+                 android:id="@+id/listaAventuraJogador"
+                 android:layout_width="fill_parent"
+                 android:layout_height="fill_parent"></ListView>
+
+         </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

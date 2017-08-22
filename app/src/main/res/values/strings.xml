@@ -152,4 +152,8 @@
     <string name="religiao">Religião(Int)</string>
     <string name="sobrevivencia">Sobrevivência(Sab)</string>
     <string name="persuasao">Persuasão(Car)</string>
+    <string name="criarAven">Criar nova aventura</string>
+    <string name="procuraAven">Procurar aventura</string>
+    <string name="listaAventuraMestre">Lista de Aventuras (Mestre)</string>
+    <string name="listaAventuraJogador">Lista de Aventuras (Jogador)</string>
 </resources>

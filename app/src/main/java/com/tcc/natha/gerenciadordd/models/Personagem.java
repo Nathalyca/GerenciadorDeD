@@ -64,27 +64,27 @@ public class Personagem {
 
     private String resForca;
 
-    private Boolean resForcaBool;
+    private boolean resForcaBool;
 
     private String resSabedoria;
 
-    private Boolean resSabedoriaBool;
+    private boolean resSabedoriaBool;
 
     private String resConstituicao;
 
-    private Boolean resConstituicaoBool;
+    private boolean resConstituicaoBool;
 
     private String resCarisma;
 
-    private Boolean resCarismaBool;
+    private boolean resCarismaBool;
 
     private String resDestreza;
 
-    private Boolean resDestrezaBool;
+    private boolean resDestrezaBool;
 
     private String resInteligencia;
 
-    private Boolean resInteligenciaBool;
+    private boolean resInteligenciaBool;
 
     private String acrobacia;
 

@@ -446,8 +446,6 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
         }
     }
 
-
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -458,6 +456,7 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

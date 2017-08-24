@@ -374,12 +374,11 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
 
         Log.d(TAG, "User" + user);
 
-
-
         Log.d(TAG, "grava personagem");
 
         pers.setResForca(mResForcaField.getText().toString());
         pers.setResForcaBool(mResForcaBoolField.isChecked());
+        Log.d(TAG, String.valueOf(mResForcaBoolField.isChecked()));
         pers.setResSabedoria(mResSabedoriaField.getText().toString());
         pers.setResSabedoriaBool(mResSabedoriaBoolField.isChecked());
         pers.setResConstituicao(mResConstituicaoField.getText().toString());
@@ -390,6 +389,13 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
         pers.setResDestrezaBool(mResDestrezaBoolField.isChecked());
         pers.setResInteligencia(mResInteligenciaField.getText().toString());
         pers.setResInteligenciaBool(mResInteligenciaBoolField.isChecked());
+        Log.d(TAG, "isResForcaBool()"+ String.valueOf(pers.isResForcaBool()));
+        Log.d(TAG, "isResSabedoriaBool"+ String.valueOf(pers.isResSabedoriaBool()));
+        Log.d(TAG, "isResConstituicaoBool"+ String.valueOf(pers.isResConstituicaoBool()));
+        Log.d(TAG, "isResCarismaBool"+ String.valueOf(pers.isResCarismaBool()));
+        Log.d(TAG, "isResDestrezaBool"+ String.valueOf(pers.isResDestrezaBool()));
+        Log.d(TAG, "isResInteligenciaBool"+ String.valueOf(pers.isResInteligenciaBool()));
+
         pers.setAcrobacia(mAcrobaciaField.getText().toString());
         pers.setAcrobaciaBool(mAcrobaciaBoolField.isChecked());
         pers.setArcanismo(mArcanismoField.getText().toString());

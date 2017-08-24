@@ -85,7 +85,7 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_personagem, container, false);
-
+        getActivity().setTitle("Personagem");
         Log.d(TAG, "onCreateView");
         //transaction.addToBackStack(null);
         //transaction.commit();

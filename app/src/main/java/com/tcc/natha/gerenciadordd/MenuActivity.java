@@ -25,7 +25,8 @@ public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         PersonagemFragment.OnFragmentInteractionListener,
         BlankFragment.OnFragmentInteractionListener,
-        BlankFragment2.OnFragmentInteractionListener,
+        AventuraFragment.OnFragmentInteractionListener,
+        //BlankFragment2.OnFragmentInteractionListener,
         EditPersonagemFragment.OnFragmentInteractionListener,
         ViewPagePersonagem.OnFragmentInteractionListener,
         ResistenciaPericiaFragment.OnFragmentInteractionListener
@@ -108,18 +109,16 @@ public class MenuActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-
-
-
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         Fragment personagemFragment = new PersonagemFragment();
         Fragment blankFragment = new BlankFragment();
-        Fragment blankFragment2 = new BlankFragment2();
+        Fragment aventuraFragment = new AventuraFragment();
+        //Fragment blankFragment2 = new BlankFragment2();
 
         if (id == R.id.nav_camera) {
             transaction.replace(R.id.headlines_fragment, personagemFragment);
         } else if (id == R.id.nav_gallery) {
-            transaction.replace(R.id.headlines_fragment, blankFragment2);
+            transaction.replace(R.id.headlines_fragment, aventuraFragment);
         } else if (id == R.id.nav_slideshow) {
             transaction.replace(R.id.headlines_fragment, blankFragment);
         } else if (id == R.id.nav_manage) {

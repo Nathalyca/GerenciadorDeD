@@ -1,0 +1,87 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tcc.natha.gerenciadordd.EditPersonagemFragment"
+    android:background="@color/grey_100">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3.85"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_aventuraMestre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/aventuraMestre"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_nomeavent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nomeavent" />
+
+                <EditText
+                    android:id="@+id/field_nomeavent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="textPersonName"/>
+
+                <TextView
+                    android:id="@+id/text_numavent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/numavent" />
+
+                <EditText
+                    android:id="@+id/text_numaventtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/numaventtext"
+                    android:inputType="number"
+                    android:freezesText="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/gravar_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gravar"
+                    android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

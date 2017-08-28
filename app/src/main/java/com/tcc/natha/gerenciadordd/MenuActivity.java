@@ -26,8 +26,9 @@ public class MenuActivity extends AppCompatActivity
         PersonagemFragment.OnFragmentInteractionListener,
         BlankFragment.OnFragmentInteractionListener,
         AventuraFragment.OnFragmentInteractionListener,
-        //BlankFragment2.OnFragmentInteractionListener,
+        BlankFragment2.OnFragmentInteractionListener,
         EditPersonagemFragment.OnFragmentInteractionListener,
+        EditAventuraFragment.OnFragmentInteractionListener,
         ViewPagePersonagem.OnFragmentInteractionListener,
         ResistenciaPericiaFragment.OnFragmentInteractionListener
 {

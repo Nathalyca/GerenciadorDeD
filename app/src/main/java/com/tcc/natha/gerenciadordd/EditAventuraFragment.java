@@ -20,8 +20,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tcc.natha.gerenciadordd.models.AventuraMestreItem;
 import com.tcc.natha.gerenciadordd.models.Personagem;
 import com.tcc.natha.gerenciadordd.models.PersonagemItem;
+import com.tcc.natha.gerenciadordd.models.SequencialAventura;
 
 
 /**
@@ -46,56 +48,31 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
 
 
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private static final String TAG = "EditPersonagemFragment";
+    private static final String TAG = "EditAventuraFragment";
     private Context context;
-    private DatabaseReference mPersReference;
+    private DatabaseReference mSeqReference;
     private DatabaseReference mDatabase;
 
-    private EditText mNomepersField;
-    private EditText mRacaField;
-    private EditText mSubRacaField;
-    private EditText mClasseField;
-    private EditText mNivelField;
-    private EditText mAntecedenteField;
-    private EditText mTendenciaField;
-    private EditText mClasseArmadField;
-    private EditText mIniciativaField;
-    private EditText mDeslocField;
-    private EditText mJogadorField;
-    private EditText mXpField;
-    private EditText mPvTotalField;
-    private EditText mPvAtualField;
-    private EditText mPvTempField;
-    private EditText mForcaField;
-    private EditText mDestrezaField;
-    private EditText mConstituicaoField;
-    private EditText mInteligenciaField;
-    private EditText mSabedoriaField;
-    private EditText mCarismaField;
-    private EditText mForca2Field;
-    private EditText mDestreza2Field;
-    private EditText mConstituicao2Field;
-    private EditText mInteligencia2Field;
-    private EditText mSabedoria2Field;
-    private EditText mCarisma2Field;
+    private EditText mNomeAventField;
+    private EditText mNumAventTextField;
 
     private Button gravaButton;
 
-    private Personagem pers;
+    private AventuraMestreItem avent;
+
+    private SequencialAventura seqAvent;
+
+    private int sequencialDefault = 1;
+
+    private String sequencialAux;
 
     private View view;
 
-    private String uID;
-
-
     private FirebaseUser user;
-    private String persoID;
-
 
     public EditAventuraFragment() {
         // Required empty public constructor
     }
-
 
     /**
      * Use this factory method to create a new instance of
@@ -105,6 +82,7 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
      * @param param2 Parameter 2.
      * @return A new instance of fragment EditPersonagemFragment.
      */
+
     // TODO: Rename and change types and number of parameters
     public static EditAventuraFragment newInstance(String param1, String param2) {
         EditAventuraFragment fragment = new EditAventuraFragment();
@@ -122,13 +100,13 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
+/*
         Bundle b = getActivity().getIntent().getExtras();
         if(b!= null){
             persoID = b.getString("persoID", null);
         }
         Log.d(TAG, "persoID:" + persoID);
-        pers = new Personagem();
+        pers = new Personagem();*/
 
     }
 
@@ -136,42 +114,14 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_edit_personagem, container, false);
+        view = inflater.inflate(R.layout.fragment_edit_aventura, container, false);
 
         Log.d(TAG, "onCreate");
 
         context = getActivity().getApplicationContext();
 
         // Views
-        mNomepersField = (EditText) view.findViewById(R.id.field_nomepers);
-        mRacaField = (EditText) view.findViewById(R.id.field_raca);
-        mSubRacaField = (EditText) view.findViewById(R.id.field_subraca);
-        mClasseField = (EditText) view.findViewById(R.id.field_classe);
-        mNivelField = (EditText) view.findViewById(R.id.field_nivel);
-        mAntecedenteField = (EditText) view.findViewById(R.id.field_antecedente);
-        mTendenciaField = (EditText) view.findViewById(R.id.field_tendencia);
-        mClasseArmadField = (EditText) view.findViewById(R.id.field_classeArmad);
-        mIniciativaField = (EditText) view.findViewById(R.id.field_iniciativa);
-        mDeslocField = (EditText) view.findViewById(R.id.field_desloc);
-        mJogadorField = (EditText) view.findViewById(R.id.field_jogador);
-        mXpField = (EditText) view.findViewById(R.id.field_xp);
-        mPvTotalField = (EditText) view.findViewById(R.id.field_pv_total);
-        mPvTempField = (EditText) view.findViewById(R.id.field_pv_temp);
-        mPvAtualField = (EditText) view.findViewById(R.id.field_pv_atual);
-        mForcaField = (EditText)
-                view.findViewById(R.id.field_forca);
-        mDestrezaField = (EditText) view.findViewById(R.id.field_destreza);
-        mConstituicaoField = (EditText) view.findViewById(R.id.field_constituicao);
-        mInteligenciaField = (EditText) view.findViewById(R.id.field_inteligencia);
-        mSabedoriaField = (EditText) view.findViewById(R.id.field_sabedoria);
-        mCarismaField = (EditText) view.findViewById(R.id.field_carisma);
-        mForca2Field = (EditText)
-                view.findViewById(R.id.field_forca2);
-        mDestreza2Field = (EditText) view.findViewById(R.id.field_destreza2);
-        mConstituicao2Field = (EditText) view.findViewById(R.id.field_constituicao2);
-        mInteligencia2Field = (EditText) view.findViewById(R.id.field_inteligencia2);
-        mSabedoria2Field = (EditText) view.findViewById(R.id.field_sabedoria2);
-        mCarisma2Field = (EditText) view.findViewById(R.id.field_carisma2);
+        mNomeAventField = (EditText) view.findViewById(R.id.field_nomeavent);
 
         // Buttons
         gravaButton = (Button) view.findViewById(R.id.gravar_button);
@@ -179,8 +129,8 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
 
         //BD
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mPersReference = FirebaseDatabase.getInstance().getReference()
-                .child("personagens");
+        mSeqReference = FirebaseDatabase.getInstance().getReference()
+                .child("SequencialAventura");
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -195,7 +145,22 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     Log.d(TAG, "onAuthStateChanged:email:" + user.getEmail());
 
-                    mDatabase.child("Personagens").child(persoID).addValueEventListener(new ValueEventListener() {
+                    mDatabase.child("SequencialAventura").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            seqAvent = dataSnapshot.getValue(SequencialAventura.class);
+                            if(seqAvent != null){
+                                sequencialAux = String.valueOf(seqAvent.getSeqCodAventura()+1);
+                                mNumAventTextField.setText(sequencialAux);
+                                Log.d(TAG, "mNumAventTextField" + mNumAventTextField);
+
+                            }else {
+                                seqAvent.setSeqCodAventura(sequencialDefault);
+                                Log.d(TAG, "seqAvent.getSeqCodAventura()" + seqAvent.getSeqCodAventura());
+                                mNumAventTextField.setText(String.valueOf(seqAvent.getSeqCodAventura()));
+                                Log.d(TAG, "mNumAventTextField" + mNumAventTextField);
+                            }
+ /*                   mDatabase.child("Personagens").child(persoID).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             pers = dataSnapshot.getValue(Personagem.class);
@@ -229,7 +194,7 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
                                 mCarisma2Field.setText(pers.getCarisma2());
                             }else{
                                 pers = new Personagem(user.getUid());
-                            }
+                            }*/
                         }
 
                         @Override
@@ -279,72 +244,21 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
     }
 
 
-    public void gravaPersonagem(){
+    public void gravaAventura(){
 
         Log.d(TAG, "User" + user);
 
-        Log.d(TAG, "grava personagem");
+        Log.d(TAG, "grava aventura");
 
-        pers.setNomePerso(mNomepersField.getText().toString());
+        avent.setNomeAventura(mNomeAventField.getText().toString());
 
-        pers.setRaca(mRacaField.getText().toString());
+        avent.setSeqAventura(seqAvent.getSeqCodAventura());
 
-        pers.setSubRaca (mSubRacaField.getText().toString());
+        String key = mDatabase.child("Aventura").push().getKey();
 
-        pers.setClasse(mClasseField.getText().toString());
+        mDatabase.child("Aventura").child(key).setValue(avent);
 
-        pers.setNivel (mNivelField.getText().toString());
-
-        pers.setAntecedente (mAntecedenteField.getText().toString());
-
-        pers.setTendencia (mTendenciaField.getText().toString());
-
-        //      pers.setNivel (Integer.parseInt(mNivelField.getText().toString()));
-
-        pers.setClasseArmad(mClasseArmadField.getText().toString());
-
-        pers.setIniciativa (mIniciativaField.getText().toString());
-
-        pers.setDesloc(mDeslocField.getText().toString());
-
-        pers.setJogador(mJogadorField.getText().toString());
-
-        pers.setXp(mXpField.getText().toString());
-
-        pers.setPvTotal (mPvTotalField.getText().toString());
-
-        pers.setPvAtual (mPvAtualField.getText().toString());
-
-        pers.setPvTemp (mPvTempField.getText().toString());
-
-        pers.setForca (mForcaField.getText().toString());
-
-        pers.setDestreza (mDestrezaField.getText().toString());
-
-        pers.setConstituicao (mConstituicaoField.getText().toString());
-
-        pers.setInteligencia (mInteligenciaField.getText().toString());
-
-        pers.setSabedoria (mSabedoriaField.getText().toString());
-
-        pers.setCarisma (mCarismaField.getText().toString());
-
-        pers.setForca2 (mForca2Field.getText().toString());
-
-        pers.setDestreza2 (mDestreza2Field.getText().toString());
-
-        pers.setConstituicao2 (mConstituicao2Field.getText().toString());
-
-        pers.setInteligencia2 (mInteligencia2Field.getText().toString());
-
-        pers.setSabedoria2 (mSabedoria2Field.getText().toString());
-
-        pers.setCarisma2 (mCarisma2Field.getText().toString());
-
-        //String key = mDatabase.child("Personagens").push().getKey();
-        mDatabase.child("Personagens").child(persoID).setValue(pers);
-        PersonagemItem personagemItem = new PersonagemItem(persoID,pers.getNomePerso(), pers.getClasse(), pers.getNivel());
-       mDatabase.child("Users").child(user.getUid()).child("Personagens").child(persoID).setValue(personagemItem);
+        mDatabase.child("SequencialAventura").setValue(seqAvent);
 
        // Log.d(TAG, "persid: "+ mDatabase.child("Users").child(user.getUid()).child("Personagens").child(key).toString());
         //Log.d(TAG, "persid: "+ key);
@@ -387,8 +301,8 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
         int i = v.getId();
         Log.d(TAG, "onClick");
         if (i == R.id.gravar_button) {
-            Log.d(TAG, "chama grava personagem");
-            gravaPersonagem();
+            Log.d(TAG, "chama grava aventura");
+            gravaAventura();
         }
     }
 
@@ -410,7 +324,7 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
     @Override
     public void onPause() {
         Log.e("DEBUG", "OnPause of loginFragment");
-        gravaPersonagem();
+        gravaAventura();
         super.onPause();
     }
 }

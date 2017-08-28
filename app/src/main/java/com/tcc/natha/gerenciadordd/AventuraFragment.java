@@ -23,7 +23,7 @@ import java.util.List;
  * Use the {@link BlankFragment2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AventuraFragment extends Fragment implements View.OnClickListener {
+public class AventuraFragment extends Fragment implements View.OnClickListener, EditAventuraFragment.OnFragmentInteractionListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -126,9 +126,9 @@ public class AventuraFragment extends Fragment implements View.OnClickListener {
 */
             // Fragments
             transaction = getFragmentManager().beginTransaction();
-            Fragment blankfragment = new BlankFragment();
+            Fragment editAventuraFragment = new EditAventuraFragment();
 
-            transaction.replace(R.id.headlines_fragment, blankfragment);
+            transaction.replace(R.id.headlines_fragment, editAventuraFragment);
 
             transaction.addToBackStack(null);
             transaction.commit();
@@ -193,6 +193,11 @@ public class AventuraFragment extends Fragment implements View.OnClickListener {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     /**

@@ -64,7 +64,7 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
 
     private int sequencialDefault = 1;
 
-    private String sequencialAux;
+    private int sequencialAux;
 
     private View view;
 
@@ -122,6 +122,7 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
 
         // Views
         mNomeAventField = (EditText) view.findViewById(R.id.field_nomeavent);
+        mNumAventTextField = (EditText) view.findViewById(R.id.text_numaventtext);
 
         // Buttons
         gravaButton = (Button) view.findViewById(R.id.gravar_button);
@@ -150,47 +151,21 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             seqAvent = dataSnapshot.getValue(SequencialAventura.class);
                             if(seqAvent != null){
-                                sequencialAux = String.valueOf(seqAvent.getSeqCodAventura()+1);
-                                mNumAventTextField.setText(sequencialAux);
+                                seqAvent.setSeqCodAventura(seqAvent.getSeqCodAventura()+1);
                                 Log.d(TAG, "mNumAventTextField" + mNumAventTextField);
-
                             }else {
+                                seqAvent = new SequencialAventura();
                                 seqAvent.setSeqCodAventura(sequencialDefault);
                                 Log.d(TAG, "seqAvent.getSeqCodAventura()" + seqAvent.getSeqCodAventura());
-                                mNumAventTextField.setText(String.valueOf(seqAvent.getSeqCodAventura()));
                                 Log.d(TAG, "mNumAventTextField" + mNumAventTextField);
                             }
+                            mNumAventTextField.setText(seqAvent.getSeqCodAventura()+"");
  /*                   mDatabase.child("Personagens").child(persoID).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             pers = dataSnapshot.getValue(Personagem.class);
                             if(pers != null){
                                 mNomepersField.setText(pers.getNomePerso());
-                                mRacaField.setText(pers.getRaca());
-                                mSubRacaField.setText(pers.getSubRaca());
-                                mClasseField.setText(pers.getClasse());
-                                mNivelField.setText(pers.getNivel());
-                                mAntecedenteField.setText(pers.getAntecedente());
-                                mTendenciaField.setText(pers.getTendencia());
-                                mClasseArmadField.setText(pers.getClasseArmad());
-                                mIniciativaField.setText(pers.getIniciativa());
-                                mDeslocField.setText(pers.getDesloc());
-                                mJogadorField.setText(pers.getJogador());
-                                mXpField.setText(pers.getXp());
-                                mPvTotalField.setText(pers.getPvTotal());
-                                mPvAtualField.setText(pers.getPvAtual());
-                                mPvTempField.setText(pers.getPvTemp());
-                                mForcaField.setText(pers.getForca());
-                                mDestrezaField.setText(pers.getDestreza());
-                                mConstituicaoField.setText(pers.getConstituicao());
-                                mInteligenciaField.setText(pers.getInteligencia());
-                                mSabedoriaField.setText(pers.getSabedoria());
-                                mCarismaField.setText(pers.getCarisma());
-                                mForca2Field.setText(pers.getForca2());
-                                mDestreza2Field.setText(pers.getDestreza2());
-                                mConstituicao2Field.setText(pers.getConstituicao2());
-                                mInteligencia2Field.setText(pers.getInteligencia2());
-                                mSabedoria2Field.setText(pers.getSabedoria2());
                                 mCarisma2Field.setText(pers.getCarisma2());
                             }else{
                                 pers = new Personagem(user.getUid());
@@ -249,7 +224,7 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
         Log.d(TAG, "User" + user);
 
         Log.d(TAG, "grava aventura");
-
+        avent = new AventuraMestreItem();
         avent.setNomeAventura(mNomeAventField.getText().toString());
 
         avent.setSeqAventura(seqAvent.getSeqCodAventura());

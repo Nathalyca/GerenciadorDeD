@@ -62,6 +62,8 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
 
     private SequencialAventura seqAvent;
 
+    private String aventID;
+
     private int sequencialDefault = 1;
 
     private int sequencialAux;
@@ -100,14 +102,14 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-/*
-        Bundle b = getActivity().getIntent().getExtras();
-        if(b!= null){
-            persoID = b.getString("persoID", null);
-        }
-        Log.d(TAG, "persoID:" + persoID);
-        pers = new Personagem();*/
 
+        Bundle b = getActivity().getIntent().getExtras();
+        seqAvent = new SequencialAventura();
+        if(b!= null){
+            seqAvent.setSeqCodAventura(b.getInt("seqAventura", 0));
+        }
+        Log.d(TAG, "b.getInt" + b);
+        Log.d(TAG, "seqAventura:" + seqAvent.getSeqCodAventura());
     }
 
     @Override
@@ -146,20 +148,19 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     Log.d(TAG, "onAuthStateChanged:email:" + user.getEmail());
 
-                    mDatabase.child("SequencialAventura").addValueEventListener(new ValueEventListener() {
+                    mDatabase.child("Aventura").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            seqAvent = dataSnapshot.getValue(SequencialAventura.class);
-                            if(seqAvent != null){
-                                seqAvent.setSeqCodAventura(seqAvent.getSeqCodAventura()+1);
-                                Log.d(TAG, "mNumAventTextField" + mNumAventTextField);
-                            }else {
-                                seqAvent = new SequencialAventura();
-                                seqAvent.setSeqCodAventura(sequencialDefault);
-                                Log.d(TAG, "seqAvent.getSeqCodAventura()" + seqAvent.getSeqCodAventura());
-                                Log.d(TAG, "mNumAventTextField" + mNumAventTextField);
-                            }
-                            mNumAventTextField.setText(seqAvent.getSeqCodAventura()+"");
+                            avent = dataSnapshot.getValue(AventuraMestreItem.class);
+                            if (avent != null) {
+
+
+                            }else{
+
+                                avent = new AventuraMestreItem();
+                                aventID = mDatabase.child("Aventura").push().getKey();
+
+                                mNumAventTextField.setText(seqAvent.getSeqCodAventura() + "");
  /*                   mDatabase.child("Personagens").child(persoID).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -170,6 +171,7 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
                             }else{
                                 pers = new Personagem(user.getUid());
                             }*/
+                            }
                         }
 
                         @Override
@@ -224,14 +226,12 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
         Log.d(TAG, "User" + user);
 
         Log.d(TAG, "grava aventura");
-        avent = new AventuraMestreItem();
+
         avent.setNomeAventura(mNomeAventField.getText().toString());
 
         avent.setSeqAventura(seqAvent.getSeqCodAventura());
 
-        String key = mDatabase.child("Aventura").push().getKey();
-
-        mDatabase.child("Aventura").child(key).setValue(avent);
+        mDatabase.child("Aventura").child(aventID).setValue(avent);
 
         mDatabase.child("SequencialAventura").setValue(seqAvent);
 

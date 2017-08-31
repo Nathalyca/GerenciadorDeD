@@ -12,6 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.tcc.natha.gerenciadordd.models.SequencialAventura;
+
 import java.util.List;
 
 
@@ -40,7 +49,15 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
     private Button criaAventuraButton;
     private Button procuraAventuraButton;
 
+    private SequencialAventura seqAvent;
+
+    private int sequencialDefault = 1;
+
     private OnFragmentInteractionListener mListener;
+
+    private static FirebaseUser user;
+    private static FirebaseAuth.AuthStateListener mAuthListener;
+    private static DatabaseReference mDatabase;
 
     public AventuraFragment() {
         // Required empty public constructor
@@ -81,6 +98,7 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
         Log.d(TAG, "onCreateView");
         //transaction.addToBackStack(null);
         //transaction.commit();
+
         // Buttons
         criaAventuraButton = (Button) view.findViewById(R.id.cria_aven_button);
         criaAventuraButton.setOnClickListener(this);
@@ -88,6 +106,7 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
         procuraAventuraButton = (Button) view.findViewById(R.id.proc_aven_button);
         procuraAventuraButton.setOnClickListener(this);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Inflate the layout for this fragment
         return view;
@@ -119,11 +138,36 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
             }
             transaction.commit();
 
-          /*  Bundle bundle = new Bundle();
-            bundle.putString("persoID", mDatabase.child("Personagens").push().getKey());
-            getActivity().getIntent().removeExtra("persoID");
+            mDatabase.child("SequencialAventura").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    seqAvent = dataSnapshot.getValue(SequencialAventura.class);
+                    if (seqAvent != null) {
+                        seqAvent.setSeqCodAventura(seqAvent.getSeqCodAventura() + 1);
+                        Log.d(TAG, "seqAvent.getSeqCodAventura()" + seqAvent.getSeqCodAventura());
+                        Log.d(TAG, "seqAvent" + seqAvent);
+
+                    } else {
+                        seqAvent = new SequencialAventura();
+                        seqAvent.setSeqCodAventura(sequencialDefault);
+                        Log.d(TAG, "seqAvent.getSeqCodAventura()" + seqAvent.getSeqCodAventura());
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    System.out.println("The read failed: " + databaseError.getCode());
+                }
+            });
+            Log.d(TAG, "seqAvent.getSeqCodAventura()" + seqAvent.getSeqCodAventura());
+            seqAvent = new SequencialAventura();
+            Bundle bundle = new Bundle();
+            bundle.putInt("seqAventura", seqAvent.getSeqCodAventura());
+          //  bundle.putString("seqAventura", seqAvent.getSeqCodAventura() + "");
+            getActivity().getIntent().removeExtra("SeqCodAventura");
             getActivity().getIntent().putExtras(bundle);
-*/
+
             // Fragments
             transaction = getFragmentManager().beginTransaction();
             Fragment editAventuraFragment = new EditAventuraFragment();

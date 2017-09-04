@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class LoginActivity extends AppCompatActivity implements
         View.OnClickListener{
@@ -30,6 +32,8 @@ public class LoginActivity extends AppCompatActivity implements
     private EditText mEmailField;
     private EditText mPasswordField;
 
+    private AdView mAdView;
+
     private Context context;
 
 
@@ -40,6 +44,10 @@ public class LoginActivity extends AppCompatActivity implements
             setContentView(R.layout.activity_login);
 
             context = this.getApplicationContext();
+            //Propaganda Admob
+            mAdView = (AdView) findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
 
             // Views
             mEmailField = (EditText) findViewById(R.id.field_email);

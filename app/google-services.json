@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "981765293503-o2svfao2vaighiucklcodpm0ee0l8if3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tcc.natha.gerenciadordd",
+            "certificate_hash": "c21b0f0c8b0a550f86ad748d23b506c133c8ea61"
+          }
+        },
+        {
+          "client_id": "981765293503-6cgrdv94fhvrnusn2f0dru59e1v184q5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tcc.natha.gerenciadordd",
+            "certificate_hash": "e1a589285a2264c1e96d1801c0e4138b084b8da1"
+          }
+        },
+        {
           "client_id": "981765293503-r0ls1s85799deslt547u6kjjcunfpe5t.apps.googleusercontent.com",
           "client_type": 3
         }

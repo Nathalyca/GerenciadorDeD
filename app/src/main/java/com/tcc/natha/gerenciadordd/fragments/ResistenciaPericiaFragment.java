@@ -1,4 +1,4 @@
-package com.tcc.natha.gerenciadordd;
+package com.tcc.natha.gerenciadordd.fragments;
 
         import android.content.Context;
         import android.net.Uri;
@@ -21,6 +21,7 @@ package com.tcc.natha.gerenciadordd;
         import com.google.firebase.database.DatabaseReference;
         import com.google.firebase.database.FirebaseDatabase;
         import com.google.firebase.database.ValueEventListener;
+        import com.tcc.natha.gerenciadordd.R;
         import com.tcc.natha.gerenciadordd.models.Personagem;
         import com.tcc.natha.gerenciadordd.models.PersonagemItem;
 
@@ -177,6 +178,7 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
         Bundle b = getActivity().getIntent().getExtras();
         Log.d(TAG, "Bundle:" + b);
         if(b!= null){

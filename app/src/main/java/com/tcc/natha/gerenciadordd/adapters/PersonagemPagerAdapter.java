@@ -1,15 +1,15 @@
-package com.tcc.natha.gerenciadordd;
+package com.tcc.natha.gerenciadordd.adapters;
 
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 
-import com.tcc.natha.gerenciadordd.BlankFragment;
-
-import com.tcc.natha.gerenciadordd.BlankFragment2;
+import com.tcc.natha.gerenciadordd.fragments.BlankFragment;
+import com.tcc.natha.gerenciadordd.fragments.BlankFragment2;
+import com.tcc.natha.gerenciadordd.fragments.EditPersonagemFragment;
+import com.tcc.natha.gerenciadordd.fragments.ResistenciaPericiaFragment;
 
 
 /**

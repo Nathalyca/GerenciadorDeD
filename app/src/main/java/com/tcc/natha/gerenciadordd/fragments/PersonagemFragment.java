@@ -1,8 +1,7 @@
-package com.tcc.natha.gerenciadordd;
+package com.tcc.natha.gerenciadordd.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.location.Address;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -27,13 +26,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tcc.natha.gerenciadordd.R;
+import com.tcc.natha.gerenciadordd.adapters.ViewPagePersonagem;
 import com.tcc.natha.gerenciadordd.models.PersonagemItem;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.R.id.list;
 
 
 public class PersonagemFragment extends Fragment implements View.OnClickListener,  EditPersonagemFragment.OnFragmentInteractionListener {
@@ -87,8 +85,7 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
         view = inflater.inflate(R.layout.fragment_personagem, container, false);
         getActivity().setTitle("Personagem");
         Log.d(TAG, "onCreateView");
-        //transaction.addToBackStack(null);
-        //transaction.commit();
+
 
         // Buttons
         criaPersButton = (Button) view.findViewById(R.id.cria_pers_button);

@@ -1,4 +1,4 @@
-package com.tcc.natha.gerenciadordd;
+package com.tcc.natha.gerenciadordd.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tcc.natha.gerenciadordd.R;
 import com.tcc.natha.gerenciadordd.models.SequencialAventura;
 
 import java.util.List;
@@ -88,6 +89,7 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override

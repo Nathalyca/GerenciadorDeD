@@ -1,4 +1,4 @@
-package com.tcc.natha.gerenciadordd;
+package com.tcc.natha.gerenciadordd.activities;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -20,6 +20,15 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.tcc.natha.gerenciadordd.R;
+import com.tcc.natha.gerenciadordd.adapters.ViewPagePersonagem;
+import com.tcc.natha.gerenciadordd.fragments.AventuraFragment;
+import com.tcc.natha.gerenciadordd.fragments.BlankFragment;
+import com.tcc.natha.gerenciadordd.fragments.BlankFragment2;
+import com.tcc.natha.gerenciadordd.fragments.EditAventuraFragment;
+import com.tcc.natha.gerenciadordd.fragments.EditPersonagemFragment;
+import com.tcc.natha.gerenciadordd.fragments.PersonagemFragment;
+import com.tcc.natha.gerenciadordd.fragments.ResistenciaPericiaFragment;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,

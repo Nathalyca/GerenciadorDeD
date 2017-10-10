@@ -1,4 +1,4 @@
-package com.tcc.natha.gerenciadordd;
+package com.tcc.natha.gerenciadordd.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tcc.natha.gerenciadordd.R;
 import com.tcc.natha.gerenciadordd.models.Personagem;
 import com.tcc.natha.gerenciadordd.models.PersonagemItem;
 

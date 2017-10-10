@@ -1,19 +1,16 @@
-package com.tcc.natha.gerenciadordd;
+package com.tcc.natha.gerenciadordd.adapters;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tcc.natha.gerenciadordd.models.Personagem;
+import com.tcc.natha.gerenciadordd.R;
+import com.tcc.natha.gerenciadordd.fragments.BlankFragment;
 
 
 /**

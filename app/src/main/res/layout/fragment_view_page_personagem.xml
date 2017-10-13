@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.tcc.natha.gerenciadordd.fragments.BlankFragment">
+    tools:context="com.tcc.natha.gerenciadordd.fragments.personagem.EditPersonagemFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <android.support.v4.view.ViewPager
         android:id="@+id/container"
         android:layout_width="match_parent"

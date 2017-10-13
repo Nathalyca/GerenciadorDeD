@@ -1,9 +1,11 @@
-package com.tcc.natha.gerenciadordd.fragments;
+package com.tcc.natha.gerenciadordd.fragments.personagem;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,8 @@ import android.view.ViewGroup;
 
 import com.tcc.natha.gerenciadordd.R;
 import com.tcc.natha.gerenciadordd.adapters.PersonagemPagerAdapter;
+
+import java.util.List;
 
 
 public class ViewPagePersonagem extends Fragment {
@@ -57,6 +61,30 @@ public class ViewPagePersonagem extends Fragment {
         view = inflater.inflate(R.layout.fragment_view_page_personagem, container, false);
         mViewPager = (ViewPager) view.findViewById(R.id.container);
         mViewPager.setAdapter(mPersonagemPagerAdapter);
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                List<Fragment> fragmentList = fragmentManager.getFragments();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                for (Fragment fragment: fragmentList ) {
+                    if(fragment != null){
+                            fragment.onPause();
+                    }
+                }
+                transaction.commit();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         return view;
     }
 

@@ -20,12 +20,12 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.tcc.natha.gerenciadordd.R;
-import com.tcc.natha.gerenciadordd.fragments.ViewPagePersonagem;
-import com.tcc.natha.gerenciadordd.fragments.AventuraFragment;
-import com.tcc.natha.gerenciadordd.fragments.EditAventuraFragment;
-import com.tcc.natha.gerenciadordd.fragments.EditPersonagemFragment;
-import com.tcc.natha.gerenciadordd.fragments.PersonagemFragment;
-import com.tcc.natha.gerenciadordd.fragments.ResistenciaPericiaFragment;
+import com.tcc.natha.gerenciadordd.fragments.personagem.ViewPagePersonagem;
+import com.tcc.natha.gerenciadordd.fragments.aventura.AventuraFragment;
+import com.tcc.natha.gerenciadordd.fragments.aventura.EditAventuraFragment;
+import com.tcc.natha.gerenciadordd.fragments.personagem.EditPersonagemFragment;
+import com.tcc.natha.gerenciadordd.fragments.personagem.PersonagemFragment;
+import com.tcc.natha.gerenciadordd.fragments.personagem.ResistenciaPericiaFragment;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,

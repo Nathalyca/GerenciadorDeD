@@ -1,11 +1,12 @@
-package com.tcc.natha.gerenciadordd.fragments;
+package com.tcc.natha.gerenciadordd.fragments.personagem;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.tcc.natha.gerenciadordd.R;
 import com.tcc.natha.gerenciadordd.models.Personagem;
 import com.tcc.natha.gerenciadordd.models.PersonagemItem;
+
+import java.util.List;
 
 
 public class EditPersonagemFragment extends Fragment implements View.OnClickListener {
@@ -218,37 +221,41 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
     }
 
     public void gravaPersonagem(){
-        pers.setNomePerso(mNomepersField.getText().toString());
-        pers.setRaca(mRacaField.getText().toString());
-        pers.setSubRaca (mSubRacaField.getText().toString());
-        pers.setClasse(mClasseField.getText().toString());
-        pers.setNivel (mNivelField.getText().toString());
-        pers.setAntecedente (mAntecedenteField.getText().toString());
-        pers.setTendencia (mTendenciaField.getText().toString());
-        pers.setClasseArmad(mClasseArmadField.getText().toString());
-        pers.setIniciativa (mIniciativaField.getText().toString());
-        pers.setDesloc(mDeslocField.getText().toString());
-        pers.setJogador(mJogadorField.getText().toString());
-        pers.setXp(mXpField.getText().toString());
-        pers.setPvTotal (mPvTotalField.getText().toString());
-        pers.setPvAtual (mPvAtualField.getText().toString());
-        pers.setPvTemp (mPvTempField.getText().toString());
-        pers.setForca (mForcaField.getText().toString());
-        pers.setDestreza (mDestrezaField.getText().toString());
-        pers.setConstituicao (mConstituicaoField.getText().toString());
-        pers.setInteligencia (mInteligenciaField.getText().toString());
-        pers.setSabedoria (mSabedoriaField.getText().toString());
-        pers.setCarisma (mCarismaField.getText().toString());
-        pers.setForca2 (mForca2Field.getText().toString());
-        pers.setDestreza2 (mDestreza2Field.getText().toString());
-        pers.setConstituicao2 (mConstituicao2Field.getText().toString());
-        pers.setInteligencia2 (mInteligencia2Field.getText().toString());
-        pers.setSabedoria2 (mSabedoria2Field.getText().toString());
-        pers.setCarisma2 (mCarisma2Field.getText().toString());
-        mDatabase.child("Personagens").child(persoID).setValue(pers);
-        PersonagemItem personagemItem = new PersonagemItem(persoID,pers.getNomePerso(), pers.getClasse(), pers.getNivel());
-        mDatabase.child("Users").child(user.getUid()).child("Personagens").child(persoID).setValue(personagemItem);
-        Toast.makeText(context, R.string.gravadoSucesso , Toast.LENGTH_SHORT).show();
+        if(pers!= null && mNomepersField.getText().length() > 0){
+            pers.setNomePerso(mNomepersField.getText().toString());
+            pers.setRaca(mRacaField.getText().toString());
+            pers.setSubRaca (mSubRacaField.getText().toString());
+            pers.setClasse(mClasseField.getText().toString());
+            pers.setNivel (mNivelField.getText().toString());
+            pers.setAntecedente (mAntecedenteField.getText().toString());
+            pers.setTendencia (mTendenciaField.getText().toString());
+            pers.setClasseArmad(mClasseArmadField.getText().toString());
+            pers.setIniciativa (mIniciativaField.getText().toString());
+            pers.setDesloc(mDeslocField.getText().toString());
+            pers.setJogador(mJogadorField.getText().toString());
+            pers.setXp(mXpField.getText().toString());
+            pers.setPvTotal (mPvTotalField.getText().toString());
+            pers.setPvAtual (mPvAtualField.getText().toString());
+            pers.setPvTemp (mPvTempField.getText().toString());
+            pers.setForca (mForcaField.getText().toString());
+            pers.setDestreza (mDestrezaField.getText().toString());
+            pers.setConstituicao (mConstituicaoField.getText().toString());
+            pers.setInteligencia (mInteligenciaField.getText().toString());
+            pers.setSabedoria (mSabedoriaField.getText().toString());
+            pers.setCarisma (mCarismaField.getText().toString());
+            pers.setForca2 (mForca2Field.getText().toString());
+            pers.setDestreza2 (mDestreza2Field.getText().toString());
+            pers.setConstituicao2 (mConstituicao2Field.getText().toString());
+            pers.setInteligencia2 (mInteligencia2Field.getText().toString());
+            pers.setSabedoria2 (mSabedoria2Field.getText().toString());
+            pers.setCarisma2 (mCarisma2Field.getText().toString());
+            mDatabase.child("Personagens").child(persoID).setValue(pers);
+            PersonagemItem personagemItem = new PersonagemItem(persoID,pers.getNomePerso(), pers.getClasse(), pers.getNivel());
+            mDatabase.child("Users").child(user.getUid()).child("Personagens").child(persoID).setValue(personagemItem);
+            Toast.makeText(context, R.string.gravadoSucesso , Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "pers null", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -264,8 +271,28 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
     }
 
     @Override
-    public void onPause() {
+    public void onResume(){
+        super.onResume();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        List<Fragment> fragmentList = fragmentManager.getFragments();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        for (Fragment fragment: fragmentList ) {
+            if(fragment != null){
+                if(fragment.getId() != this.getId()){
+                    fragment.onPause();
+                }
+            }
+        }
+        transaction.commit();
+    }
+
+    @Override
+    public void onPause(){
         gravaPersonagem();
         super.onPause();
+    }
+
+    public interface OnPageSelectedListener {
+        void onPageSelected();
     }
 }

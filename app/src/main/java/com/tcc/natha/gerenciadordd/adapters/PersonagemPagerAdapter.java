@@ -4,10 +4,9 @@ package com.tcc.natha.gerenciadordd.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
 
-import com.tcc.natha.gerenciadordd.fragments.EditPersonagemFragment;
-import com.tcc.natha.gerenciadordd.fragments.ResistenciaPericiaFragment;
+import com.tcc.natha.gerenciadordd.fragments.personagem.EditPersonagemFragment;
+import com.tcc.natha.gerenciadordd.fragments.personagem.ResistenciaPericiaFragment;
 
 public class PersonagemPagerAdapter extends FragmentPagerAdapter {
     private static final String TAG = "EditPersonagemFragment";
@@ -17,6 +16,7 @@ public class PersonagemPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+
     switch (position){
             case 0:
                 return new EditPersonagemFragment();

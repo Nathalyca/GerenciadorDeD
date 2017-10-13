@@ -1,4 +1,4 @@
-package com.tcc.natha.gerenciadordd.fragments;
+package com.tcc.natha.gerenciadordd.fragments.personagem;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,7 +9,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -211,7 +210,6 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
             transaction.addToBackStack(null);
             transaction.commit();
         }
-
     }
 
     @Override

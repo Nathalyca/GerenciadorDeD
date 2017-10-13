@@ -1,10 +1,12 @@
-package com.tcc.natha.gerenciadordd.fragments;
+package com.tcc.natha.gerenciadordd.fragments.personagem;
 
         import android.content.Context;
         import android.net.Uri;
         import android.os.Bundle;
         import android.support.annotation.NonNull;
         import android.support.v4.app.Fragment;
+        import android.support.v4.app.FragmentManager;
+        import android.support.v4.app.FragmentTransaction;
         import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
@@ -24,6 +26,8 @@ package com.tcc.natha.gerenciadordd.fragments;
         import com.tcc.natha.gerenciadordd.R;
         import com.tcc.natha.gerenciadordd.models.Personagem;
         import com.tcc.natha.gerenciadordd.models.PersonagemItem;
+
+        import java.util.List;
 
 
 public class ResistenciaPericiaFragment extends Fragment implements View.OnClickListener{
@@ -279,60 +283,63 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
     }
 
     public void gravaPersonagem(){
-        pers.setResForca(mResForcaField.getText().toString());
-        pers.setResForcaBool(mResForcaBoolField.isChecked());
-        Log.d(TAG, String.valueOf(mResForcaBoolField.isChecked()));
-        pers.setResSabedoria(mResSabedoriaField.getText().toString());
-        pers.setResSabedoriaBool(mResSabedoriaBoolField.isChecked());
-        pers.setResConstituicao(mResConstituicaoField.getText().toString());
-        pers.setResConstituicaoBool(mResConstituicaoBoolField.isChecked());
-        pers.setResCarisma(mResCarismaField.getText().toString());
-        pers.setResCarismaBool(mResCarismaBoolField.isChecked());
-        pers.setResDestreza(mResDestrezaField.getText().toString());
-        pers.setResDestrezaBool(mResDestrezaBoolField.isChecked());
-        pers.setResInteligencia(mResInteligenciaField.getText().toString());
-        pers.setResInteligenciaBool(mResInteligenciaBoolField.isChecked());
-        pers.setAcrobacia(mAcrobaciaField.getText().toString());
-        pers.setAcrobaciaBool(mAcrobaciaBoolField.isChecked());
-        pers.setArcanismo(mArcanismoField.getText().toString());
-        pers.setArcanismoBool(mArcanismoBoolField.isChecked());
-        pers.setAtletismo(mAtletismoField.getText().toString());
-        pers.setAtletismoBool(mAtletismoBoolField.isChecked());
-        pers.setAtuacao(mAtuacaoField.getText().toString());
-        pers.setAtuacaoBool(mAtuacaoBoolField.isChecked());
-        pers.setBlefar(mBlefarField.getText().toString());
-        pers.setBlefarBool(mBlefarBoolField.isChecked());
-        pers.setFurtividade(mFurtividadeField.getText().toString());
-        pers.setFurtividadeBool(mFurtividadeBoolField.isChecked());
-        pers.setHistoria(mHistoriaField.getText().toString());
-        pers.setHistoriaBool(mHistoriaBoolField.isChecked());
-        pers.setIntimidacao(mIntimidacaoField.getText().toString());
-        pers.setIntimidacaoBool(mIntimidacaoBoolField.isChecked());
-        pers.setIntuicao(mIntuicaoField.getText().toString());
-        pers.setIntuicaoBool(mIntuicaoBoolField.isChecked());
-        pers.setInvestigacao(mInvestigacaoField.getText().toString());
-        pers.setInvestigacaoBool(mInvestigacaoBoolField.isChecked());
-        pers.setLidarAnimais(mLidarAnimaisField.getText().toString());
-        pers.setLidarAnimaisBool(mLidarAnimaisBoolField.isChecked());
-        pers.setMedicina(mMedicinaField.getText().toString());
-        pers.setMedicinaBool(mMedicinaBoolField.isChecked());
-        pers.setNatureza(mNaturezaField.getText().toString());
-        pers.setNaturezaBool(mNaturezaBoolField.isChecked());
-        pers.setPercepcao(mPercepcaoField.getText().toString());
-        pers.setPercepcaoBool(mPercepcaoBoolField.isChecked());
-        pers.setPredestinacao(mPredestinacaoField.getText().toString());
-        pers.setPredestinacaoBool(mPredestinacaoBoolField.isChecked());
-        pers.setPersuasao(mPersuasaoField.getText().toString());
-        pers.setPersuasaoBool(mPersuasaoBoolField.isChecked());
-        pers.setReligiao(mReligiaoField.getText().toString());
-        pers.setReligiaoBool(mReligiaoBoolField.isChecked());
-        pers.setSobrevivencia(mSobrevivenciaField.getText().toString());
-        pers.setSobrevivenciaBool(mSobrevivenciaBoolField.isChecked());
-        mDatabase.child("Personagens").child(persoID).setValue(pers);
-        PersonagemItem personagemItem = new PersonagemItem(persoID,pers.getNomePerso(), pers.getClasse(), pers.getNivel());
-        mDatabase.child("Users").child(user.getUid()).child("Personagens").child(persoID).setValue(personagemItem);
-        Toast.makeText(context, R.string.gravadoSucesso , Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "gravado");
+        if(pers!= null && pers.getNomePerso() != null && pers.getNomePerso().length() > 0){
+            pers.setResForca(mResForcaField.getText().toString());
+            pers.setResForcaBool(mResForcaBoolField.isChecked());
+            Log.d(TAG, String.valueOf(mResForcaBoolField.isChecked()));
+            pers.setResSabedoria(mResSabedoriaField.getText().toString());
+            pers.setResSabedoriaBool(mResSabedoriaBoolField.isChecked());
+            pers.setResConstituicao(mResConstituicaoField.getText().toString());
+            pers.setResConstituicaoBool(mResConstituicaoBoolField.isChecked());
+            pers.setResCarisma(mResCarismaField.getText().toString());
+            pers.setResCarismaBool(mResCarismaBoolField.isChecked());
+            pers.setResDestreza(mResDestrezaField.getText().toString());
+            pers.setResDestrezaBool(mResDestrezaBoolField.isChecked());
+            pers.setResInteligencia(mResInteligenciaField.getText().toString());
+            pers.setResInteligenciaBool(mResInteligenciaBoolField.isChecked());
+            pers.setAcrobacia(mAcrobaciaField.getText().toString());
+            pers.setAcrobaciaBool(mAcrobaciaBoolField.isChecked());
+            pers.setArcanismo(mArcanismoField.getText().toString());
+            pers.setArcanismoBool(mArcanismoBoolField.isChecked());
+            pers.setAtletismo(mAtletismoField.getText().toString());
+            pers.setAtletismoBool(mAtletismoBoolField.isChecked());
+            pers.setAtuacao(mAtuacaoField.getText().toString());
+            pers.setAtuacaoBool(mAtuacaoBoolField.isChecked());
+            pers.setBlefar(mBlefarField.getText().toString());
+            pers.setBlefarBool(mBlefarBoolField.isChecked());
+            pers.setFurtividade(mFurtividadeField.getText().toString());
+            pers.setFurtividadeBool(mFurtividadeBoolField.isChecked());
+            pers.setHistoria(mHistoriaField.getText().toString());
+            pers.setHistoriaBool(mHistoriaBoolField.isChecked());
+            pers.setIntimidacao(mIntimidacaoField.getText().toString());
+            pers.setIntimidacaoBool(mIntimidacaoBoolField.isChecked());
+            pers.setIntuicao(mIntuicaoField.getText().toString());
+            pers.setIntuicaoBool(mIntuicaoBoolField.isChecked());
+            pers.setInvestigacao(mInvestigacaoField.getText().toString());
+            pers.setInvestigacaoBool(mInvestigacaoBoolField.isChecked());
+            pers.setLidarAnimais(mLidarAnimaisField.getText().toString());
+            pers.setLidarAnimaisBool(mLidarAnimaisBoolField.isChecked());
+            pers.setMedicina(mMedicinaField.getText().toString());
+            pers.setMedicinaBool(mMedicinaBoolField.isChecked());
+            pers.setNatureza(mNaturezaField.getText().toString());
+            pers.setNaturezaBool(mNaturezaBoolField.isChecked());
+            pers.setPercepcao(mPercepcaoField.getText().toString());
+            pers.setPercepcaoBool(mPercepcaoBoolField.isChecked());
+            pers.setPredestinacao(mPredestinacaoField.getText().toString());
+            pers.setPredestinacaoBool(mPredestinacaoBoolField.isChecked());
+            pers.setPersuasao(mPersuasaoField.getText().toString());
+            pers.setPersuasaoBool(mPersuasaoBoolField.isChecked());
+            pers.setReligiao(mReligiaoField.getText().toString());
+            pers.setReligiaoBool(mReligiaoBoolField.isChecked());
+            pers.setSobrevivencia(mSobrevivenciaField.getText().toString());
+            pers.setSobrevivenciaBool(mSobrevivenciaBoolField.isChecked());
+            mDatabase.child("Personagens").child(persoID).setValue(pers);
+            PersonagemItem personagemItem = new PersonagemItem(persoID,pers.getNomePerso(), pers.getClasse(), pers.getNivel());
+            mDatabase.child("Users").child(user.getUid()).child("Personagens").child(persoID).setValue(personagemItem);
+            Toast.makeText(context, R.string.gravadoSucesso , Toast.LENGTH_SHORT).show();
+        }    else{
+            Toast.makeText(context, "pers null", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -348,8 +355,28 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onResume(){
+        super.onResume();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        List<Fragment> fragmentList = fragmentManager.getFragments();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        for (Fragment fragment: fragmentList ) {
+            if(fragment != null){
+                if(fragment.getId() != this.getId()){
+                    fragment.onPause();
+                }
+            }
+        }
+        transaction.commit();
+    }
+
+    @Override
+    public void onPause(){
         gravaPersonagem();
+        super.onPause();
+    }
+
+    public interface OnPageSelectedListener {
+        void onPageSelected();
     }
 }

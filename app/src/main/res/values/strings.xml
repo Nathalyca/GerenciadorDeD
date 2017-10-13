@@ -162,4 +162,6 @@
     <string name="aventuraMestre">Cria Aventura</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="facebook_app_id">225630851303526</string>
+    <string name="fb_login_protocol_scheme">fb225630851303526</string>
+
 </resources>

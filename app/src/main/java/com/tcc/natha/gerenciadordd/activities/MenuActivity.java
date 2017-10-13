@@ -87,8 +87,10 @@ public class MenuActivity extends AppCompatActivity
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
 
                     Log.d(TAG, "onAuthStateChanged:email:" + user.getEmail());
+                    if (user.getEmail()!= null){
+                        mEmailMenu.setText(user.getEmail().toString());
+                    }
 
-                    mEmailMenu.setText(user.getEmail().toString());
 
                 } else {
 

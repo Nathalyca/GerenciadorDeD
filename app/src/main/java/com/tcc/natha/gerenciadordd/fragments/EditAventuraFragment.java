@@ -24,67 +24,32 @@ import com.tcc.natha.gerenciadordd.R;
 import com.tcc.natha.gerenciadordd.models.AventuraMestreItem;
 import com.tcc.natha.gerenciadordd.models.SequencialAventura;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link EditAventuraFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link EditAventuraFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class EditAventuraFragment extends Fragment implements View.OnClickListener {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     private OnFragmentInteractionListener mListener;
-
-
     private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String TAG = "EditAventuraFragment";
     private Context context;
     private DatabaseReference mSeqReference;
     private DatabaseReference mDatabase;
-
     private EditText mNomeAventField;
     private EditText mNumAventTextField;
-
     private Button gravaButton;
-
     private AventuraMestreItem avent;
-
     private SequencialAventura seqAvent;
-
     private String aventID;
-
     private int sequencialDefault = 1;
-
     private int sequencialAux;
-
     private View view;
-
     private FirebaseUser user;
 
     public EditAventuraFragment() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EditPersonagemFragment.
-     */
-
-    // TODO: Rename and change types and number of parameters
     public static EditAventuraFragment newInstance(String param1, String param2) {
         EditAventuraFragment fragment = new EditAventuraFragment();
         Bundle args = new Bundle();
@@ -101,24 +66,17 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
         Bundle b = getActivity().getIntent().getExtras();
         seqAvent = new SequencialAventura();
         if(b!= null){
             seqAvent.setSeqCodAventura(b.getInt("seqAventura", 0));
         }
-        Log.d(TAG, "b.getInt" + b);
-        Log.d(TAG, "seqAventura:" + seqAvent.getSeqCodAventura());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_edit_aventura, container, false);
-
-        Log.d(TAG, "onCreate");
-
         context = getActivity().getApplicationContext();
 
         // Views
@@ -137,16 +95,8 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
-                Log.d(TAG, "getCurrentUser");
-
                 user = FirebaseAuth.getInstance().getCurrentUser();
-
                 if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    Log.d(TAG, "onAuthStateChanged:email:" + user.getEmail());
-
                     mDatabase.child("Aventura").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -155,10 +105,8 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
 
 
                             }else{
-
                                 avent = new AventuraMestreItem();
                                 aventID = mDatabase.child("Aventura").push().getKey();
-
                                 mNumAventTextField.setText(seqAvent.getSeqCodAventura() + "");
  /*                   mDatabase.child("Personagens").child(persoID).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -175,26 +123,17 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
-                            System.out.println("The read failed: " + databaseError.getCode());
+
                         }
                     });
-                } else {
-
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // ...
             }
         };
-
         FirebaseAuth.getInstance().addAuthStateListener(mAuthListener);
-
-
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
-        Log.d(TAG, "onButtonPressed");
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
@@ -202,7 +141,6 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onAttach(Context context) {
-        Log.d(TAG, "onAttach");
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
@@ -214,26 +152,16 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onDetach() {
-        Log.d(TAG, "onDetach");
         super.onDetach();
         mListener = null;
     }
 
 
     public void gravaAventura(){
-
-        Log.d(TAG, "User" + user);
-
-        Log.d(TAG, "grava aventura");
-
         avent.setNomeAventura(mNomeAventField.getText().toString());
-
         avent.setSeqAventura(seqAvent.getSeqCodAventura());
-
         mDatabase.child("Aventura").child(aventID).setValue(avent);
-
         mDatabase.child("SequencialAventura").setValue(seqAvent);
-
        // Log.d(TAG, "persid: "+ mDatabase.child("Users").child(user.getUid()).child("Personagens").child(key).toString());
         //Log.d(TAG, "persid: "+ key);
 /*
@@ -266,39 +194,23 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
         }); */
 
         Toast.makeText(context, R.string.gravadoSucesso , Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "gravado");
-
     }
 
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        Log.d(TAG, "onClick");
         if (i == R.id.gravar_button) {
-            Log.d(TAG, "chama grava aventura");
             gravaAventura();
         }
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 
     @Override
     public void onPause() {
-        Log.e("DEBUG", "OnPause of loginFragment");
-        gravaAventura();
         super.onPause();
+        gravaAventura();
     }
 }

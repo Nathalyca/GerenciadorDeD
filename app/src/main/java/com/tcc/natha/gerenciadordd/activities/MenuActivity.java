@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,10 +20,8 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.tcc.natha.gerenciadordd.R;
-import com.tcc.natha.gerenciadordd.adapters.ViewPagePersonagem;
+import com.tcc.natha.gerenciadordd.fragments.ViewPagePersonagem;
 import com.tcc.natha.gerenciadordd.fragments.AventuraFragment;
-import com.tcc.natha.gerenciadordd.fragments.BlankFragment;
-import com.tcc.natha.gerenciadordd.fragments.BlankFragment2;
 import com.tcc.natha.gerenciadordd.fragments.EditAventuraFragment;
 import com.tcc.natha.gerenciadordd.fragments.EditPersonagemFragment;
 import com.tcc.natha.gerenciadordd.fragments.PersonagemFragment;
@@ -33,9 +30,7 @@ import com.tcc.natha.gerenciadordd.fragments.ResistenciaPericiaFragment;
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         PersonagemFragment.OnFragmentInteractionListener,
-        BlankFragment.OnFragmentInteractionListener,
         AventuraFragment.OnFragmentInteractionListener,
-        BlankFragment2.OnFragmentInteractionListener,
         EditPersonagemFragment.OnFragmentInteractionListener,
         EditAventuraFragment.OnFragmentInteractionListener,
         ViewPagePersonagem.OnFragmentInteractionListener,
@@ -45,13 +40,9 @@ public class MenuActivity extends AppCompatActivity
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
     private static final String TAG = "MenuActivity";
-
     private FirebaseUser user;
-
     private Context context;
-
     private TextView mEmailMenu;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,49 +50,36 @@ public class MenuActivity extends AppCompatActivity
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         // Views
         View headerLayout = navigationView.getHeaderView(0); // 0-index header
         mEmailMenu = (TextView) headerLayout.findViewById(R.id.email_menu);
-        Log.d(TAG, "mEmailMenu" + (mEmailMenu == null));
-
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
-                Log.d(TAG, "getCurrentUser");
-
                 user = FirebaseAuth.getInstance().getCurrentUser();
-
                 if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-
-                    Log.d(TAG, "onAuthStateChanged:email:" + user.getEmail());
-                    if (user.getEmail()!= null){
+                    if (user.getEmail() != null) {
                         mEmailMenu.setText(user.getEmail().toString());
                     }
-
-
-                } else {
-
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // ...
             }
         };
 
+        //começa com a tela de personagem carregada
         FirebaseAuth.getInstance().addAuthStateListener(mAuthListener);
-
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        Fragment personagemFragment = new PersonagemFragment();
+        transaction.replace(R.id.headlines_fragment, personagemFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     @Override
@@ -114,25 +92,19 @@ public class MenuActivity extends AppCompatActivity
         }
     }
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         Fragment personagemFragment = new PersonagemFragment();
-        Fragment blankFragment = new BlankFragment();
         Fragment aventuraFragment = new AventuraFragment();
-        //Fragment blankFragment2 = new BlankFragment2();
-
         if (id == R.id.nav_camera) {
             transaction.replace(R.id.headlines_fragment, personagemFragment);
         } else if (id == R.id.nav_gallery) {
             transaction.replace(R.id.headlines_fragment, aventuraFragment);
         } else if (id == R.id.nav_slideshow) {
-            transaction.replace(R.id.headlines_fragment, blankFragment);
+
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
@@ -152,9 +124,6 @@ public class MenuActivity extends AppCompatActivity
     }
 
     public void onFragmentInteraction(Uri uri){
-        //you can leave it empty
+
     }
-
-
-
 }

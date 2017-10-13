@@ -27,142 +27,74 @@ package com.tcc.natha.gerenciadordd.fragments;
 
 
 public class ResistenciaPericiaFragment extends Fragment implements View.OnClickListener{
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     private OnFragmentInteractionListener mListener;
-
     private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String TAG = "EditPersonagemFragment";
     private Context context;
     private DatabaseReference mPersReference;
     private DatabaseReference mDatabase;
-
     private EditText mResForcaField;
-
     private CheckBox mResForcaBoolField;
-
     private EditText mResSabedoriaField;
-
     private CheckBox mResSabedoriaBoolField;
-
     private EditText mResConstituicaoField;
-
     private CheckBox mResConstituicaoBoolField;
-
     private EditText mResCarismaField;
-
     private CheckBox mResCarismaBoolField;
-
     private EditText mResDestrezaField;
-
     private CheckBox mResDestrezaBoolField;
-
     private EditText mResInteligenciaField;
-
     private CheckBox mResInteligenciaBoolField;
-
     private EditText mAcrobaciaField;
-
     private CheckBox mAcrobaciaBoolField;
-
     private EditText mArcanismoField;
-
     private CheckBox mArcanismoBoolField;
-
     private EditText mAtletismoField;
-
     private CheckBox mAtletismoBoolField;
-
     private EditText mAtuacaoField;
-
     private CheckBox mAtuacaoBoolField;
-
     private EditText mBlefarField;
-
     private CheckBox mBlefarBoolField;
-
     private EditText mFurtividadeField;
-
     private CheckBox mFurtividadeBoolField;
-
     private EditText mHistoriaField;
-
     private CheckBox mHistoriaBoolField;
-
     private EditText mIntimidacaoField;
-
     private CheckBox mIntimidacaoBoolField;
-
     private EditText mIntuicaoField;
-
     private CheckBox mIntuicaoBoolField;
-
     private EditText mInvestigacaoField;
-
     private CheckBox mInvestigacaoBoolField;
-
     private EditText mLidarAnimaisField;
-
     private CheckBox mLidarAnimaisBoolField;
-
     private EditText mMedicinaField;
-
     private CheckBox mMedicinaBoolField;
-
     private EditText mNaturezaField;
-
     private CheckBox mNaturezaBoolField;
-
     private EditText mPercepcaoField;
-
     private CheckBox mPercepcaoBoolField;
-
     private EditText mPredestinacaoField;
-
     private CheckBox mPredestinacaoBoolField;
-
     private EditText mPersuasaoField;
-
     private CheckBox mPersuasaoBoolField;
-
     private EditText mReligiaoField;
-
     private CheckBox mReligiaoBoolField;
-
     private EditText mSobrevivenciaField;
-
     private CheckBox mSobrevivenciaBoolField;
-
     private Button gravaButton;
-
     private Personagem pers;
-
     private View view;
-
     private FirebaseUser user;
     private String persoID;
 
     public ResistenciaPericiaFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ResistenciaPericiaFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ResistenciaPericiaFragment newInstance(String param1, String param2) {
+   public static ResistenciaPericiaFragment newInstance(String param1, String param2) {
         ResistenciaPericiaFragment fragment = new ResistenciaPericiaFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -180,22 +112,16 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
         }
 
         Bundle b = getActivity().getIntent().getExtras();
-        Log.d(TAG, "Bundle:" + b);
         if(b!= null){
             persoID = b.getString("persoID", null);
         }
-        Log.d(TAG, "persoID:" + persoID);
         pers = new Personagem();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_resistencia_pericia, container, false);
-
-        Log.d(TAG, "onCreate");
-
         context = getActivity().getApplicationContext();
 
         // Views
@@ -247,7 +173,6 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
         mReligiaoBoolField  = (CheckBox) view.findViewById(R.id.checkBox_religiao);
         mSobrevivenciaField  = (EditText) view.findViewById(R.id.field_sobrevivencia);
         mSobrevivenciaBoolField  = (CheckBox) view.findViewById(R.id.checkBox_sobrevivencia);
-        // Buttons
         gravaButton = (Button) view.findViewById(R.id.gravar_button2);
         gravaButton.setOnClickListener(this);
 
@@ -259,16 +184,8 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
-                Log.d(TAG, "getCurrentUser");
-
                 user = FirebaseAuth.getInstance().getCurrentUser();
-
                 if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    Log.d(TAG, "onAuthStateChanged:email:" + user.getEmail());
-
                     mDatabase.child("Personagens").child(persoID).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -322,7 +239,6 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
                                 mReligiaoBoolField.setChecked(pers.isReligiaoBool());
                                 mSobrevivenciaField.setText(pers.getSobrevivencia());
                                 mSobrevivenciaBoolField.setChecked(pers.isSobrevivenciaBool());
-
                             }else{
                                 pers = new Personagem(user.getUid());
                             }
@@ -330,25 +246,15 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
-                            System.out.println("The read failed: " + databaseError.getCode());
                         }
                     });
-                } else {
-
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // ...
             }
         };
-
         FirebaseAuth.getInstance().addAuthStateListener(mAuthListener);
-
-
         return view;
     }
 
-
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -373,11 +279,6 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
     }
 
     public void gravaPersonagem(){
-
-        Log.d(TAG, "User" + user);
-
-        Log.d(TAG, "grava personagem");
-
         pers.setResForca(mResForcaField.getText().toString());
         pers.setResForcaBool(mResForcaBoolField.isChecked());
         Log.d(TAG, String.valueOf(mResForcaBoolField.isChecked()));
@@ -391,13 +292,6 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
         pers.setResDestrezaBool(mResDestrezaBoolField.isChecked());
         pers.setResInteligencia(mResInteligenciaField.getText().toString());
         pers.setResInteligenciaBool(mResInteligenciaBoolField.isChecked());
-        Log.d(TAG, "isResForcaBool()"+ String.valueOf(pers.isResForcaBool()));
-        Log.d(TAG, "isResSabedoriaBool"+ String.valueOf(pers.isResSabedoriaBool()));
-        Log.d(TAG, "isResConstituicaoBool"+ String.valueOf(pers.isResConstituicaoBool()));
-        Log.d(TAG, "isResCarismaBool"+ String.valueOf(pers.isResCarismaBool()));
-        Log.d(TAG, "isResDestrezaBool"+ String.valueOf(pers.isResDestrezaBool()));
-        Log.d(TAG, "isResInteligenciaBool"+ String.valueOf(pers.isResInteligenciaBool()));
-
         pers.setAcrobacia(mAcrobaciaField.getText().toString());
         pers.setAcrobaciaBool(mAcrobaciaBoolField.isChecked());
         pers.setArcanismo(mArcanismoField.getText().toString());
@@ -434,46 +328,28 @@ public class ResistenciaPericiaFragment extends Fragment implements View.OnClick
         pers.setReligiaoBool(mReligiaoBoolField.isChecked());
         pers.setSobrevivencia(mSobrevivenciaField.getText().toString());
         pers.setSobrevivenciaBool(mSobrevivenciaBoolField.isChecked());
-
         mDatabase.child("Personagens").child(persoID).setValue(pers);
         PersonagemItem personagemItem = new PersonagemItem(persoID,pers.getNomePerso(), pers.getClasse(), pers.getNivel());
         mDatabase.child("Users").child(user.getUid()).child("Personagens").child(persoID).setValue(personagemItem);
-
         Toast.makeText(context, R.string.gravadoSucesso , Toast.LENGTH_SHORT).show();
         Log.d(TAG, "gravado");
-
     }
 
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        Log.d(TAG, "onClick");
         if (i == R.id.gravar_button2) {
-            Log.d(TAG, "chama grava personagem");
             gravaPersonagem();
         }
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 
     @Override
     public void onPause() {
-        Log.e("DEBUG", "OnPause of loginFragment");
-        gravaPersonagem();
         super.onPause();
+        gravaPersonagem();
     }
 }

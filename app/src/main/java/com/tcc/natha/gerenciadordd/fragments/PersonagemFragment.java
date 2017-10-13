@@ -27,7 +27,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.natha.gerenciadordd.R;
-import com.tcc.natha.gerenciadordd.adapters.ViewPagePersonagem;
 import com.tcc.natha.gerenciadordd.models.PersonagemItem;
 
 import java.util.ArrayList;
@@ -36,32 +35,21 @@ import java.util.List;
 
 public class PersonagemFragment extends Fragment implements View.OnClickListener,  EditPersonagemFragment.OnFragmentInteractionListener {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     private static final String TAG = "PersonagemFragment";
-
     private List<PersonagemItem> perso = new ArrayList<>();
-
     private Button criaPersButton;
     private ListView listaPerso;
-
     private View view;
-
     private static FirebaseUser user;
     private static FirebaseAuth.AuthStateListener mAuthListener;
     private static DatabaseReference mDatabase;
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     private OnFragmentInteractionListener mListener;
 
     public PersonagemFragment() {
-        // Required empty public constructor
     }
 
     public static PersonagemFragment newInstance(String param1, String param2) {
@@ -84,13 +72,10 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_personagem, container, false);
         getActivity().setTitle("Personagem");
-        Log.d(TAG, "onCreateView");
-
 
         // Buttons
         criaPersButton = (Button) view.findViewById(R.id.cria_pers_button);
         criaPersButton.setOnClickListener(this);
-
 
         // Lista
         listaPerso = (ListView) view.findViewById(R.id.listaPerso);
@@ -98,13 +83,8 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
                 user = FirebaseAuth.getInstance().getCurrentUser();
-
                 if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    Log.d(TAG, "onAuthStateChanged:email:" + user.getEmail());
                     ValueEventListener postListener = new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -112,38 +92,25 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
                             for (DataSnapshot child: dataSnapshot.getChildren()) {
                                 PersonagemItem personagemItem = child.getValue(PersonagemItem.class);
                                 perso.add(personagemItem);
-                                System.out.println("child.getKey: " + child.getKey());
                             }
-
-
                             ArrayAdapter<PersonagemItem> adapter = new ArrayAdapter<PersonagemItem>(getActivity().getApplicationContext(),
                                     android.R.layout.simple_list_item_1, perso);
-
                             listaPerso.setAdapter(adapter);
-
                         }
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
-                            System.out.println("The read failed: " + databaseError.getCode());
                         }
                     };
-
                     mDatabase.child("Users").child(user.getUid()).child("Personagens").addValueEventListener(postListener);
-                } else {
-
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // ...
             }
         };
         FirebaseAuth.getInstance().addAuthStateListener(mAuthListener);
         listaPerso.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d(TAG, "onItemClick");
                 Toast.makeText(getActivity().getApplicationContext(), perso.get(position).getNomePerso(), Toast.LENGTH_SHORT ).show();
-                Log.d(TAG, perso.get(position).getNomePerso());
 
                 //pega as fragment para remover
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -155,7 +122,6 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
                     }
                 }
                 transaction.commit();
-
                 transaction = getFragmentManager().beginTransaction();
                 Fragment viewPagePersonagem = new ViewPagePersonagem();
                 Bundle bundle = new Bundle();
@@ -165,18 +131,13 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
                 transaction.replace(R.id.headlines_fragment, viewPagePersonagem);
                 transaction.addToBackStack(null);
                 transaction.commit();
-
             }
         });
 
         listaPerso.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-
-                Log.d(TAG, "OnItemLongClickListener");
                 Toast.makeText(getActivity().getApplicationContext(), perso.get(position).getNomePerso(), Toast.LENGTH_SHORT ).show();
-                Log.d(TAG, perso.get(position).getNomePerso());
-
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
                 alert.setTitle("Deletar Personagem");
                 alert.setMessage("Você tem certeza que deseja deletar "+perso.get(position).getNomePerso()+" ?");
@@ -184,14 +145,11 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                         mDatabase.child("Users").child(user.getUid()).child("Personagens").child(perso.get(position).getPersoID()).removeValue();
                         mDatabase.child("Personagens").child(perso.get(position).getPersoID()).removeValue();
-
                         dialog.dismiss();
                     }
                 });
-
                 alert.setNegativeButton("Não", new DialogInterface.OnClickListener() {
 
                     @Override
@@ -199,18 +157,14 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
                         dialog.dismiss();
                     }
                 });
-
                 alert.show();
-                // -------------------------------
                 return true;
             }
         });
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
-        Log.d(TAG, "onButtonPressed");
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
@@ -218,7 +172,6 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onAttach(Context context) {
-        Log.d(TAG, "onAttach");
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
@@ -234,15 +187,10 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
         mListener = null;
     }
 
-
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        Log.d(TAG, "onClick");
-
         if (i == R.id.cria_pers_button) {
-            Log.d(TAG, "chama grava personagem");
-
             //pega as fragment para remover
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             List<Fragment> fragmentList = fragmentManager.getFragments();
@@ -253,27 +201,15 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
                 }
             }
             transaction.commit();
-
             Bundle bundle = new Bundle();
             bundle.putString("persoID", mDatabase.child("Personagens").push().getKey());
             getActivity().getIntent().removeExtra("persoID");
             getActivity().getIntent().putExtras(bundle);
-
-            // Fragments
             transaction = getFragmentManager().beginTransaction();
             Fragment viewPagePersonagem = new ViewPagePersonagem();
-
             transaction.replace(R.id.headlines_fragment, viewPagePersonagem);
-
             transaction.addToBackStack(null);
             transaction.commit();
-
-            /*
-            Fragment fragment = new Fragment();
-            Bundle bundle = new Bundle();
-            bundle.putInt(key, value);
-            fragment.setArguments(bundle);
-             */
         }
 
     }
@@ -283,20 +219,7 @@ public class PersonagemFragment extends Fragment implements View.OnClickListener
 
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
-
 }

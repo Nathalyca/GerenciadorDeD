@@ -116,6 +116,7 @@ public class LoginActivity extends AppCompatActivity implements
 
                 @Override
                 public void onError(FacebookException exception) {
+
                 }
             });
 
@@ -146,8 +147,7 @@ public class LoginActivity extends AppCompatActivity implements
         mAuth.addAuthStateListener(mAuthListener);
         FirebaseUser user = mAuth.getCurrentUser();
         if(user!= null){
-            Intent intent = new Intent(context, MenuActivity.class);
-            startActivity(intent);
+            callNextActivity();
         }
     }
 
@@ -234,8 +234,7 @@ public class LoginActivity extends AppCompatActivity implements
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(LoginActivity.this, "Logado com sucesso usando o google", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(context, MenuActivity.class);
-                            startActivity(intent);
+                            callNextActivity();
                         } else {
                             Toast.makeText(LoginActivity.this, "Falha na autenticaçâo",
                                     Toast.LENGTH_SHORT).show();
@@ -254,8 +253,7 @@ public class LoginActivity extends AppCompatActivity implements
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(LoginActivity.this, "Logado com sucesso usando o facebook", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(context, MenuActivity.class);
-                            startActivity(intent);
+                            callNextActivity();
                         } else {
                             Toast.makeText(LoginActivity.this, "Login pelo facebook falhou",
                                     Toast.LENGTH_SHORT).show();
@@ -273,8 +271,7 @@ public class LoginActivity extends AppCompatActivity implements
                             Toast.makeText(LoginActivity.this, R.string.auth_failed, Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(LoginActivity.this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(context, MenuActivity.class);
-                            startActivity(intent);
+                            callNextActivity();
                         }
 
                     }
@@ -284,5 +281,10 @@ public class LoginActivity extends AppCompatActivity implements
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    public void callNextActivity(){
+        Intent intent = new Intent(context, MenuActivity.class);
+        startActivity(intent);
     }
 }

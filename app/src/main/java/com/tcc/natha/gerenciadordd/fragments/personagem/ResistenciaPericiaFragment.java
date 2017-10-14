@@ -24,8 +24,8 @@ package com.tcc.natha.gerenciadordd.fragments.personagem;
         import com.google.firebase.database.FirebaseDatabase;
         import com.google.firebase.database.ValueEventListener;
         import com.tcc.natha.gerenciadordd.R;
-        import com.tcc.natha.gerenciadordd.models.Personagem;
-        import com.tcc.natha.gerenciadordd.models.PersonagemItem;
+        import com.tcc.natha.gerenciadordd.models.personagem.Personagem;
+        import com.tcc.natha.gerenciadordd.models.personagem.PersonagemItem;
 
         import java.util.List;
 

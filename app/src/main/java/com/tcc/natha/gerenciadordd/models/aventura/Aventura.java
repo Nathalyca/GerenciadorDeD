@@ -1,23 +1,29 @@
-package com.tcc.natha.gerenciadordd.models;
+package com.tcc.natha.gerenciadordd.models.aventura;
 
 /**
- * Created by nalmeida on 24/08/2017.
+ * Created by rafae on 14/10/2017.
  */
 
-public class AventuraMestreItem {
+public class Aventura {
 
-    private String idAventura;
-
+    private String userID;
     private String nomeAventura;
-
     private int seqAventura;
 
-    public String getIdAventura() {
-        return idAventura;
+    public Aventura(){
     }
 
-    public void setIdAventura(String idAventura) {
-        this.idAventura = idAventura;
+    public Aventura(String userID){
+        this.userID = userID;
+
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getNomeAventura() {

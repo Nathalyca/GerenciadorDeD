@@ -20,8 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.natha.gerenciadordd.R;
-import com.tcc.natha.gerenciadordd.models.AventuraMestreItem;
-import com.tcc.natha.gerenciadordd.models.SequencialAventura;
+import com.tcc.natha.gerenciadordd.models.aventura.Aventura;
+import com.tcc.natha.gerenciadordd.models.aventura.AventuraItem;
+import com.tcc.natha.gerenciadordd.models.aventura.SequencialAventura;
 
 public class EditAventuraFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
@@ -32,16 +33,13 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
     private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String TAG = "EditAventuraFragment";
     private Context context;
-    private DatabaseReference mSeqReference;
     private DatabaseReference mDatabase;
     private EditText mNomeAventField;
     private EditText mNumAventTextField;
     private Button gravaButton;
-    private AventuraMestreItem avent;
+    private Aventura avent;
     private SequencialAventura seqAvent;
     private String aventID;
-    private int sequencialDefault = 1;
-    private int sequencialAux;
     private View view;
     private FirebaseUser user;
 
@@ -69,7 +67,9 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
         seqAvent = new SequencialAventura();
         if(b!= null){
             seqAvent.setSeqCodAventura(b.getInt("seqAventura", 0));
+            aventID = b.getString("aventID", null);
         }
+        avent = new Aventura();
     }
 
     @Override
@@ -81,6 +81,7 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
         // Views
         mNomeAventField = (EditText) view.findViewById(R.id.field_nomeavent);
         mNumAventTextField = (EditText) view.findViewById(R.id.text_numaventtext);
+        mNumAventTextField.setText(seqAvent.getSeqCodAventura()+"");
 
         // Buttons
         gravaButton = (Button) view.findViewById(R.id.gravar_button);
@@ -88,35 +89,20 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
 
         //BD
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mSeqReference = FirebaseDatabase.getInstance().getReference()
-                .child("SequencialAventura");
-
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
-                    mDatabase.child("Aventura").addValueEventListener(new ValueEventListener() {
+                    mDatabase.child("Aventuras").child(aventID).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            avent = dataSnapshot.getValue(AventuraMestreItem.class);
+                            avent = dataSnapshot.getValue(Aventura.class);
                             if (avent != null) {
-
-
+                                mNomeAventField.setText(avent.getNomeAventura());
+                                mNumAventTextField.setText(avent.getSeqAventura()+"");
                             }else{
-                                avent = new AventuraMestreItem();
-                                aventID = mDatabase.child("Aventura").push().getKey();
-                                mNumAventTextField.setText(seqAvent.getSeqCodAventura() + "");
- /*                   mDatabase.child("Personagens").child(persoID).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            pers = dataSnapshot.getValue(Personagem.class);
-                            if(pers != null){
-                                mNomepersField.setText(pers.getNomePerso());
-                                mCarisma2Field.setText(pers.getCarisma2());
-                            }else{
-                                pers = new Personagem(user.getUid());
-                            }*/
+                                avent = new Aventura(user.getUid());
                             }
                         }
 
@@ -157,42 +143,15 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
 
 
     public void gravaAventura(){
-        avent.setNomeAventura(mNomeAventField.getText().toString());
-        avent.setSeqAventura(seqAvent.getSeqCodAventura());
-        mDatabase.child("Aventura").child(aventID).setValue(avent);
-        mDatabase.child("SequencialAventura").setValue(seqAvent);
-       // Log.d(TAG, "persid: "+ mDatabase.child("Users").child(user.getUid()).child("Personagens").child(key).toString());
-        //Log.d(TAG, "persid: "+ key);
-/*
-        mDatabase.child("Personagens").child(key).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Personagem pers1 = dataSnapshot.getValue(Personagem.class);
-                mNomepersField.setText(pers1.getNomePerso());
-                mRacaField.setText(pers1.getRaca());
-                mClasseField.setText(pers1.getClasse());
-                mSubRacaField.setText(pers1.getSubRaca());
-                mAntecedenteField.setText(pers1.getAntecedente());
-                mTendenciaField.setText(pers1.getTendencia());
-                mNivelField.setText(pers1.getNivel());
-                mPvTotalField.setText(pers1.getPvTotal());
-                mIniciativaField.setText(pers1.getIniciativa());
-                mForcaField.setText(pers1.getForca());
-                mDestrezaField.setText(pers1.getDestreza());
-                mConstituicaoField.setText(pers1.getConstituicao());
-                mInteligenciaField.setText(pers1.getInteligencia());
-                mSabedoriaField.setText(pers1.getSabedoria());
-                mCarismaField.setText(pers1.getCarisma());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-
-        }); */
-
-        Toast.makeText(context, R.string.gravadoSucesso , Toast.LENGTH_SHORT).show();
+        if(avent != null && mNomeAventField.getText().toString() != null && mNomeAventField.getText().toString().length() > 0 ){
+            avent.setNomeAventura(mNomeAventField.getText().toString());
+            avent.setSeqAventura(seqAvent.getSeqCodAventura());
+            mDatabase.child("Aventuras").child(aventID).setValue(avent);
+            mDatabase.child("SequencialAventura").setValue(seqAvent);
+            AventuraItem aventuraItem = new AventuraItem(aventID, avent.getNomeAventura(), avent.getSeqAventura());
+            mDatabase.child("Users").child(user.getUid()).child("Aventuras").child(aventID).setValue(aventuraItem);
+            Toast.makeText(context, R.string.gravadoSucesso , Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

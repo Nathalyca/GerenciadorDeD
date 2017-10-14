@@ -1,4 +1,4 @@
-package com.tcc.natha.gerenciadordd.models;
+package com.tcc.natha.gerenciadordd.models.personagem;
 
 /**
  * Created by natha on 22/07/2017.

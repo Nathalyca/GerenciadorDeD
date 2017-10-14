@@ -22,8 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.natha.gerenciadordd.R;
-import com.tcc.natha.gerenciadordd.models.Personagem;
-import com.tcc.natha.gerenciadordd.models.PersonagemItem;
+import com.tcc.natha.gerenciadordd.models.personagem.Personagem;
+import com.tcc.natha.gerenciadordd.models.personagem.PersonagemItem;
 
 import java.util.List;
 
@@ -37,7 +37,6 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
     private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String TAG = "EditPersonagemFragment";
     private Context context;
-    private DatabaseReference mPersReference;
     private DatabaseReference mDatabase;
     private EditText mNomepersField;
     private EditText mRacaField;
@@ -141,9 +140,6 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
 
         //BD
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mPersReference = FirebaseDatabase.getInstance().getReference()
-                .child("personagens");
-
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

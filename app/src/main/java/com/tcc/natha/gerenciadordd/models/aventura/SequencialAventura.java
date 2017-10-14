@@ -1,4 +1,4 @@
-package com.tcc.natha.gerenciadordd.models;
+package com.tcc.natha.gerenciadordd.models.aventura;
 
 /**
  * Created by nalmeida on 22/08/2017.

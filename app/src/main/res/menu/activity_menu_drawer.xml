@@ -10,14 +10,14 @@
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_send"
             android:title="Aventura" />
-        <item
+ <!--       <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_send"
             android:title="NPC" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_send"
-            android:title="Turno" />
+            android:title="Turno" /> -->
     </group>
 
     <item android:title="Communicate">
@@ -28,7 +28,7 @@
                 android:title="Compartilhe" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_cancel_black_24dp"
                 android:title="Logout" />
         </menu>
     </item>

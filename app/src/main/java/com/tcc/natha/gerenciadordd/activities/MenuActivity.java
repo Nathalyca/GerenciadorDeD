@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.tcc.natha.gerenciadordd.R;
+import com.tcc.natha.gerenciadordd.fragments.aventura.ViewPageAventura;
 import com.tcc.natha.gerenciadordd.fragments.personagem.ViewPagePersonagem;
 import com.tcc.natha.gerenciadordd.fragments.aventura.AventuraFragment;
 import com.tcc.natha.gerenciadordd.fragments.aventura.EditAventuraFragment;
@@ -34,6 +35,7 @@ public class MenuActivity extends AppCompatActivity
         EditPersonagemFragment.OnFragmentInteractionListener,
         EditAventuraFragment.OnFragmentInteractionListener,
         ViewPagePersonagem.OnFragmentInteractionListener,
+        ViewPageAventura.OnFragmentInteractionListener,
         ResistenciaPericiaFragment.OnFragmentInteractionListener
 {
 
@@ -124,6 +126,5 @@ public class MenuActivity extends AppCompatActivity
     }
 
     public void onFragmentInteraction(Uri uri){
-
     }
 }

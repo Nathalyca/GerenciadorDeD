@@ -9,7 +9,7 @@ import com.tcc.natha.gerenciadordd.fragments.personagem.EditPersonagemFragment;
 import com.tcc.natha.gerenciadordd.fragments.personagem.ResistenciaPericiaFragment;
 
 public class PersonagemPagerAdapter extends FragmentPagerAdapter {
-    private static final String TAG = "EditPersonagemFragment";
+    private static final String TAG = "PersonagemPagerAdapter";
     public PersonagemPagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -30,18 +30,5 @@ public class PersonagemPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return 2;
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return "SECTION 1";
-            case 1:
-                return "SECTION 2";
-            case 2:
-                return "SECTION 3";
-        }
-        return null;
     }
 }

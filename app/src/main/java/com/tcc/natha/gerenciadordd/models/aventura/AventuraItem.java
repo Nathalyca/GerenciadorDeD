@@ -46,4 +46,9 @@ public class AventuraItem {
     public void setSeqAventura(int seqAventura) {
         this.seqAventura = seqAventura;
     }
+
+    @Override
+    public String toString() {
+        return nomeAventura;
+    }
 }

@@ -1,4 +1,5 @@
-package com.tcc.natha.gerenciadordd.fragments.personagem;
+package com.tcc.natha.gerenciadordd.fragments.aventura;
+
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,14 +11,16 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.tcc.natha.gerenciadordd.R;
+import com.tcc.natha.gerenciadordd.adapters.AventuraPagerAdapter;
 import com.tcc.natha.gerenciadordd.adapters.PersonagemPagerAdapter;
+import com.tcc.natha.gerenciadordd.fragments.personagem.ViewPagePersonagem;
 
 import java.util.List;
 
-
-public class ViewPagePersonagem extends Fragment {
+public class ViewPageAventura extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
@@ -26,16 +29,16 @@ public class ViewPagePersonagem extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     // ViewPager
-    private PersonagemPagerAdapter mPersonagemPagerAdapter;
+    private AventuraPagerAdapter mAventuraPagerAdapter;
     private ViewPager mViewPager;
-    private static final String TAG = "ViewPagePersonagem";
+    private static final String TAG = "ViewPageAventura";
 
-    public ViewPagePersonagem() {
+    public ViewPageAventura() {
 
     }
 
-    public static ViewPagePersonagem newInstance(String param1, String param2) {
-        ViewPagePersonagem fragment = new ViewPagePersonagem();
+    public static ViewPageAventura newInstance(String param1, String param2) {
+        ViewPageAventura fragment = new ViewPageAventura();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -50,15 +53,15 @@ public class ViewPagePersonagem extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        mPersonagemPagerAdapter = new PersonagemPagerAdapter(getActivity().getSupportFragmentManager());
+        mAventuraPagerAdapter = new AventuraPagerAdapter(getActivity().getSupportFragmentManager());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_view_page_personagem, container, false);
-        mViewPager = (ViewPager) view.findViewById(R.id.containerPersonagem);
-        mViewPager.setAdapter(mPersonagemPagerAdapter);
+        view = inflater.inflate(R.layout.fragment_view_page_aventura, container, false);
+        mViewPager = (ViewPager) view.findViewById(R.id.containerAventura);
+        mViewPager.setAdapter(mAventuraPagerAdapter);
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -72,7 +75,7 @@ public class ViewPagePersonagem extends Fragment {
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 for (Fragment fragment: fragmentList ) {
                     if(fragment != null){
-                            fragment.onPause();
+                        fragment.onPause();
                     }
                 }
                 transaction.commit();
@@ -106,6 +109,4 @@ public class ViewPagePersonagem extends Fragment {
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
-
-
 }

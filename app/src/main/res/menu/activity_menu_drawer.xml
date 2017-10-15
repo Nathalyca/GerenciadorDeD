@@ -3,11 +3,11 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_personagem"
             android:icon="@drawable/ic_menu_send"
             android:title="Personagem" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_aventura"
             android:icon="@drawable/ic_menu_send"
             android:title="Aventura" />
  <!--       <item
@@ -20,14 +20,14 @@
             android:title="Turno" /> -->
     </group>
 
-    <item android:title="Communicate">
+    <item  android:title=" ">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Compartilhe" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_cancel_black_24dp"
                 android:title="Logout" />
         </menu>

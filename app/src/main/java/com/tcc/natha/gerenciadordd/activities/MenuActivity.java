@@ -101,17 +101,17 @@ public class MenuActivity extends AppCompatActivity
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         Fragment personagemFragment = new PersonagemFragment();
         Fragment aventuraFragment = new AventuraFragment();
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_personagem) {
             transaction.replace(R.id.headlines_fragment, personagemFragment);
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_aventura) {
             transaction.replace(R.id.headlines_fragment, aventuraFragment);
-        } else if (id == R.id.nav_slideshow) {
+//        } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
+//        } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_logout) {
             context = this.getApplicationContext();
             mAuth = FirebaseAuth.getInstance();
             mAuth.signOut();

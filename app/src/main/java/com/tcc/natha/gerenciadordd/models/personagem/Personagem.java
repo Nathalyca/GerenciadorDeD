@@ -439,10 +439,7 @@ public class Personagem {
         this.resInteligencia = resInteligencia;
     }
 
-    public String getAcrobacia() {
-
-        return acrobacia;
-    }
+    public String getAcrobacia() { return acrobacia; }
 
     public void setAcrobacia(String acrobacia) {
         this.acrobacia = acrobacia;

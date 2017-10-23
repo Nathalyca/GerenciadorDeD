@@ -29,13 +29,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/criarAven"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
-
-            <Button
-                android:id="@+id/proc_aven_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/procuraAven"
-                android:theme="@style/ThemeOverlay.MyDarkButton" />
         </LinearLayout>
     </LinearLayout>
 

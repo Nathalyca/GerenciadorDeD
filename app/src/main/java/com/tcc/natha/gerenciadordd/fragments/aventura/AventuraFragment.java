@@ -99,7 +99,7 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
         // Buttons
         criaAventuraButton = (Button) view.findViewById(R.id.cria_aven_button);
         criaAventuraButton.setOnClickListener(this);
-        procuraAventuraButton = (Button) view.findViewById(R.id.proc_aven_button);
+       // procuraAventuraButton = (Button) view.findViewById(R.id.proc_aven_button);
         procuraAventuraButton.setOnClickListener(this);
 
 
@@ -225,7 +225,7 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
             transaction.commit();
         }
 
-        if (i == R.id.proc_aven_button) {
+      /*  if (i == R.id.proc_aven_button) {
             //pega as fragment para remover
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             List<Fragment> fragmentList = fragmentManager.getFragments();
@@ -236,7 +236,7 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
                 }
             }
             transaction.commit();
-        }
+        }*/
     }
 
     @Override

@@ -156,6 +156,7 @@
     <string name="procuraAven">Procurar aventura</string>
     <string name="listaAventuraMestre">Lista de Aventuras</string>
     <string name="nomeavent">Nome:</string>
+    <string name="descricaoAventura">Descriçao Aventura:</string>
     <string name="numavent">Nº:</string>
     <string name="numaventtext">99999999</string>
     <string name="aventuraMestre">Cria Aventura</string>

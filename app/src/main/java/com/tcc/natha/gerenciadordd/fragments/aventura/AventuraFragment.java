@@ -26,8 +26,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.natha.gerenciadordd.R;
+import com.tcc.natha.gerenciadordd.models.aventura.Aventura;
 import com.tcc.natha.gerenciadordd.models.aventura.AventuraItem;
 import com.tcc.natha.gerenciadordd.models.aventura.SequencialAventura;
+import com.tcc.natha.gerenciadordd.models.personagem.Personagem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +42,6 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
     private static final String TAG = "AventuraFragment";
     private View view;
     private Button criaAventuraButton;
-    private Button procuraAventuraButton;
     private SequencialAventura seqAvent;
     private int sequencialDefault = 1;
     private OnFragmentInteractionListener mListener;
@@ -75,12 +76,6 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 seqAvent = dataSnapshot.getValue(SequencialAventura.class);
-                if (seqAvent != null) {
-                    seqAvent.setSeqCodAventura(seqAvent.getSeqCodAventura() + 1);
-                } else {
-                    seqAvent = new SequencialAventura();
-                    seqAvent.setSeqCodAventura(sequencialDefault);
-                }
             }
 
             @Override
@@ -99,12 +94,9 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
         // Buttons
         criaAventuraButton = (Button) view.findViewById(R.id.cria_aven_button);
         criaAventuraButton.setOnClickListener(this);
-       // procuraAventuraButton = (Button) view.findViewById(R.id.proc_aven_button);
-        procuraAventuraButton.setOnClickListener(this);
-
 
         // Lista
-        listaAvent = (ListView) view.findViewById(R.id.listaAventura);
+        listaAvent = (ListView) view.findViewById(R.id.listaPersonagemAventura);
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -150,6 +142,12 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
                 transaction = getFragmentManager().beginTransaction();
                 Fragment viewPageAventura = new ViewPageAventura();
                 Bundle bundle = new Bundle();
+                if (seqAvent != null) {
+                    seqAvent.setSeqCodAventura(seqAvent.getSeqCodAventura() + 1);
+                } else {
+                    seqAvent = new SequencialAventura();
+                    seqAvent.setSeqCodAventura(sequencialDefault);
+                }
                 bundle.putInt("seqAventura", seqAvent.getSeqCodAventura());
                 getActivity().getIntent().removeExtra("seqAventura");
                 bundle.putString("aventID", avent.get(position).getIdAventura());
@@ -224,19 +222,6 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
             transaction.addToBackStack(null);
             transaction.commit();
         }
-
-      /*  if (i == R.id.proc_aven_button) {
-            //pega as fragment para remover
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            List<Fragment> fragmentList = fragmentManager.getFragments();
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            for (Fragment fragment : fragmentList) {
-                if (fragment != null) {
-                    transaction.remove(fragment);
-                }
-            }
-            transaction.commit();
-        }*/
     }
 
     @Override

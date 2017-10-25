@@ -1,5 +1,10 @@
 package com.tcc.natha.gerenciadordd.models.personagem;
 
+import com.tcc.natha.gerenciadordd.models.aventura.AventuraItem;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by natha on 01/02/2017.
  */
@@ -158,6 +163,9 @@ public class Personagem {
 
     private boolean sobrevivenciaBool;
 
+
+
+    private List<AventuraItem> aventuras;
 
     public Personagem(){
     }
@@ -771,6 +779,14 @@ public class Personagem {
 
     public void setSobrevivenciaBool(boolean sobrevivenciaBool) {
         this.sobrevivenciaBool = sobrevivenciaBool;
+    }
+
+    public List<AventuraItem> getAventuras() {
+        return aventuras;
+    }
+
+    public void setAventuras(List<AventuraItem> aventuras) {
+        this.aventuras = aventuras;
     }
 }
 

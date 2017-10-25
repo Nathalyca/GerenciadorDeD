@@ -24,11 +24,25 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/cria_aven_button"
+                android:id="@+id/associa_aven_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/criarAven"
+                android:text="@string/associarAvent"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+            <TextView
+                android:id="@+id/text_numjogadoraventtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/NumeroJogadorAvent" />
+
+            <EditText
+                android:id="@+id/field_numjogadoraventtext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
         </LinearLayout>
     </LinearLayout>
 

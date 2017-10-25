@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.tcc.natha.gerenciadordd.fragments.personagem.EditPersonagemFragment;
+import com.tcc.natha.gerenciadordd.fragments.personagem.PersonagemAventuraFragment;
 import com.tcc.natha.gerenciadordd.fragments.personagem.ResistenciaPericiaFragment;
 
 public class PersonagemPagerAdapter extends FragmentPagerAdapter {
@@ -22,6 +23,8 @@ public class PersonagemPagerAdapter extends FragmentPagerAdapter {
                 return new EditPersonagemFragment();
             case 1:
                 return new ResistenciaPericiaFragment();
+            case 2:
+                return new PersonagemAventuraFragment();
             default:
                 return null;
         }
@@ -29,6 +32,6 @@ public class PersonagemPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 }

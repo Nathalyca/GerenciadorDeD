@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +24,7 @@ import com.tcc.natha.gerenciadordd.R;
 import com.tcc.natha.gerenciadordd.models.aventura.Aventura;
 import com.tcc.natha.gerenciadordd.models.aventura.AventuraItem;
 import com.tcc.natha.gerenciadordd.models.aventura.SequencialAventura;
+import com.tcc.natha.gerenciadordd.models.aventura.SequencialAventuraInstance;
 
 public class EditAventuraFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
@@ -35,10 +37,9 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
     private Context context;
     private DatabaseReference mDatabase;
     private EditText mNomeAventField;
-    private EditText mNumAventTextField;
+    private TextView mNumAventTextField;
     private Button gravaButton;
     private Aventura avent;
-    private SequencialAventura seqAvent;
     private String aventID;
     private View view;
     private FirebaseUser user;
@@ -64,9 +65,8 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         Bundle b = getActivity().getIntent().getExtras();
-        seqAvent = new SequencialAventura();
+
         if(b!= null){
-            seqAvent.setSeqCodAventura(b.getInt("seqAventura", 0));
             aventID = b.getString("aventID", null);
         }
         avent = new Aventura();
@@ -80,8 +80,7 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
 
         // Views
         mNomeAventField = (EditText) view.findViewById(R.id.field_nomeavent);
-        mNumAventTextField = (EditText) view.findViewById(R.id.text_numaventtext);
-        mNumAventTextField.setText(seqAvent.getSeqCodAventura()+"");
+        mNumAventTextField = (TextView) view.findViewById(R.id.text_numaventtext);
 
         // Buttons
         gravaButton = (Button) view.findViewById(R.id.gravar_button);
@@ -94,7 +93,7 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
-                    mDatabase.child("Aventuras").child(aventID).addValueEventListener(new ValueEventListener() {
+                    mDatabase.child("Aventuras").child(aventID).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             avent = dataSnapshot.getValue(Aventura.class);
@@ -103,6 +102,7 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
                                 mNumAventTextField.setText(avent.getSeqAventura()+"");
                             }else{
                                 avent = new Aventura(user.getUid());
+                                mNumAventTextField.setText(SequencialAventuraInstance.getInstance().getSequencialAventura().getSeqCodAventura()+"");
                             }
                         }
 
@@ -145,9 +145,9 @@ public class EditAventuraFragment extends Fragment implements View.OnClickListen
     public void gravaAventura(){
         if(avent != null && mNomeAventField.getText().toString() != null && mNomeAventField.getText().toString().length() > 0 ){
             avent.setNomeAventura(mNomeAventField.getText().toString());
-            avent.setSeqAventura(seqAvent.getSeqCodAventura());
+            avent.setSeqAventura(Integer.parseInt(mNumAventTextField.getText().toString()));
             mDatabase.child("Aventuras").child(aventID).setValue(avent);
-            mDatabase.child("SequencialAventura").setValue(seqAvent);
+            mDatabase.child("SequencialAventura").setValue(SequencialAventuraInstance.getInstance().getSequencialAventura());
             AventuraItem aventuraItem = new AventuraItem(aventID, avent.getNomeAventura(), avent.getSeqAventura());
             mDatabase.child("Users").child(user.getUid()).child("Aventuras").child(aventID).setValue(aventuraItem);
             Toast.makeText(context, R.string.gravadoSucesso , Toast.LENGTH_SHORT).show();

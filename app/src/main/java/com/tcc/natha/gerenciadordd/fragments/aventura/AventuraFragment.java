@@ -29,6 +29,7 @@ import com.tcc.natha.gerenciadordd.R;
 import com.tcc.natha.gerenciadordd.models.aventura.Aventura;
 import com.tcc.natha.gerenciadordd.models.aventura.AventuraItem;
 import com.tcc.natha.gerenciadordd.models.aventura.SequencialAventura;
+import com.tcc.natha.gerenciadordd.models.aventura.SequencialAventuraInstance;
 import com.tcc.natha.gerenciadordd.models.personagem.Personagem;
 
 import java.util.ArrayList;
@@ -42,7 +43,6 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
     private static final String TAG = "AventuraFragment";
     private View view;
     private Button criaAventuraButton;
-    private SequencialAventura seqAvent;
     private int sequencialDefault = 1;
     private OnFragmentInteractionListener mListener;
     private static FirebaseUser user;
@@ -72,10 +72,18 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("SequencialAventura").addValueEventListener(new ValueEventListener() {
+        mDatabase.child("SequencialAventura").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                seqAvent = dataSnapshot.getValue(SequencialAventura.class);
+                SequencialAventura sequencialAventura = dataSnapshot.getValue(SequencialAventura.class);
+                if(sequencialAventura != null){
+                    sequencialAventura.setSeqCodAventura(sequencialAventura.getSeqCodAventura() + 1);
+                    SequencialAventuraInstance.getInstance().setSequencialAventura(sequencialAventura);
+                }else {
+                    sequencialAventura = new SequencialAventura();
+                    sequencialAventura.setSeqCodAventura(sequencialDefault);
+                    SequencialAventuraInstance.getInstance().setSequencialAventura(sequencialAventura);
+                }
             }
 
             @Override
@@ -142,14 +150,6 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
                 transaction = getFragmentManager().beginTransaction();
                 Fragment viewPageAventura = new ViewPageAventura();
                 Bundle bundle = new Bundle();
-                if (seqAvent != null) {
-                    seqAvent.setSeqCodAventura(seqAvent.getSeqCodAventura() + 1);
-                } else {
-                    seqAvent = new SequencialAventura();
-                    seqAvent.setSeqCodAventura(sequencialDefault);
-                }
-                bundle.putInt("seqAventura", seqAvent.getSeqCodAventura());
-                getActivity().getIntent().removeExtra("seqAventura");
                 bundle.putString("aventID", avent.get(position).getIdAventura());
                 getActivity().getIntent().removeExtra("aventID");
                 getActivity().getIntent().putExtras(bundle);
@@ -210,8 +210,6 @@ public class AventuraFragment extends Fragment implements View.OnClickListener, 
             }
             transaction.commit();
             Bundle bundle = new Bundle();
-            bundle.putInt("seqAventura", seqAvent.getSeqCodAventura());
-            getActivity().getIntent().removeExtra("seqAventura");
             bundle.putString("aventID", mDatabase.child("Aventuras").push().getKey());
             getActivity().getIntent().removeExtra("aventID");
             getActivity().getIntent().putExtras(bundle);

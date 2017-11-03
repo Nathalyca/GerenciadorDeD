@@ -72,7 +72,7 @@ public class ViewPagePersonagem extends Fragment {
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 for (Fragment fragment: fragmentList ) {
                     if(fragment != null){
-                            fragment.onPause();
+                        fragment.onPause();
                     }
                 }
                 transaction.commit();

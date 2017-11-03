@@ -1,10 +1,12 @@
 package com.tcc.natha.gerenciadordd.models.aventura;
 
+import java.io.Serializable;
+
 /**
  * Created by rafae on 14/10/2017.
  */
 
-public class Aventura {
+public class Aventura implements Serializable {
 
     private String userID;
     private String nomeAventura;

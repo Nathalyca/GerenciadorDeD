@@ -2,7 +2,6 @@ package com.tcc.natha.gerenciadordd.models.personagem;
 
 import com.tcc.natha.gerenciadordd.models.aventura.AventuraItem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

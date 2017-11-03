@@ -33,6 +33,7 @@ import com.tcc.natha.gerenciadordd.models.aventura.Aventura;
 import com.tcc.natha.gerenciadordd.models.aventura.AventuraItem;
 import com.tcc.natha.gerenciadordd.models.aventura.SequencialAventura;
 import com.tcc.natha.gerenciadordd.models.personagem.Personagem;
+import com.tcc.natha.gerenciadordd.models.personagem.PersonagemInstance;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,6 @@ public class PersonagemAventuraFragment extends Fragment implements View.OnClick
     private ListView listaAvent;
     private List<AventuraItem> avent = new ArrayList<>();
     private EditText mNumAventTextField;
-    private Personagem pers;
     private String persoID;
     private Context context;
 
@@ -81,7 +81,6 @@ public class PersonagemAventuraFragment extends Fragment implements View.OnClick
         if(b!= null){
             persoID = b.getString("persoID", null);
         }
-        pers = new Personagem();
         avent = new ArrayList<AventuraItem>();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         context = getActivity().getApplicationContext();
@@ -107,16 +106,17 @@ public class PersonagemAventuraFragment extends Fragment implements View.OnClick
                     mDatabase.child("Personagens").child(persoID).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            pers = dataSnapshot.getValue(Personagem.class);
-                            if(pers != null){
-                                avent = pers.getAventuras();
+                            PersonagemInstance.getInstance().setPersonagem(dataSnapshot.getValue(Personagem.class));
+
+
+                                avent = PersonagemInstance.getInstance().getPersonagem().getAventuras();
                                 if(avent == null){
                                     avent = new ArrayList<AventuraItem>();
-                                    pers.setAventuras(avent);
+                                    Personagem personagem =  PersonagemInstance.getInstance().getPersonagem();
+                                    personagem.setAventuras(avent);
+                                    PersonagemInstance.getInstance().setPersonagem(personagem);
                                 }
-                            }else{
-                                pers = new Personagem(user.getUid());
-                            }
+
                             if(avent == null){
                                 avent = new ArrayList<AventuraItem>();
                             }
@@ -146,7 +146,7 @@ public class PersonagemAventuraFragment extends Fragment implements View.OnClick
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         avent.remove(position);
-                        mDatabase.child("Personagens").child(persoID).setValue(pers);
+                        mDatabase.child("Personagens").child(persoID).setValue(PersonagemInstance.getInstance().getPersonagem());
                         ArrayAdapter<AventuraItem> adapter = new ArrayAdapter<AventuraItem>(getActivity().getApplicationContext(),
                                 android.R.layout.simple_list_item_1, avent);
                         listaAvent.setAdapter(adapter);
@@ -203,8 +203,8 @@ public class PersonagemAventuraFragment extends Fragment implements View.OnClick
                         Toast.makeText(getActivity().getApplicationContext(), "Numero Aventura não encontrado", Toast.LENGTH_SHORT ).show();
                     }
                     boolean aventuraJaAssociada = false;
-                    if(pers.getAventuras() != null){
-                        for(AventuraItem aventuraItemPers: pers.getAventuras()){
+                    if(PersonagemInstance.getInstance().getPersonagem().getAventuras() != null){
+                        for(AventuraItem aventuraItemPers: PersonagemInstance.getInstance().getPersonagem().getAventuras()){
                             if(aventuraItemPers.getSeqAventura() == seqAvent.getSeqCodAventura()){
                                 Toast.makeText(getActivity().getApplicationContext(), "Numero Aventura já associada", Toast.LENGTH_SHORT ).show();
                                 aventuraJaAssociada = true;
@@ -212,7 +212,9 @@ public class PersonagemAventuraFragment extends Fragment implements View.OnClick
                             }
                         }
                     }else{
-                        pers.setAventuras(new ArrayList<AventuraItem>());
+                        Personagem personagem = PersonagemInstance.getInstance().getPersonagem();
+                        personagem.setAventuras(new ArrayList<AventuraItem>());
+                        PersonagemInstance.getInstance().setPersonagem(personagem);
                     }
 
                     if(!aventuraJaAssociada && aventuraItem != null){
@@ -220,8 +222,10 @@ public class PersonagemAventuraFragment extends Fragment implements View.OnClick
                         ArrayAdapter<AventuraItem> adapter = new ArrayAdapter<AventuraItem>(getActivity().getApplicationContext(),
                                 android.R.layout.simple_list_item_1, avent);
                         listaAvent.setAdapter(adapter);
-                        pers.setAventuras(avent);
-                        mDatabase.child("Personagens").child(persoID).setValue(pers);
+                        Personagem personagem = PersonagemInstance.getInstance().getPersonagem();
+                        personagem.setAventuras(avent);
+                        PersonagemInstance.getInstance().setPersonagem(personagem);
+                        mDatabase.child("Personagens").child(persoID).setValue(PersonagemInstance.getInstance().getPersonagem());
                         Toast.makeText(getActivity().getApplicationContext(), "Numero Aventura associado", Toast.LENGTH_SHORT ).show();
                     }
                 }

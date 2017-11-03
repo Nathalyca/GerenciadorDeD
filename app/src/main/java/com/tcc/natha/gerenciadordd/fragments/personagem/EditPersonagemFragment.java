@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.natha.gerenciadordd.R;
 import com.tcc.natha.gerenciadordd.models.personagem.Personagem;
+import com.tcc.natha.gerenciadordd.models.personagem.PersonagemInstance;
 import com.tcc.natha.gerenciadordd.models.personagem.PersonagemItem;
 
 import java.util.List;
@@ -66,7 +68,6 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
     private EditText mSabedoria2Field;
     private EditText mCarisma2Field;
     private Button gravaButton;
-    private Personagem pers;
     private View view;
     private String uID;
     private FirebaseUser user;
@@ -96,7 +97,7 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
         if(b!= null){
             persoID = b.getString("persoID", null);
         }
-        pers = new Personagem();
+        PersonagemInstance.getInstance();
     }
 
     @Override
@@ -140,52 +141,30 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
 
         //BD
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
-                    mDatabase.child("Personagens").child(persoID).addValueEventListener(new ValueEventListener() {
+
+                    ValueEventListener valueEventListener = new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            pers = dataSnapshot.getValue(Personagem.class);
-                            if(pers != null){
-                                mNomepersField.setText(pers.getNomePerso());
-                                mRacaField.setText(pers.getRaca());
-                                mSubRacaField.setText(pers.getSubRaca());
-                                mClasseField.setText(pers.getClasse());
-                                mNivelField.setText(pers.getNivel());
-                                mAntecedenteField.setText(pers.getAntecedente());
-                                mTendenciaField.setText(pers.getTendencia());
-                                mClasseArmadField.setText(pers.getClasseArmad());
-                                mIniciativaField.setText(pers.getIniciativa());
-                                mDeslocField.setText(pers.getDesloc());
-                                mJogadorField.setText(pers.getJogador());
-                                mXpField.setText(pers.getXp());
-                                mPvTotalField.setText(pers.getPvTotal());
-                                mPvAtualField.setText(pers.getPvAtual());
-                                mPvTempField.setText(pers.getPvTemp());
-                                mForcaField.setText(pers.getForca());
-                                mDestrezaField.setText(pers.getDestreza());
-                                mConstituicaoField.setText(pers.getConstituicao());
-                                mInteligenciaField.setText(pers.getInteligencia());
-                                mSabedoriaField.setText(pers.getSabedoria());
-                                mCarismaField.setText(pers.getCarisma());
-                                mForca2Field.setText(pers.getForca2());
-                                mDestreza2Field.setText(pers.getDestreza2());
-                                mConstituicao2Field.setText(pers.getConstituicao2());
-                                mInteligencia2Field.setText(pers.getInteligencia2());
-                                mSabedoria2Field.setText(pers.getSabedoria2());
-                                mCarisma2Field.setText(pers.getCarisma2());
+                            PersonagemInstance.getInstance().setPersonagem(dataSnapshot.getValue(Personagem.class));
+                            if(PersonagemInstance.getInstance().getPersonagem() != null){
+                                loadFields();
+                                Toast.makeText(context, "loadFields EditPersonagemFragment", Toast.LENGTH_SHORT).show();
                             }else{
-                                pers = new Personagem(user.getUid());
+                                PersonagemInstance.getInstance().setPersonagem(new Personagem(user.getUid()));
                             }
                         }
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
                         }
-                    });
+                    };
+                    mDatabase.child("Personagens").child(persoID).addValueEventListener(valueEventListener);
                 }
             }
         };
@@ -217,41 +196,72 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
     }
 
     public void gravaPersonagem(){
-        if(pers!= null && mNomepersField.getText().length() > 0){
-            pers.setNomePerso(mNomepersField.getText().toString());
-            pers.setRaca(mRacaField.getText().toString());
-            pers.setSubRaca (mSubRacaField.getText().toString());
-            pers.setClasse(mClasseField.getText().toString());
-            pers.setNivel (mNivelField.getText().toString());
-            pers.setAntecedente (mAntecedenteField.getText().toString());
-            pers.setTendencia (mTendenciaField.getText().toString());
-            pers.setClasseArmad(mClasseArmadField.getText().toString());
-            pers.setIniciativa (mIniciativaField.getText().toString());
-            pers.setDesloc(mDeslocField.getText().toString());
-            pers.setJogador(mJogadorField.getText().toString());
-            pers.setXp(mXpField.getText().toString());
-            pers.setPvTotal (mPvTotalField.getText().toString());
-            pers.setPvAtual (mPvAtualField.getText().toString());
-            pers.setPvTemp (mPvTempField.getText().toString());
-            pers.setForca (mForcaField.getText().toString());
-            pers.setDestreza (mDestrezaField.getText().toString());
-            pers.setConstituicao (mConstituicaoField.getText().toString());
-            pers.setInteligencia (mInteligenciaField.getText().toString());
-            pers.setSabedoria (mSabedoriaField.getText().toString());
-            pers.setCarisma (mCarismaField.getText().toString());
-            pers.setForca2 (mForca2Field.getText().toString());
-            pers.setDestreza2 (mDestreza2Field.getText().toString());
-            pers.setConstituicao2 (mConstituicao2Field.getText().toString());
-            pers.setInteligencia2 (mInteligencia2Field.getText().toString());
-            pers.setSabedoria2 (mSabedoria2Field.getText().toString());
-            pers.setCarisma2 (mCarisma2Field.getText().toString());
-            mDatabase.child("Personagens").child(persoID).setValue(pers);
-            PersonagemItem personagemItem = new PersonagemItem(persoID,pers.getNomePerso(), pers.getClasse(), pers.getNivel());
+        if(PersonagemInstance.getInstance().getPersonagem()!= null && mNomepersField.getText().length() > 0){
+            Personagem personagem = PersonagemInstance.getInstance().getPersonagem();
+            personagem.setNomePerso(mNomepersField.getText().toString());
+            personagem.setRaca(mRacaField.getText().toString());
+            personagem.setSubRaca (mSubRacaField.getText().toString());
+            personagem.setClasse(mClasseField.getText().toString());
+            personagem.setNivel (mNivelField.getText().toString());
+            personagem.setAntecedente (mAntecedenteField.getText().toString());
+            personagem.setTendencia (mTendenciaField.getText().toString());
+            personagem.setClasseArmad(mClasseArmadField.getText().toString());
+            personagem.setIniciativa (mIniciativaField.getText().toString());
+            personagem.setDesloc(mDeslocField.getText().toString());
+            personagem.setJogador(mJogadorField.getText().toString());
+            personagem.setXp(mXpField.getText().toString());
+            personagem.setPvTotal (mPvTotalField.getText().toString());
+            personagem.setPvAtual (mPvAtualField.getText().toString());
+            personagem.setPvTemp (mPvTempField.getText().toString());
+            personagem.setForca (mForcaField.getText().toString());
+            personagem.setDestreza (mDestrezaField.getText().toString());
+            personagem.setConstituicao (mConstituicaoField.getText().toString());
+            personagem.setInteligencia (mInteligenciaField.getText().toString());
+            personagem.setSabedoria (mSabedoriaField.getText().toString());
+            personagem.setCarisma (mCarismaField.getText().toString());
+            personagem.setForca2 (mForca2Field.getText().toString());
+            personagem.setDestreza2 (mDestreza2Field.getText().toString());
+            personagem.setConstituicao2 (mConstituicao2Field.getText().toString());
+            personagem.setInteligencia2 (mInteligencia2Field.getText().toString());
+            personagem.setSabedoria2 (mSabedoria2Field.getText().toString());
+            personagem.setCarisma2 (mCarisma2Field.getText().toString());
+            PersonagemInstance.getInstance().setPersonagem(personagem);
+            mDatabase.child("Personagens").child(persoID).setValue(PersonagemInstance.getInstance().getPersonagem());
+            PersonagemItem personagemItem = new PersonagemItem(persoID,PersonagemInstance.getInstance().getPersonagem().getNomePerso(), PersonagemInstance.getInstance().getPersonagem().getClasse(), PersonagemInstance.getInstance().getPersonagem().getNivel());
             mDatabase.child("Users").child(user.getUid()).child("Personagens").child(persoID).setValue(personagemItem);
-            Toast.makeText(context, R.string.gravadoSucesso , Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(context, "pers null", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void loadFields(){
+        mNomepersField.setText(PersonagemInstance.getInstance().getPersonagem().getNomePerso());
+        mRacaField.setText(PersonagemInstance.getInstance().getPersonagem().getRaca());
+        mSubRacaField.setText(PersonagemInstance.getInstance().getPersonagem().getSubRaca());
+        mClasseField.setText(PersonagemInstance.getInstance().getPersonagem().getClasse());
+        mNivelField.setText(PersonagemInstance.getInstance().getPersonagem().getNivel());
+        mAntecedenteField.setText(PersonagemInstance.getInstance().getPersonagem().getAntecedente());
+        mTendenciaField.setText(PersonagemInstance.getInstance().getPersonagem().getTendencia());
+        mClasseArmadField.setText(PersonagemInstance.getInstance().getPersonagem().getClasseArmad());
+        mIniciativaField.setText(PersonagemInstance.getInstance().getPersonagem().getIniciativa());
+        mDeslocField.setText(PersonagemInstance.getInstance().getPersonagem().getDesloc());
+        mJogadorField.setText(PersonagemInstance.getInstance().getPersonagem().getJogador());
+        mXpField.setText(PersonagemInstance.getInstance().getPersonagem().getXp());
+        mPvTotalField.setText(PersonagemInstance.getInstance().getPersonagem().getPvTotal());
+        mPvAtualField.setText(PersonagemInstance.getInstance().getPersonagem().getPvAtual());
+        mPvTempField.setText(PersonagemInstance.getInstance().getPersonagem().getPvTemp());
+        mForcaField.setText(PersonagemInstance.getInstance().getPersonagem().getForca());
+        mDestrezaField.setText(PersonagemInstance.getInstance().getPersonagem().getDestreza());
+        mConstituicaoField.setText(PersonagemInstance.getInstance().getPersonagem().getConstituicao());
+        mInteligenciaField.setText(PersonagemInstance.getInstance().getPersonagem().getInteligencia());
+        mSabedoriaField.setText(PersonagemInstance.getInstance().getPersonagem().getSabedoria());
+        mCarismaField.setText(PersonagemInstance.getInstance().getPersonagem().getCarisma());
+        mForca2Field.setText(PersonagemInstance.getInstance().getPersonagem().getForca2());
+        mDestreza2Field.setText(PersonagemInstance.getInstance().getPersonagem().getDestreza2());
+        mConstituicao2Field.setText(PersonagemInstance.getInstance().getPersonagem().getConstituicao2());
+        mInteligencia2Field.setText(PersonagemInstance.getInstance().getPersonagem().getInteligencia2());
+        mSabedoria2Field.setText(PersonagemInstance.getInstance().getPersonagem().getSabedoria2());
+        mCarisma2Field.setText(PersonagemInstance.getInstance().getPersonagem().getCarisma2());
     }
 
     @Override
@@ -267,23 +277,8 @@ public class EditPersonagemFragment extends Fragment implements View.OnClickList
     }
 
     @Override
-    public void onResume(){
-        super.onResume();
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        List<Fragment> fragmentList = fragmentManager.getFragments();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        for (Fragment fragment: fragmentList ) {
-            if(fragment != null){
-                if(fragment.getId() != this.getId()){
-                    fragment.onPause();
-                }
-            }
-        }
-        transaction.commit();
-    }
-
-    @Override
     public void onPause(){
+        Toast.makeText(context, "onPause" , Toast.LENGTH_SHORT).show();
         gravaPersonagem();
         super.onPause();
     }

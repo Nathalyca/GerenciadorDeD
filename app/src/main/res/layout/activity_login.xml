@@ -71,7 +71,8 @@
             android:inputType="textEmailAddress"
             android:typeface="normal"
             android:textSize="18sp"
-            android:textStyle="normal|bold" />
+            android:textStyle="normal|bold"
+            android:maxLines="1"/>
 
         </LinearLayout>
 
@@ -103,7 +104,8 @@
             android:hint="@string/hint_password"
             android:inputType="textPassword"
             android:textStyle="normal|bold"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:maxLines="1"/>
 
         </LinearLayout>
 

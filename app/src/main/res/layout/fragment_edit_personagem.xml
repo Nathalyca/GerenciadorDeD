@@ -50,7 +50,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:maxLines="1"/>
 
             </LinearLayout>
 
@@ -71,7 +72,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:maxLines="1"/>
 
                 <TextView
                     android:id="@+id/text_subraca"
@@ -84,7 +86,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:maxLines="1"/>
 
             </LinearLayout>
 
@@ -105,7 +108,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:maxLines="1"/>
 
                 <TextView
                     android:id="@+id/text_nivel"
@@ -118,7 +122,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.38"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLines="1"/>
 
             </LinearLayout>
 
@@ -139,7 +144,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:maxLines="1"/>
 
                 <TextView
                     android:id="@+id/text_tendencia"
@@ -152,7 +158,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:maxLines="1"/>
 
             </LinearLayout>
 
@@ -173,7 +180,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLines="1"/>
 
                 <TextView
                     android:id="@+id/text_iniciativa"
@@ -186,7 +194,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLines="1"/>
 
                 <TextView
                     android:id="@+id/text_desloc"
@@ -199,7 +208,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLines="1"/>
 
             </LinearLayout>
 
@@ -220,7 +230,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.41"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:maxLines="1"/>
 
                 <TextView
                     android:id="@+id/text_xp"
@@ -233,7 +244,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.57"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLines="1"/>
 
             </LinearLayout>
 
@@ -254,7 +266,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLines="1"/>
 
                 <TextView
                     android:id="@+id/text_pv_atual"
@@ -267,7 +280,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLines="1"/>
 
                 <TextView
                     android:id="@+id/text_pv_temp"
@@ -280,7 +294,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLines="1"/>
 
             </LinearLayout>
 
@@ -339,7 +354,8 @@
                         android:id="@+id/field_forca"
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -350,7 +366,8 @@
                         android:id="@+id/field_forca2"
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:maxLines="1"/>
 
                 </LinearLayout>
 
@@ -371,7 +388,8 @@
                         android:id="@+id/field_sabedoria"
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -382,7 +400,8 @@
                         android:id="@+id/field_sabedoria2"
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:maxLines="1"/>
 
                 </LinearLayout>
 
@@ -411,7 +430,8 @@
                         android:id="@+id/field_constituicao"
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -422,7 +442,8 @@
                         android:id="@+id/field_constituicao2"
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:maxLines="1"/>
 
                 </LinearLayout>
 
@@ -443,7 +464,8 @@
                         android:id="@+id/field_carisma"
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -454,7 +476,8 @@
                         android:id="@+id/field_carisma2"
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:maxLines="1"/>
 
                 </LinearLayout>
 
@@ -483,7 +506,8 @@
                         android:id="@+id/field_destreza"
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -494,7 +518,9 @@
                         android:id="@+id/field_destreza2"
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:maxLines="1"/>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -514,7 +540,8 @@
                         android:id="@+id/field_inteligencia"
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -525,7 +552,8 @@
                         android:id="@+id/field_inteligencia2"
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:maxLines="1"/>
                 </LinearLayout>
             </LinearLayout>
 
